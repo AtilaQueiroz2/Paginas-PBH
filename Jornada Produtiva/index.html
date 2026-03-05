@@ -830,10 +830,32 @@
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visualização de imagem expandida">
-        <span class="lightbox-close" id="lightbox-close" aria-label="Fechar">&times;</span>
-        <img id="lightbox-img" src="" alt="">
+
+    <!-- Lightbox Overlay -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem expandida">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">&times;</button>
+        <img src="" alt="" id="lightbox-img">
+        <div class="lightbox-actions">
+            <a class="lightbox-btn lightbox-btn-download" id="lightbox-download"
+                href="imagens e emojis/fluxograma_editais.png" download="fluxograma_editais.png" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Baixar
+            </a>
+            <button class="lightbox-btn lightbox-btn-print" id="lightbox-print">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 6 2 18 2 18 9" />
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                    <rect x="6" y="14" width="12" height="8" />
+                </svg>
+                Imprimir
+            </button>
+        </div>
     </div>
 
     <script>
@@ -951,6 +973,32 @@
                 closeLightbox();
             }
         });
+
+        // --- Print Button ---
+        const lightboxPrint = document.getElementById('lightbox-print');
+        if (lightboxPrint) {
+            lightboxPrint.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const src = lightboxImg.src;
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Fluxograma dos Editais</title>
+                        <style>
+                            body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #fff; }
+                            img { max-width: 100%; height: auto; }
+                        </style>
+                    </head>
+                    <body>
+                        <img src="${src}" onload="window.print(); window.close();">
+                    </body>
+                    </html>
+                `);
+                printWindow.document.close();
+            });
+        }
 
         // --- Counter Animation ---
         const animateCounters = () => {

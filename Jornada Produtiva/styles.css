@@ -1410,8 +1410,65 @@ img {
 }
 
 .lightbox-close:hover {
-    background: rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .15);
     transform: rotate(90deg);
+}
+
+/* ===== LIGHTBOX ACTION BUTTONS ===== */
+.lightbox-actions {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 2001;
+}
+
+.lightbox-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: .2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+/* Botão Download — verde sólido (igual ao btn-primary do site) */
+.lightbox-btn-download {
+    background: #337A47;
+    color: var(--color-white);
+}
+
+.lightbox-btn-download:hover {
+    background: #256135;
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+}
+
+/* Botão Imprimir — contorno verde claro sobre fundo escuro */
+.lightbox-btn-print {
+    background: rgba(255, 255, 255, .08);
+    color: var(--color-white);
+    border: 1.5px solid rgba(255, 255, 255, .4);
+    backdrop-filter: blur(8px);
+}
+
+.lightbox-btn-print:hover {
+    background: rgba(255, 255, 255, .18);
+    border-color: rgba(255, 255, 255, .7);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
 }
 
 .expandable-image {
