@@ -6,10 +6,10 @@
   'use strict';
 
   // ── NAV: sticky scroll behaviour ────────────────────────────
-  const topnav    = document.getElementById('topnav');
+  const topnav = document.getElementById('topnav');
   const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
-  const backBtn   = document.getElementById('backToTop');
+  const navLinks = document.getElementById('navLinks');
+  const backBtn = document.getElementById('backToTop');
   const allNavLinks = document.querySelectorAll('.nav-links a');
 
   window.addEventListener('scroll', () => {
@@ -38,7 +38,7 @@
   });
 
   // ── ACTIVE NAV ON SCROLL ─────────────────────────────────────
-  const anchors = ['identidade','licenciamento','regras','categorias','localizacao','faq'];
+  const anchors = ['identidade', 'licenciamento', 'regras', 'categorias', 'localizacao', 'faq'];
 
   function highlightNav() {
     let current = '';
@@ -65,8 +65,8 @@
   accBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
-      const bodyId   = btn.getAttribute('aria-controls');
-      const body     = document.getElementById(bodyId);
+      const bodyId = btn.getAttribute('aria-controls');
+      const body = document.getElementById(bodyId);
 
       // Close all first
       accBtns.forEach(b => {
@@ -90,7 +90,7 @@
       if (!target) return;
       e.preventDefault();
       const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 68;
-      const top  = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+      const top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
@@ -149,7 +149,7 @@
 
   // ── PRINT: remove nav ────────────────────────────────────────
   window.addEventListener('beforeprint', () => topnav.style.display = 'none');
-  window.addEventListener('afterprint',  () => topnav.style.display = '');
+  window.addEventListener('afterprint', () => topnav.style.display = '');
 
 })();
 
@@ -157,127 +157,102 @@
 // MAPA INTERATIVO (MINI MAPA LOCAL)
 // =============================================================
 document.addEventListener('DOMContentLoaded', () => {
-    const mapElement = document.getElementById('mini-mapa');
-    if (!mapElement) return;
-    
-    // Limpa a div
-    mapElement.innerHTML = '';
+  const mapElement = document.getElementById('mini-mapa');
+  if (!mapElement) return;
 
-    // Projeção UTM Zone 23S (EPSG:31983) usada pela PBH
-    const crs = new L.Proj.CRS('EPSG:31983', 
-        '+proj=utm +zone=23 +south +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
-        {
-            resolutions: [8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25, 0.125],
-            origin: [166021.4431, 8339785.6077]
+  // Limpa a div
+  mapElement.innerHTML = '';
+
+  // Projeção UTM Zone 23S (EPSG:31983) usada pela PBH
+  const crs = new L.Proj.CRS('EPSG:31983',
+    '+proj=utm +zone=23 +south +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+    {
+      resolutions: [8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25, 0.125],
+      origin: [166021.4431, 8339785.6077]
+    }
+  );
+
+  // Inicializa o mapa
+  const miniMap = L.map('mini-mapa', {
+    crs: L.CRS.EPSG3857, // Base map usa Mercator normal
+    center: [-19.9234, -43.9355],
+    zoom: 16,
+    minZoom: 15,
+    maxZoom: 19
+  });
+
+  // Camada Base Clara (CartoDB Positron)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 20
+  }).addTo(miniMap);
+
+  const sectorsLayer = L.layerGroup().addTo(miniMap);
+  const stallsLayer = L.layerGroup().addTo(miniMap);
+
+  // Conversor de coordenada (UTM para LatLng)
+  function convertCoordinates(coords, isPolygon = false) {
+    if (!coords || !coords.length) return [];
+
+    if (isPolygon) {
+      return [coords[0].map(c => {
+        const pt = proj4('EPSG:31983', 'EPSG:4326', [c[0], c[1]]);
+        return [pt[1], pt[0]];
+      })];
+    }
+
+    const pt = proj4('EPSG:31983', 'EPSG:4326', [coords[0], coords[1]]);
+    return [pt[1], pt[0]];
+  }
+
+  // Carregar Feirantes (Pontos) a partir da variável injetada
+  function loadFeirantes() {
+    console.log("Carregando feirantes...");
+    if (typeof feirantesData === 'undefined' || !feirantesData.features) {
+      console.error("Dados dos feirantes não foram carregados do arquivo js.");
+      return;
+    }
+
+    feirantesData.features.forEach(feature => {
+      if (feature.geometry && feature.geometry.coordinates) {
+        try {
+          const props = feature.properties;
+          const firstPoint = feature.geometry.coordinates[0][0][0];
+          const pt = proj4('EPSG:31983', 'EPSG:4326', [firstPoint[0], firstPoint[1]]);
+
+          const stallMarker = L.circleMarker([pt[1], pt[0]], {
+            radius: 4,
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+          });
+
+          const popupContent = `
+                        <div style="font-family:'Inter',sans-serif; padding:5px 0;">
+                            <h4 style="margin:0 0 8px; color:#1a7c3e; font-size:14px; font-weight:700;">${props.NOME_FANTASIA || props.NOME}</h4>
+                            <p style="margin:0 0 3px; font-size:12px;"><b>📍 Vaga:</b> ${props.VAGA}</p>
+                            <p style="margin:0 0 3px; font-size:12px;"><b>🏷️ Setor:</b> ${props.SETOR}</p>
+                            <p style="margin:0; font-size:12px;"><b>📦 Produto:</b> ${props.PRODUTO_PRINCIPAL}</p>
+                        </div>
+                    `;
+
+          stallMarker.bindPopup(popupContent);
+          stallsLayer.addLayer(stallMarker);
+        } catch (e) {
+          // ignora coords mal formatadas
         }
-    );
-
-    // Inicializa o mapa
-    const miniMap = L.map('mini-mapa', {
-        crs: L.CRS.EPSG3857, // Base map usa Mercator normal
-        center: [-19.9234, -43.9355],
-        zoom: 16,
-        minZoom: 15,
-        maxZoom: 19
+      }
     });
 
-    // Camada Base Clara (CartoDB Positron)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20
-    }).addTo(miniMap);
-
-    const sectorsLayer = L.layerGroup().addTo(miniMap);
-    const stallsLayer = L.layerGroup().addTo(miniMap);
-
-    // Conversor de coordenada (UTM para LatLng)
-    function convertCoordinates(coords, isPolygon = false) {
-        if (!coords || !coords.length) return [];
-        
-        if (isPolygon) {
-            return [coords[0].map(c => {
-                const pt = proj4('EPSG:31983', 'EPSG:4326', [c[0], c[1]]);
-                return [pt[1], pt[0]];
-            })];
-        }
-        
-        const pt = proj4('EPSG:31983', 'EPSG:4326', [coords[0], coords[1]]);
-        return [pt[1], pt[0]];
+    // Ajusta o map bound pros feirantes carregados
+    if (stallsLayer.getLayers().length > 0) {
+      miniMap.fitBounds(stallsLayer.getBounds(), { padding: [20, 20] });
     }
+  }
 
-    // Carregar Setores (Polígonos)
-    fetch('setores.geojson')
-        .then(res => res.json())
-        .then(data => {
-            if(!data.features) return;
-            
-            data.features.forEach(feature => {
-                if(feature.geometry && feature.geometry.coordinates) {
-                    const latlngs = convertCoordinates(feature.geometry.coordinates[0], true);
-                    const setorPolygon = L.polygon(latlngs, {
-                        color: feature.properties.COR_BORDA || '#1a7c3e',
-                        fillColor: feature.properties.COR_PREENCHIMENTO || '#27a75c',
-                        fillOpacity: 0.35,
-                        weight: 2
-                    });
-                    
-                    setorPolygon.bindTooltip(`<b>Setor:</b> ${feature.properties.NOME_SETOR}`, {sticky: true});
-                    sectorsLayer.addLayer(setorPolygon);
-                }
-            });
-            
-            if(sectorsLayer.getLayers().length > 0) {
-                miniMap.fitBounds(sectorsLayer.getBounds(), {padding: [20, 20]});
-            }
-            loadFeirantes();
-        })
-        .catch(err => {
-            console.error("Erro setores:", err);
-            loadFeirantes(); // Tenta carregar feirantes mesmo assim
-        });
-
-    // Carregar Feirantes (Pontos)
-    function loadFeirantes() {
-        console.log("Carregando feirantes...");
-        fetch('feirantes.geojson')
-            .then(res => res.json())
-            .then(data => {
-                if(!data.features) return;
-                
-                data.features.forEach(feature => {
-                    if(feature.geometry && feature.geometry.coordinates) {
-                        try {
-                            const props = feature.properties;
-                            const firstPoint = feature.geometry.coordinates[0][0][0]; 
-                            const pt = proj4('EPSG:31983', 'EPSG:4326', [firstPoint[0], firstPoint[1]]);
-                            
-                            const stallMarker = L.circleMarker([pt[1], pt[0]], {
-                                radius: 4,
-                                fillColor: "#ff7800",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 0.8
-                            });
-
-                            const popupContent = `
-                                <div style="font-family:'Inter',sans-serif; padding:5px 0;">
-                                    <h4 style="margin:0 0 8px; color:#1a7c3e; font-size:14px; font-weight:700;">${props.NOME_FANTASIA || props.NOME}</h4>
-                                    <p style="margin:0 0 3px; font-size:12px;"><b>📍 Vaga:</b> ${props.VAGA}</p>
-                                    <p style="margin:0 0 3px; font-size:12px;"><b>🏷️ Setor:</b> ${props.SETOR}</p>
-                                    <p style="margin:0; font-size:12px;"><b>📦 Produto:</b> ${props.PRODUTO_PRINCIPAL}</p>
-                                </div>
-                            `;
-                            
-                            stallMarker.bindPopup(popupContent);
-                            stallsLayer.addLayer(stallMarker);
-                        } catch(e) {
-                           // ignora coords mal formatadas
-                        }
-                    }
-                });
-            })
-            .catch(err => console.error("Erro feirantes:", err));
-    }
+  // Chama direto a função usando a variável já carregada
+  loadFeirantes();
 });
