@@ -206,7 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
     return [pt[1], pt[0]];
   }
 
-  // Carregar Feirantes (Pontos) a partir da variável injetada
+  const allStalls = [];
+
+  // Carregar Feirantes (Polígonos das barracas) a partir da variável injetada
   function loadFeirantes() {
     console.log("Carregando feirantes...");
     if (typeof feirantesData === 'undefined' || !feirantesData.features) {
@@ -214,45 +216,99 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Cores específicas para cada setor baseadas no mapa oficial
+    function getColorForSector(sector) {
+      if (!sector) return "#888888";
+      const s = sector.toUpperCase();
+      if (s.includes("CASA")) return "#cc0000"; // Vermelho
+      if (s.includes("ALIMENTAÇÃO")) return "#798c19"; // Verde Oliva
+      if (s.includes("VESTUÁRIO INFANTIL")) return "#004890"; // Azul Escuro
+      if (s.includes("VESTUÁRIO")) return "#eec110"; // Amarelo
+      if (s.includes("CRIANÇA")) return "#008fd3"; // Azul Claro
+      if (s.includes("ARTES E PINTURA")) return "#6a22b7"; // Roxo
+      if (s.includes("BIJOUTERIAS")) return "#b23a78"; // Magenta
+      if (s.includes("ESCULTURAS")) return "#835316"; // Marrom
+      if (s.includes("ARRANJOS E COMPLEMENTOS")) return "#c18c1b"; // Ouro/Laranja escuro
+      if (s.includes("CINTOS, BOLSAS E ACESSÓRIOS")) return "#00774a"; // Verde Escuro
+      if (s.includes("CALÇADOS")) return "#dc4e15"; // Laranja/Vermelho
+      return "#888888";
+    }
+
     feirantesData.features.forEach(feature => {
       if (feature.geometry && feature.geometry.coordinates) {
         try {
           const props = feature.properties;
-          const firstPoint = feature.geometry.coordinates[0][0];
-          const pt = proj4('EPSG:31983', 'EPSG:4326', [firstPoint[0], firstPoint[1]]);
+          const latlngs = convertCoordinates(feature.geometry.coordinates, true);
+          const sectorColor = getColorForSector(props.SETOR);
 
-          const stallMarker = L.circleMarker([pt[1], pt[0]], {
-            radius: 4,
-            fillColor: "#ff7800",
-            color: "#000",
+          const stallPolygon = L.polygon(latlngs, {
+            fillColor: sectorColor,
+            color: sectorColor,
             weight: 1,
             opacity: 1,
-            fillOpacity: 0.8
+            fillOpacity: 1
           });
+
+          // Anexa metadados para filtro
+          stallPolygon.options.sectorName = (props.SETOR || "").toUpperCase();
 
           const popupContent = `
                         <div style="font-family:'Inter',sans-serif; padding:5px 0;">
-                            <h4 style="margin:0 0 8px; color:#1a7c3e; font-size:14px; font-weight:700;">${props.NOME_FANTASIA || props.NOME}</h4>
+                            <h4 style="margin:0 0 8px; color:${sectorColor}; font-size:14px; font-weight:700;">${props.NOME_FANTASIA || props.NOME}</h4>
                             <p style="margin:0 0 3px; font-size:12px;"><b>📍 Vaga:</b> ${props.VAGA}</p>
                             <p style="margin:0 0 3px; font-size:12px;"><b>🏷️ Setor:</b> ${props.SETOR}</p>
                             <p style="margin:0; font-size:12px;"><b>📦 Produto:</b> ${props.PRODUTO_PRINCIPAL}</p>
                         </div>
                     `;
 
-          stallMarker.bindPopup(popupContent);
-          stallsLayer.addLayer(stallMarker);
-        } catch (e) {
-          // ignora coords mal formatadas
-        }
+          stallPolygon.bindPopup(popupContent);
+          stallPolygon.bindTooltip(`${props.SETOR} - ${props.VAGA}`, { sticky: true });
+
+          stallsLayer.addLayer(stallPolygon);
+          allStalls.push(stallPolygon);
+        } catch (e) { }
       }
     });
 
-    // Ajusta o map bound pros feirantes carregados
     if (stallsLayer.getLayers().length > 0) {
       miniMap.fitBounds(stallsLayer.getBounds(), { padding: [20, 20] });
     }
   }
 
-  // Chama direto a função usando a variável já carregada
+  // --- LÓGICA DE FILTRO PELO MENU ---
+  const sectorItems = document.querySelectorAll('.sector-item');
+
+  sectorItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const filter = item.getAttribute('data-filter');
+      if (!filter) return;
+
+      // Toggle active UI
+      sectorItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // Filtrar no mapa
+      stallsLayer.clearLayers();
+      const filtered = [];
+
+      allStalls.forEach(stall => {
+        const sectorName = stall.options.sectorName;
+        if (filter === 'all' || sectorName.includes(filter.toUpperCase())) {
+          stallsLayer.addLayer(stall);
+          filtered.push(stall);
+        }
+      });
+
+      // Zoom no resultado do filtro
+      if (filtered.length > 0) {
+        const group = L.featureGroup(filtered);
+        miniMap.flyToBounds(group.getBounds(), {
+          padding: [40, 40],
+          duration: 1.5
+        });
+      }
+    });
+  });
+
   loadFeirantes();
 });

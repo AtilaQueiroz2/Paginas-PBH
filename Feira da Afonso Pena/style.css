@@ -823,13 +823,29 @@ ul {
   color: var(--text);
   font-weight: 500;
   transition: all var(--transition);
-  cursor: default;
+  cursor: pointer;
 }
 
-.sector-item:hover {
+.sector-item:hover,
+.sector-item.active {
   background: var(--green-light);
   color: var(--green);
   transform: translateX(3px);
+}
+
+.sector-item.active {
+  background: var(--green);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(26, 124, 62, 0.3);
+}
+
+.sector-item.active .sector-num {
+  background: var(--white);
+  color: var(--green);
+}
+
+.sector-item:hover .sector-num {
+  transform: scale(1.1);
 }
 
 .sector-num {
