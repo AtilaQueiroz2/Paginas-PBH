@@ -12,6 +12,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;900&display=swap"
         rel="stylesheet" />
+
+    <!-- Bibliotecas para o Mini Mapa Local (Leaflet.js + Proj4) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.min.js"></script>
+
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -390,12 +399,12 @@
                         🗺️ Abrir Mapa Interativo da Feira — Busque feirantes, setores e barracas
                     </a>
 
-                    <div class="map-embed-wrap">
-                        <iframe id="mapa-iframe" title="Localização da Feira da Afonso Pena"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11251.2778!2d-43.940!3d-19.924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699e120150917%3A0xc3f6a297924619!2sFeira%20Hippie!5e0!3m2!1spt-BR!2sbr!4v1710595300000!5m2!1spt-BR!2sbr"
-                            width="100%" height="450" style="border:0; border-radius: 12px;" allowfullscreen=""
-                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                    <div class="map-embed-wrap" style="position:relative;">
+                        <!-- Mini Mapa Container -->
+                        <div id="mini-mapa"
+                            style="height: 480px; width: 100%; border-radius: 12px; border: 1px solid var(--border); background: #eee; display: flex; align-items: center; justify-content: center; font-size:14px; color:#666; z-index: 1;">
+                            Carregando mapa...
+                        </div>
                     </div>
                     <a href="https://maps.google.com/?q=Feira+Hippie+Belo+Horizonte" target="_blank" rel="noopener"
                         class="map-link-btn" id="btn-abrir-mapa">
