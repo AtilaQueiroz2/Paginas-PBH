@@ -223,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return [pt[1], pt[0]];
   }
 
+  let initialBounds = null;
   const allStalls = [];
 
   // Carregar Feirantes (Polígonos das barracas) a partir da variável injetada
@@ -288,31 +289,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (stallsLayer.getLayers().length > 0) {
-      miniMap.fitBounds(stallsLayer.getBounds(), { padding: [20, 20] });
+      initialBounds = stallsLayer.getBounds();
+      miniMap.fitBounds(initialBounds, { padding: [20, 20] });
     }
   }
 
   // --- LÓGICA DE FILTRO PELO MENU ---
   const sectorItems = document.querySelectorAll('.sector-item');
 
-  sectorItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const filter = item.getAttribute('data-filter');
-      if (!filter) return;
+  function resetFilters() {
+    console.log("Resetando filtros e zoom...");
+    sectorItems.forEach(i => i.classList.remove('active'));
+    stallsLayer.clearLayers();
+    allStalls.forEach(stall => stallsLayer.addLayer(stall));
 
-      // Toggle active UI
+    if (initialBounds) {
+      miniMap.flyToBounds(initialBounds, {
+        padding: [20, 20],
+        duration: 1.5,
+        easeLinearity: 0.25
+      });
+    } else {
+      // Fallback caso initialBounds não tenha sido capturado
+      const group = L.featureGroup(allStalls);
+      if (group.getBounds().isValid()) {
+        miniMap.flyToBounds(group.getBounds(), { padding: [20, 20] });
+      }
+    }
+  }
+
+  sectorItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const filter = item.getAttribute('data-filter');
+      const isAlreadyActive = item.classList.contains('active');
+
+      if (isAlreadyActive) {
+        resetFilters();
+        return;
+      }
+
+      // Lógica para Entradas (Mostram tudo + Zoom)
+      if (item.id === 'setor-1' || item.id === 'setor-16') {
+        sectorItems.forEach(i => i.classList.remove('active'));
+        stallsLayer.clearLayers();
+        allStalls.forEach(stall => stallsLayer.addLayer(stall));
+
+        const coords = item.id === 'setor-1'
+          ? [-19.919351, -43.938571]
+          : [-19.926778, -43.934002];
+
+        miniMap.flyTo(coords, 18, { duration: 1.5 });
+        return;
+      }
+
+      // Toggle active UI para filtros de categoria
       sectorItems.forEach(i => i.classList.remove('active'));
       item.classList.add('active');
-
-      // Lógica especial para Entradas
-      if (item.id === 'setor-1') {
-        miniMap.flyTo([-19.919351, -43.938571], 18, { duration: 1.5 });
-        return;
-      }
-      if (item.id === 'setor-16') {
-        miniMap.flyTo([-19.926778, -43.934002], 18, { duration: 1.5 });
-        return;
-      }
 
       // Filtrar no mapa
       stallsLayer.clearLayers();
@@ -320,13 +354,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       allStalls.forEach(stall => {
         const sectorName = stall.options.sectorName;
-        if (filter === 'all' || sectorName.includes(filter.toUpperCase())) {
+        if (filter === 'all' || (sectorName && sectorName.includes(filter.toUpperCase()))) {
           stallsLayer.addLayer(stall);
           filtered.push(stall);
         }
       });
 
-      // Zoom no resultado do filtro
       if (filtered.length > 0) {
         const group = L.featureGroup(filtered);
         miniMap.flyToBounds(group.getBounds(), {
@@ -335,6 +368,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
+  });
+
+  // Clique no fundo do mapa reseta tudo e remove seleção visual
+  miniMap.on('click', (e) => {
+    const target = e.originalEvent.target;
+    // Se clicou no fundo do mapa (tiles ou container)
+    const isBackground = target.classList.contains('leaflet-tile') ||
+      target.classList.contains('leaflet-container') ||
+      target.classList.contains('leaflet-map-pane') ||
+      target.id === 'mini-mapa';
+
+    if (isBackground) {
+      resetFilters();
+    }
   });
 
   loadFeirantes();
