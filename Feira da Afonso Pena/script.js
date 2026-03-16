@@ -190,6 +190,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const sectorsLayer = L.layerGroup().addTo(miniMap);
   const stallsLayer = L.layerGroup().addTo(miniMap);
+  const markersLayer = L.layerGroup().addTo(miniMap);
+
+  // Marcadores de Pontos de Interesse (Entradas)
+  const pinIcon = L.divIcon({
+    html: '<div style="background-color: #1a7c3e; width: 12px; height: 12px; border: 2px solid white; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.3);"></div>',
+    className: 'custom-pin-icon',
+    iconSize: [12, 12],
+    iconAnchor: [6, 6]
+  });
+
+  const pracaSete = L.marker([-19.919351, -43.938571], { icon: pinIcon }).addTo(markersLayer)
+    .bindPopup("<b>📍 Entrada Praça Sete</b><br>Ponto inicial da Feira (Afonso Pena com Amazonas)")
+    .bindTooltip("Entrada Praça Sete", { permanent: true, direction: 'top', offset: [0, -5] });
+
+  const carandai = L.marker([-19.926778, -43.934002], { icon: pinIcon }).addTo(markersLayer)
+    .bindPopup("<b>📍 Entrada Carandaí</b><br>Extremidade oposta da Feira")
+    .bindTooltip("Entrada Carandaí", { permanent: true, direction: 'bottom', offset: [0, 5] });
 
   // Conversor de coordenada (UTM para LatLng)
   function convertCoordinates(coords, isPolygon = false) {
@@ -286,6 +303,16 @@ document.addEventListener('DOMContentLoaded', () => {
       // Toggle active UI
       sectorItems.forEach(i => i.classList.remove('active'));
       item.classList.add('active');
+
+      // Lógica especial para Entradas
+      if (item.id === 'setor-1') {
+        miniMap.flyTo([-19.919351, -43.938571], 18, { duration: 1.5 });
+        return;
+      }
+      if (item.id === 'setor-16') {
+        miniMap.flyTo([-19.926778, -43.934002], 18, { duration: 1.5 });
+        return;
+      }
 
       // Filtrar no mapa
       stallsLayer.clearLayers();
