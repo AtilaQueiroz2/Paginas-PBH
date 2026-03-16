@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feira da Afonso Pena | Belo Horizonte</title>
+    <meta name="description"
+        content="Tudo sobre a Feira de Artes, Artesanato e Produtores de Variedades da Avenida Afonso Pena — licenciamento, regras, categorias, mapa e serviços de apoio." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ===== STICKY TOP NAV ===== -->
+    <nav class="topnav" id="topnav" role="navigation" aria-label="Navegação principal">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <span class="brand-icon">🎨</span>
+                <span class="brand-text">Feira da Afonso Pena</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#identidade">Início</a></li>
+                <li><a href="#licenciamento">Licenciamento</a></li>
+                <li><a href="#regras">Regras</a></li>
+                <li><a href="#categorias">Categorias</a></li>
+                <li><a href="#localizacao">Localização</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO / IDENTIDADE ===== -->
+    <section class="hero" id="identidade">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Patrimônio Cultural de BH desde 1969</div>
+            <h1 class="hero-title">Feira de Artes, Artesanato<br />e Produtores de Variedades</h1>
+            <p class="hero-subtitle">Feira Hippie da Afonso Pena · Belo Horizonte</p>
+            <p class="hero-desc">
+                Nascida na Praça da Liberdade em 1969, a feira consolidou-se como um dos maiores eventos
+                de rua da América Latina, reunindo artistas, artesãos e produtores todos os domingos na
+                Avenida Afonso Pena — um espaço de cultura, diversidade e empreendedorismo popular.
+            </p>
+            <div class="hero-cards">
+                <div class="hcard">
+                    <div class="hcard-icon">🕗</div>
+                    <div class="hcard-label">Horário</div>
+                    <div class="hcard-value">Domingos<br />8h às 14h</div>
+                </div>
+                <div class="hcard">
+                    <div class="hcard-icon">📍</div>
+                    <div class="hcard-label">Local</div>
+                    <div class="hcard-value">Av. Afonso Pena<br />(Praça Sete → Av. Carandaí)</div>
+                </div>
+                <div class="hcard">
+                    <div class="hcard-icon">👥</div>
+                    <div class="hcard-label">Visitantes</div>
+                    <div class="hcard-value">~60 mil<br />por domingo</div>
+                </div>
+                <div class="hcard">
+                    <div class="hcard-icon">🏪</div>
+                    <div class="hcard-label">Expositores</div>
+                    <div class="hcard-value">~1.800<br />barracas</div>
+                </div>
+            </div>
+            <a href="#licenciamento" class="hero-cta" id="cta-main">Jornada do Expositor ↓</a>
+        </div>
+    </section>
+
+    <!-- ===== JORNADA DO EXPOSITOR ===== -->
+    <section class="section jornada-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Jornada do Expositor</div>
+                <h2 class="section-title">Seu caminho na Feira</h2>
+                <p class="section-desc">Do primeiro edital ao domingo de feira: tudo que você precisa saber, em fases
+                    claras e organizadas.</p>
+            </div>
+
+            <!-- FASE A – LICENCIAMENTO -->
+            <div class="phase-block" id="licenciamento">
+                <div class="phase-tag phase-tag--a">Fase A</div>
+                <h3 class="phase-title">Licenciamento e Editais</h3>
+                <p class="phase-intro">
+                    O acesso à Feira é regulamentado pela Prefeitura de Belo Horizonte. A participação depende de
+                    habilitação em edital público, com sorteio de lotes e divulgação de resultados na plataforma
+                    oficial.
+                </p>
+
+                <div class="editais-grid">
+                    <div class="edital-card" id="edital-lote1">
+                        <div class="edital-num">Lote 1</div>
+                        <div class="edital-title">1ª Convocação</div>
+                        <p class="edital-desc">Edital de abertura do processo seletivo para ocupação de barracas.
+                            Inscrições, requisitos e cronograma.</p>
+                        <a href="#" class="edital-btn" aria-label="Consultar edital do Lote 1">Consultar Edital →</a>
+                    </div>
+                    <div class="edital-card" id="edital-lote2">
+                        <div class="edital-num">Lote 2</div>
+                        <div class="edital-title">2ª Convocação</div>
+                        <p class="edital-desc">Segunda rodada de convocação para candidatos habilitados que aguardam
+                            vaga por sorteio.</p>
+                        <a href="#" class="edital-btn" aria-label="Consultar edital do Lote 2">Consultar Edital →</a>
+                    </div>
+                    <div class="edital-card" id="edital-lote3">
+                        <div class="edital-num">Lote 3</div>
+                        <div class="edital-title">3ª Convocação</div>
+                        <p class="edital-desc">Terceira fase para ocupação de vagas remanescentes após as convocações
+                            anteriores.</p>
+                        <a href="#" class="edital-btn" aria-label="Consultar edital do Lote 3">Consultar Edital →</a>
+                    </div>
+                    <div class="edital-card" id="edital-lote4">
+                        <div class="edital-num">Lote 4</div>
+                        <div class="edital-title">4ª Convocação</div>
+                        <p class="edital-desc">Convocação final e resultados do sorteio público. Confira a lista
+                            definitiva de habilitados.</p>
+                        <a href="#" class="edital-btn" aria-label="Consultar edital do Lote 4">Consultar Edital →</a>
+                    </div>
+                </div>
+
+                <div class="cta-banner" id="cta-editais">
+                    <div class="cta-banner-icon">📋</div>
+                    <div class="cta-banner-text">
+                        <strong>Consulte todos os editais, convocações e resultados de sorteios públicos na plataforma
+                            oficial da PBH.</strong>
+                        <span>Fique atento aos prazos e mantenha sua documentação em dia.</span>
+                    </div>
+                    <a href="https://prefeitura.pbh.gov.br" target="_blank" rel="noopener" class="cta-banner-btn"
+                        id="btn-editais-pbh">Editais e Convocações</a>
+                </div>
+            </div>
+
+            <!-- FASE B – REGRAS -->
+            <div class="phase-block" id="regras">
+                <div class="phase-tag phase-tag--b">Fase B</div>
+                <h3 class="phase-title">Regras e Boas Práticas</h3>
+                <p class="phase-intro">
+                    Conhecer as regras é essencial para manter sua licença e garantir um ambiente justo para todos.
+                    Clique nos cartões para expandir os detalhes.
+                </p>
+
+                <div class="rules-grid">
+                    <!-- O que DEVE fazer -->
+                    <div class="rules-col rules-col--green">
+                        <div class="rules-col-header">
+                            <span class="rules-icon">✅</span>
+                            <h4>O que o feirante <strong>DEVE</strong> fazer</h4>
+                        </div>
+                        <ul class="rules-list" id="lista-deveres">
+                            <li class="rule-item">
+                                <span class="rule-icon">🏕️</span>
+                                <div>
+                                    <strong>Modelo padrão de barraca</strong>
+                                    <p>Utilizar somente o modelo de barraca homologado pela PBH, respeitando as
+                                        dimensões e cores oficiais.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-icon">📐</span>
+                                <div>
+                                    <strong>Layout e organização</strong>
+                                    <p>Manter a barraca arrumada, com produtos expostos de forma organizada e dentro dos
+                                        limites demarcados no piso.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-icon">⏰</span>
+                                <div>
+                                    <strong>Frequência e horário</strong>
+                                    <p>Comparecer regularmente, dentro do horário estabelecido (8h às 14h), trazendo a
+                                        licença consigo.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-icon">🧹</span>
+                                <div>
+                                    <strong>Higiene e limpeza</strong>
+                                    <p>Manter o espaço limpo durante todo o evento e retirar todos os resíduos ao final
+                                        da feira.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-icon">🤝</span>
+                                <div>
+                                    <strong>Preposto credenciado</strong>
+                                    <p>Em caso de necessidade, indicar um preposto devidamente credenciado junto à
+                                        administração para substituição.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item">
+                                <span class="rule-icon">🔥</span>
+                                <div>
+                                    <strong>Segurança contra incêndio</strong>
+                                    <p>Utilizar materiais adequados e manter extintor ou dispositivo de segurança quando
+                                        houver chama ou calor.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- O que NÃO pode fazer -->
+                    <div class="rules-col rules-col--red">
+                        <div class="rules-col-header">
+                            <span class="rules-icon">🚫</span>
+                            <h4>O que o feirante <strong>NÃO PODE</strong> fazer</h4>
+                        </div>
+                        <ul class="rules-list" id="lista-proibicoes">
+                            <li class="rule-item rule-item--alert">
+                                <span class="rule-icon">⛔</span>
+                                <div>
+                                    <strong>Expor fora dos limites</strong>
+                                    <p>É proibido colocar mercadorias, banners ou estruturas fora da área demarcada da
+                                        barraca.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item rule-item--alert">
+                                <span class="rule-icon">⛔</span>
+                                <div>
+                                    <strong>Vender ou alugar a licença</strong>
+                                    <p>A licença é pessoal e intransferível. Sua cessão, venda ou aluguel implica
+                                        cassação imediata.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item rule-item--alert">
+                                <span class="rule-icon">⛔</span>
+                                <div>
+                                    <strong>Som alto ou perturbador</strong>
+                                    <p>É vedado o uso de dispositivos de som que perturbem a vizinhança ou os feirantes
+                                        ao redor.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item rule-item--alert">
+                                <span class="rule-icon">⛔</span>
+                                <div>
+                                    <strong>Faltas consecutivas</strong>
+                                    <p>Faltas injustificadas repetidas podem resultar em suspensão ou perda da licença
+                                        de expositor.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item rule-item--alert">
+                                <span class="rule-icon">⛔</span>
+                                <div>
+                                    <strong>Produtos não autorizados</strong>
+                                    <p>Comercializar artigos fora da categoria licenciada é infração grave e passível de
+                                        autuação.</p>
+                                </div>
+                            </li>
+                            <li class="rule-item rule-item--alert">
+                                <span class="rule-icon">⛔</span>
+                                <div>
+                                    <strong>Deixar resíduos no local</strong>
+                                    <p>O feirante é responsável por recolher e destinar corretamente os resíduos gerados
+                                        em sua barraca.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASE C – CATEGORIAS -->
+            <div class="phase-block" id="categorias">
+                <div class="phase-tag phase-tag--c">Fase C</div>
+                <h3 class="phase-title">Categorias de Comercialização</h3>
+                <p class="phase-intro">
+                    A Feira é organizada em modalidades de comercialização reconhecidas pela legislação municipal.
+                    Cada licença é vinculada a uma categoria específica.
+                </p>
+
+                <div class="categories-grid">
+                    <div class="cat-card" id="cat-artesanato">
+                        <div class="cat-icon">🎨</div>
+                        <h4 class="cat-title">Artesanato e Artes Plásticas</h4>
+                        <p class="cat-desc">
+                            Produções manuais com identidade autoral do expositor: bijuterias, esculturas, pinturas,
+                            cerâmicas, trabalhos em couro, madeira, tecido e demais expressões artesanais.
+                        </p>
+                        <div class="cat-tag">Mais popular</div>
+                    </div>
+                    <div class="cat-card" id="cat-plantas">
+                        <div class="cat-icon">🌿</div>
+                        <h4 class="cat-title">Plantas e Flores</h4>
+                        <p class="cat-desc">
+                            Comercialização de plantas ornamentais, flores naturais, mudas, vasos e insumos
+                            relacionados à jardinagem e paisagismo.
+                        </p>
+                    </div>
+                    <div class="cat-card" id="cat-livros">
+                        <div class="cat-icon">📚</div>
+                        <h4 class="cat-title">Livros e Periódicos</h4>
+                        <p class="cat-desc">
+                            Venda de obras literárias, revistas, jornais, gibis e outros materiais impressos, incluindo
+                            sebos e edições raras ou esgotadas.
+                        </p>
+                    </div>
+                    <div class="cat-card" id="cat-antiguidades">
+                        <div class="cat-icon">🏺</div>
+                        <h4 class="cat-title">Antiguidades</h4>
+                        <p class="cat-desc">
+                            Objetos de coleção, peças vintage, itens de decoração retrô e artigos com valor histórico
+                            ou afetivo que constituam verdadeiro acervo de memória.
+                        </p>
+                    </div>
+                    <div class="cat-card cat-card--wide" id="cat-comidas">
+                        <div class="cat-icon">🍲</div>
+                        <h4 class="cat-title">Comidas e Bebidas Típicas</h4>
+                        <p class="cat-desc">
+                            Produção e venda de alimentos e bebidas típicos, tanto nacionais (mineiridade, comidas
+                            regionais)
+                            quanto estrangeiros (culinária árabe, italiana, japonesa etc.), seguindo as normas
+                            sanitárias municipais.
+                        </p>
+                        <div class="cat-badges">
+                            <span class="cat-badge">🇧🇷 Nacionais</span>
+                            <span class="cat-badge">🌍 Estrangeiras</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LOGÍSTICA E LOCALIZAÇÃO ===== -->
+    <section class="section map-section" id="localizacao">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Logística e Localização</div>
+                <h2 class="section-title">Encontre sua barraca e seu setor</h2>
+                <p class="section-desc">A Feira está dividida em <strong>16 setores</strong> ao longo da Avenida Afonso
+                    Pena, facilitando a orientação de feirantes e visitantes.</p>
+            </div>
+
+            <div class="map-layout">
+                <div class="sectors-panel">
+                    <h3 class="sectors-title">📊 Os 16 Setores da Feira</h3>
+                    <p class="sectors-intro">Cada setor concentra categorias similares, garantindo organização e melhor
+                        experiência de compra.</p>
+                    <div class="sectors-grid" id="sectors-grid">
+                        <div class="sector-item" id="setor-1"><span class="sector-num">1</span><span>Entrada Praça
+                                Sete</span></div>
+                        <div class="sector-item" id="setor-2"><span class="sector-num">2</span><span>Artes Plásticas
+                                Norte</span></div>
+                        <div class="sector-item" id="setor-3"><span class="sector-num">3</span><span>Artesanato A</span>
+                        </div>
+                        <div class="sector-item" id="setor-4"><span class="sector-num">4</span><span>Artesanato B</span>
+                        </div>
+                        <div class="sector-item" id="setor-5"><span class="sector-num">5</span><span>Plantas e
+                                Flores</span></div>
+                        <div class="sector-item" id="setor-6"><span class="sector-num">6</span><span>Livros e
+                                Periódicos</span></div>
+                        <div class="sector-item" id="setor-7"><span class="sector-num">7</span><span>Bijuterias</span>
+                        </div>
+                        <div class="sector-item" id="setor-8"><span class="sector-num">8</span><span>Antiguidades</span>
+                        </div>
+                        <div class="sector-item" id="setor-9"><span class="sector-num">9</span><span>Alimentação
+                                A</span></div>
+                        <div class="sector-item" id="setor-10"><span class="sector-num">10</span><span>Alimentação
+                                B</span></div>
+                        <div class="sector-item" id="setor-11"><span class="sector-num">11</span><span>Culinária
+                                Regional</span></div>
+                        <div class="sector-item" id="setor-12"><span class="sector-num">12</span><span>Arte
+                                Internacional</span></div>
+                        <div class="sector-item" id="setor-13"><span class="sector-num">13</span><span>Couro e
+                                Acessórios</span></div>
+                        <div class="sector-item" id="setor-14"><span class="sector-num">14</span><span>Roupas
+                                Artesanais</span></div>
+                        <div class="sector-item" id="setor-15"><span class="sector-num">15</span><span>Madeira e
+                                Escultura</span></div>
+                        <div class="sector-item" id="setor-16"><span class="sector-num">16</span><span>Entrada
+                                Carandaí</span></div>
+                    </div>
+                </div>
+
+                <div class="map-embed-col">
+                    <h3 class="sectors-title">🗺️ Mapa Interativo</h3>
+                    <p class="sectors-intro">Visualize a localização exata da Feira e planeie seu deslocamento.</p>
+
+                    <!-- Botão de destaque para o Mapa Interativo do Portal BH -->
+                    <a href="https://portalbelohorizonte.com.br/mapadafeira/mapainterativo" target="_blank"
+                        rel="noopener" class="map-interactive-btn" id="btn-mapa-interativo">
+                        🗺️ Abrir Mapa Interativo da Feira — Busque feirantes, setores e barracas
+                    </a>
+
+                    <div class="map-embed-wrap">
+                        <iframe id="mapa-iframe" title="Localização da Feira da Afonso Pena"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11251.2778!2d-43.940!3d-19.924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699e120150917%3A0xc3f6a297924619!2sFeira%20Hippie!5e0!3m2!1spt-BR!2sbr!4v1710595300000!5m2!1spt-BR!2sbr"
+                            width="100%" height="450" style="border:0; border-radius: 12px;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <a href="https://maps.google.com/?q=Feira+Hippie+Belo+Horizonte" target="_blank" rel="noopener"
+                        class="map-link-btn" id="btn-abrir-mapa">
+                        📍 Abrir no Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ E SERVIÇOS ===== -->
+    <section class="section faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">FAQ e Serviços</div>
+                <h2 class="section-title">Dúvidas Frequentes e Apoio</h2>
+                <p class="section-desc">Respostas rápidas sobre licença, infraestrutura e serviços disponíveis na Feira.
+                </p>
+            </div>
+
+            <div class="faq-grid">
+
+                <!-- Accordion: Licença -->
+                <div class="accordion-group" id="acc-licenca">
+                    <button class="accordion-btn" aria-expanded="false" aria-controls="acc-licenca-body"
+                        id="btn-acc-licenca">
+                        <div class="acc-btn-inner">
+                            <span class="acc-icon">📄</span>
+                            <span>Licença do Expositor</span>
+                        </div>
+                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body" id="acc-licenca-body" role="region" aria-labelledby="btn-acc-licenca">
+                        <div class="acc-content">
+                            <p>A licença para exposição na Feira é emitida pela <strong>Prefeitura de Belo
+                                    Horizonte</strong> por meio da Secretaria Municipal de Desenvolvimento Econômico,
+                                após o processo seletivo via edital público.</p>
+                            <ul>
+                                <li>🏛️ Emissão e renovação presencial no órgão responsável da PBH.</li>
+                                <li>📋 Documentos necessários: RG, CPF, comprovante de residência e portfólio do
+                                    produto.</li>
+                                <li>🔄 A licença é renovada anualmente e vinculada à categoria de atuação.</li>
+                                <li>🚫 Não pode ser cedida, vendida ou emprestada sob nenhuma hipótese.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: Infraestrutura -->
+                <div class="accordion-group" id="acc-infra">
+                    <button class="accordion-btn" aria-expanded="false" aria-controls="acc-infra-body"
+                        id="btn-acc-infra">
+                        <div class="acc-btn-inner">
+                            <span class="acc-icon">🏗️</span>
+                            <span>Infraestrutura e Logística</span>
+                        </div>
+                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body" id="acc-infra-body" role="region" aria-labelledby="btn-acc-infra">
+                        <div class="acc-content">
+                            <p>A Prefeitura disponibiliza uma infraestrutura completa para o funcionamento da Feira:</p>
+                            <ul>
+                                <li>🏕️ <strong>Barracas padronizadas:</strong> Modelo único definido pela PBH com
+                                    dimensões e cores específicas.</li>
+                                <li>🚦 <strong>Alteração de trânsito (BHTRANS):</strong> A Av. Afonso Pena é interditada
+                                    para veículos durante o evento.</li>
+                                <li>🚻 <strong>Sanitários móveis:</strong> Banheiros portáteis distribuídos ao longo do
+                                    percurso da Feira.</li>
+                                <li>🧺 <strong>Limpeza (SLU):</strong> A Superintendência de Limpeza Urbana realiza
+                                    coleta durante e após o evento.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: Alteração de Trânsito -->
+                <div class="accordion-group" id="acc-transito">
+                    <button class="accordion-btn" aria-expanded="false" aria-controls="acc-transito-body"
+                        id="btn-acc-transito">
+                        <div class="acc-btn-inner">
+                            <span class="acc-icon">🚦</span>
+                            <span>Alteração de Trânsito</span>
+                        </div>
+                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body" id="acc-transito-body" role="region" aria-labelledby="btn-acc-transito">
+                        <div class="acc-content">
+                            <p>Todo domingo de Feira, a BHTRANS promove alteração no trânsito da região:</p>
+                            <ul>
+                                <li>🚧 Av. Afonso Pena interditada entre a Praça Sete e a Av. Carandaí.</li>
+                                <li>🔄 Linhas de ônibus redirecionadas por vias alternativas.</li>
+                                <li>🚲 Recomendado o uso de bicicleta ou transporte público (Metrô, estação Central).
+                                </li>
+                                <li>🅿️ Estacionamento disponível nos arredores — chegue cedo para garantir vaga.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: Descarte de Resíduos -->
+                <div class="accordion-group" id="acc-residuos">
+                    <button class="accordion-btn" aria-expanded="false" aria-controls="acc-residuos-body"
+                        id="btn-acc-residuos">
+                        <div class="acc-btn-inner">
+                            <span class="acc-icon">♻️</span>
+                            <span>Descarte de Resíduos</span>
+                        </div>
+                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body" id="acc-residuos-body" role="region" aria-labelledby="btn-acc-residuos">
+                        <div class="acc-content">
+                            <p>O descarte correto de resíduos é obrigação de cada feirante e contribui para a
+                                sustentabilidade do evento:</p>
+                            <ul>
+                                <li>🛢️ <strong>Óleo de cozinha usado:</strong> Deve ser embalado em recipiente lacrado
+                                    e entregue nos pontos de coleta indicados pela SLU.</li>
+                                <li>🗑️ <strong>Lixo comum:</strong> Acondicionar em sacos plásticos e depositar nos
+                                    coletores da SLU ao final da feira.</li>
+                                <li>📦 <strong>Embalagens e papelão:</strong> Desmontar, acondicionar e separar para
+                                    coleta seletiva.</li>
+                                <li>❌ <strong>Proibido:</strong> Deixar qualquer resíduo no piso da Avenida após o
+                                    encerramento.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: Preposto -->
+                <div class="accordion-group" id="acc-preposto">
+                    <button class="accordion-btn" aria-expanded="false" aria-controls="acc-preposto-body"
+                        id="btn-acc-preposto">
+                        <div class="acc-btn-inner">
+                            <span class="acc-icon">🤝</span>
+                            <span>Preposto e Substituição</span>
+                        </div>
+                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body" id="acc-preposto-body" role="region" aria-labelledby="btn-acc-preposto">
+                        <div class="acc-content">
+                            <p>Em situações de impedimento, o titular da licença pode ser substituído por um preposto
+                                credenciado:</p>
+                            <ul>
+                                <li>📝 O preposto deve ser cadastrado previamente junto à administração da Feira.</li>
+                                <li>🪪 No dia do evento, o preposto deve portar documento de identificação e cópia da
+                                    licença do titular.</li>
+                                <li>⚠️ O preposto não pode transferir a responsabilidade para terceiros — apenas o
+                                    titular indicado pode atuar.</li>
+                                <li>📅 O uso recorrente de preposto pode ser questionado pela fiscalização.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: Contato -->
+                <div class="accordion-group" id="acc-contato">
+                    <button class="accordion-btn" aria-expanded="false" aria-controls="acc-contato-body"
+                        id="btn-acc-contato">
+                        <div class="acc-btn-inner">
+                            <span class="acc-icon">📞</span>
+                            <span>Contato e Canais Oficiais</span>
+                        </div>
+                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body" id="acc-contato-body" role="region" aria-labelledby="btn-acc-contato">
+                        <div class="acc-content">
+                            <p>Para dúvidas, solicitações ou denúncias, utilize os canais oficiais da Prefeitura de Belo
+                                Horizonte:</p>
+                            <ul>
+                                <li>🌐 <strong>Portal PBH:</strong> <a href="https://prefeitura.pbh.gov.br"
+                                        target="_blank" rel="noopener">prefeitura.pbh.gov.br</a></li>
+                                <li>📞 <strong>Central de Atendimento:</strong> 156 (BH Resolve)</li>
+                                <li>📧 <strong>Ouvidoria:</strong> Disponível no Portal PBH</li>
+                                <li>🏢 <strong>Atendimento presencial:</strong> Nas unidades do BH Resolve pelo
+                                    agendamento</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="footer-logo">🎨 Feira Hippie BH</div>
+                <p class="footer-tagline">Patrimônio Cultural de Belo Horizonte desde 1969</p>
+                <p class="footer-disclaimer">Página informativa baseada nos dados e regulamentos oficiais da Prefeitura
+                    de Belo Horizonte. Para informações oficiais, acesse <a href="https://prefeitura.pbh.gov.br"
+                        target="_blank" rel="noopener">prefeitura.pbh.gov.br</a>.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Navegação</h5>
+                <ul>
+                    <li><a href="#identidade">Início</a></li>
+                    <li><a href="#licenciamento">Licenciamento</a></li>
+                    <li><a href="#regras">Regras</a></li>
+                    <li><a href="#categorias">Categorias</a></li>
+                    <li><a href="#localizacao">Localização</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-info">
+                <h5>Informações Rápidas</h5>
+                <ul>
+                    <li>📅 Todo domingo</li>
+                    <li>🕗 8h às 14h</li>
+                    <li>📍 Av. Afonso Pena, BH</li>
+                    <li>☎️ 156 — BH Resolve</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Página informativa da Feira da Afonso Pena · Belo Horizonte · MG</p>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
