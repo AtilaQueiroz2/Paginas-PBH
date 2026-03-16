@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (feature.geometry && feature.geometry.coordinates) {
         try {
           const props = feature.properties;
-          const firstPoint = feature.geometry.coordinates[0][0][0];
+          const firstPoint = feature.geometry.coordinates[0][0];
           const pt = proj4('EPSG:31983', 'EPSG:4326', [firstPoint[0], firstPoint[1]]);
 
           const stallMarker = L.circleMarker([pt[1], pt[0]], {
