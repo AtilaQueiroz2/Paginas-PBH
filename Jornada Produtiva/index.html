@@ -148,19 +148,78 @@
                 <img src="imagens%20e%20emojis/Barraca-Feira-Hippie%201.png" class="about-watermark" alt=""
                     aria-hidden="true" />
                 <h2>Sobre o Programa</h2>
-                <p class="about-p1">O Programa Jornada Produtiva tem como objetivo a <strong>inserção produtiva</strong>
-                    e a <strong>geração de oportunidades de renda</strong> para trabalhadores do comércio em logradouro
-                    público.</p>
-                <p class="about-p2">São mais de <strong>3,4 mil vagas</strong> para as atividades de feira permanente,
-                    comércio de alimentos em veículos automotores, comércio de alimentos em veículos de tração humana,
-                    comércio de bebidas em veículos de tração humana em manifestações espontâneas, comércio em
-                    logradouro público por pessoas com deficiência, lavadores de veículos, engraxates, bancas de jornais
-                    e revistas, e o Shopping Popular Caetés.</p>
-                <p class="about-p3">Além das novas vagas, o Jornada Produtiva <strong>simplificou o processo de
-                        licenciamento</strong>. Os documentos podem ser entregues na <a
-                        href="http://agendamentoeletronico.pbh.gov.br/" class="about-link">Central de Relacionamento BH
-                        Resolve</a> ou pelo <a href="https://servicos.pbh.gov.br" class="about-link">Portal de Serviços
-                        da Prefeitura</a>.</p>
+                <p class="about-p1">O Programa Jornada Produtiva busca gerar renda e oportunidades para trabalhadores do
+                    comércio em espaços públicos.</p>
+                <p class="about-p2">Oferece mais de <strong>3,4 mil vagas</strong> em diversas atividades, como feiras,
+                    venda de alimentos e bebidas (em veículos ou carrinhos), bancas, lavadores de carros, engraxates e o
+                    Shopping Popular Caetés.</p>
+                <p class="about-p3">Também simplificou o licenciamento, permitindo envio de documentos presencialmente
+                    no <a href="http://agendamentoeletronico.pbh.gov.br/" class="about-link">BH Resolve</a> ou online
+                    pelo <a href="https://servicos.pbh.gov.br" class="about-link">portal da prefeitura</a>.</p>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="about-carousel-track">
+                        <!-- Imagens populadas via JS dinamicamente -->
+                    </div>
+                </div>
+
+                <script>
+                    const carrosselImagens = [
+                        "22-08-2025-Feirante Catarina Takemaka - Feira de Plantas e Flores Naturais da Rua Carandaí - Rodrigo Clemente-PBH (39).JPG",
+                        "22-08-2025-Feirante Rogério da Silva - Feira de Plantas e Flores Naturais da Rua Carandaí - Rodrigo Clemente-PBH (13).JPG",
+                        "CARRINHO DE PIPOCA.jpg",
+                        "IMG_7360.JPG",
+                        "IMG_7376.JPG",
+                        "IMG_7385.JPG",
+                        "IMG_7395.JPG",
+                        "IMG_7401.JPG",
+                        "IMG_7410.JPG",
+                        "IMG_7421.JPG",
+                        "IMG_7431.JPG",
+                        "IMG_7443.JPG",
+                        "IMG_7445.JPG",
+                        "IMG_7450.JPG",
+                        "IMG_7456 (1).JPG",
+                        "IMG_7462 (1).JPG",
+                        "IMG_7464.JPG",
+                        "IMG_7466.JPG",
+                        "IMG_7471.JPG",
+                        "IMG_7488.JPG",
+                        "IMG_7495.JPG",
+                        "IMG_7498.JPG",
+                        "IMG_7506.JPG",
+                        "IMG_7508.JPG",
+                        "IMG_7515.JPG",
+                        "WhatsApp Image 2026-02-12 at 11.12.48 (1).jpeg",
+                        "WhatsApp Image 2026-02-12 at 11.12.49 (1).jpeg",
+                        "WhatsApp Image 2026-02-12 at 11.12.49 (2).jpeg",
+                        "WhatsApp Image 2026-02-12 at 11.12.50 (1).jpeg",
+                        "WhatsApp Image 2026-02-12 at 11.16.37.jpeg",
+                        "WhatsApp Image 2026-02-13 at 10.02.24.jpeg",
+                        "WhatsApp Image 2026-02-13 at 10.02.25.jpeg",
+                        "WhatsApp Image 2026-02-13 at 15.53.36 (2).jpeg",
+                        "WhatsApp Image 2026-02-13 at 15.53.36.jpeg"
+                    ];
+
+                    const track = document.getElementById("about-carousel-track");
+                    const appendImages = () => {
+                        carrosselImagens.forEach(img => {
+                            const div = document.createElement("div");
+                            div.className = "carousel-item";
+                            const imgEl = document.createElement("img");
+                            imgEl.src = "carrocel/" + img;
+                            imgEl.alt = "Jornada Produtiva - Imagem da Feira";
+                            imgEl.loading = "lazy";
+                            imgEl.classList.add("expandable-image"); // Reutiliza o lightbox
+                            div.appendChild(imgEl);
+                            track.appendChild(div);
+                        });
+                    };
+
+                    if (track) {
+                        appendImages();
+                        appendImages(); // Duplica para criar um ciclo infinito
+                    }
+                </script>
             </div>
         </section>
 
@@ -182,22 +241,10 @@
                         <p>Participação em feiras permanentes com venda de artesanato, artes plásticas, plantas e
                             flores,
                             livros e periódicos, antiguidades e comidas e bebidas típicas nacionais e estrangeiras.</p>
-                        <a href="https://prefeitura.pbh.gov.br/politica-urbana/feiras" class="card-link">Saiba mais
-                            →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-em-feira-de-inclusao-produtiva-promovida-pelo-executivo+5e74d6d7ea9b0e547c66c8eb"
+                            class="card-link">Portal de Serviços →</a>
                     </div>
 
-                    <!-- Shopping Caetés -->
-                    <div class="activity-card">
-                        <div class="activity-icon">
-                            <img src="imagens%20e%20emojis/Shopping%20popular.png" alt="Icone Shopping Popular"
-                                width="57" height="57" />
-                        </div>
-                        <h3>Shopping Popular Caetés</h3>
-                        <p>Centro comercial popular com diversas lojas e produtos variados no coração de BH.</p>
-                        <p>&nbsp;</p>
-                        <a href="https://prefeitura.pbh.gov.br/politica-urbana/shopping-caetes" class="card-link">Saiba
-                            mais →</a>
-                    </div>
 
                     <!-- Tração Humana Conectado -->
                     <div class="activity-card">
@@ -209,8 +256,17 @@
                         <p>Inclui as modalidades <strong>Ambulante, Food Bike e Fruteiro</strong>. Comércio de
                             alimentos, bebidas artesanais e frutas em veículos de propulsão humana em locais
                             determinados.</p>
-                        <a href="https://prefeitura.pbh.gov.br/politica-urbana/informacoes/ambulantes"
-                            class="card-link">Saiba mais →</a>
+                        <div class="card-links" style="display: flex; flex-direction: column; gap: 8px;">
+                            <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-ambulante+5e6a4dc9ea9b0e547c43ceb9"
+                                class="card-link" style="margin-top: 0; font-size: 13px;">Portal de Serviços: Ambulante
+                                e Food Bike →</a>
+                            <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-fruteiro+606b31b31cd7ca6d848a3703"
+                                class="card-link" style="margin-top: 0; font-size: 13px;">Portal de Serviços: Fruteiro
+                                →</a>
+                            <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-com-atividade-compulsoria-ambulante-da-pampulha+606b6c9d1cd7ca6d849274ce"
+                                class="card-link" style="margin-top: 0; font-size: 13px;">Portal de Serviços: Ambulante
+                                Pampulha →</a>
+                        </div>
                     </div>
 
                     <!-- Food Truck -->
@@ -227,8 +283,8 @@
                         <h3>Food Truck e Trailer</h3>
                         <p>Veículos automotores ou rebocados equipados para vender refeições, lanches, sucos,
                             refrigerantes, bebidas alcoólicas, café, água de coco e caldo de cana.</p>
-                        <a href="https://prefeitura.pbh.gov.br/politica-urbana/automotor-food-truck-e-trailer"
-                            class="card-link">Saiba mais →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-automotor-food-truck-e-trailer+5e6a4b16ea9b0e547c4381f7"
+                            class="card-link">Portal de Serviços →</a>
                     </div>
 
                     <!-- PCD -->
@@ -240,8 +296,8 @@
                         <h3>Comércio por PCD</h3>
                         <p>Pessoas com deficiência licenciadas para comercializar produtos lícitos carregáveis e doces
                             embalados em locais determinados no Hipercentro.</p>
-                        <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-em-logradouro-publico-por-pessoa-com-deficiencia+5e6bb8544c9b1b138e6e8771"
-                            class="card-link">Saiba mais →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-em-logradouro-publico-por-pessoa-com-deficiencia-ambulante+5eb40800cf23934c43682881"
+                            class="card-link">Portal de Serviços →</a>
                     </div>
 
                     <!-- Caixeiros -->
@@ -253,8 +309,8 @@
                         <h3>Caixeiros</h3>
                         <p>Venda exclusiva de água e bebidas industrializadas em recipientes de alumínio ou plástico
                             durante manifestações espontâneas.</p>
-                        <a href="https://prefeitura.pbh.gov.br/politica-urbana/caixeiros" class="card-link">Saiba
-                            mais</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+credenciamento-em-atividade-de-comercializacao-de-bebidas-em-veiculo-de-tracao-humana-em-manifestacoes-espontaneas-caixeiro+65cf4e42c78beb1cf656d195"
+                            class="card-link">Portal de Serviços →</a>
                     </div>
 
                     <!-- Lavadores -->
@@ -266,8 +322,8 @@
                         <h3>Lavadores de Veículos</h3>
                         <p>Licenciados em trechos fixos para lavagem de carros. Diferente de guardadores (flanelinhas),
                             a reserva de vagas não é permitida.</p>
-                        <a href="https://servicos.pbh.gov.br/servicos+licenca-para-lavador-de-veiculo-automotor+5e6a57fee044c21960249c5f"
-                            class="card-link">Saiba mais →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-de-lavador-de-carro+5e6a828eea9b0e547c49d6f9"
+                            class="card-link">Portal de Serviços →</a>
                     </div>
 
                     <!-- Bancas -->
@@ -279,8 +335,8 @@
                         <h3>Bancas de Jornais e Revistas</h3>
                         <p>Venda de jornais, periódicos e produtos lícitos como bombonière, papelaria, acessórios de
                             celular, brinquedos e artesanatos.</p>
-                        <a href="https://servicos.pbh.gov.br/servicos+autorizacao-para-bancas-de-jornais-e-revistas+5e6a6a02e044c21960249c69"
-                            class="card-link">Saiba mais →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-de-atividade-em-banca-de-jornais-e-revistas+5e68fe8cea9b0e547c1fb39b"
+                            class="card-link">Portal de Serviços →</a>
                     </div>
 
                     <!-- Engraxate -->
@@ -292,7 +348,8 @@
                         <h3>Engraxates</h3>
                         <p>Profissionais licenciados para prestação de serviços de engraxe de calçados em logradouro
                             público.</p>
-                        <a href="#" class="card-link">Saiba mais →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-de-engraxate+5e6a7b3fea9b0e547c48ed06"
+                            class="card-link">Portal de Serviços →</a>
                     </div>
                 </div>
             </div>
@@ -313,296 +370,245 @@
                     <p>Fique por dentro das últimas convocações e publicações</p>
                 </div>
 
-                <div class="accordion-container news-collapsed" id="news-accordion-container">
-                    <!-- Edital 1 -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-009">
-                            <div class="accordion-title">
-                                <span class="badge badge-new" aria-label="Novo item">NOVO</span>
-                                <span>Feiras de Inclusão Produtiva – Editais SMPU Nº 009/2025 a 018/2025</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-009" class="accordion-content" role="region" aria-labelledby="header-009">
-                            <p>Publicação dos chamamentos dos cadastros reservas. A análise da documentação será
-                                realizada
-                                conforme disposto no Anexo I de cada edital.</p>
-                            <ul class="link-list">
-                                <li><a href="#">1ª Convocação Edital SMPU nº 009/2025 - Bairro Independência</a></li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 010/2025 - Bairro Pindorama (Quinta)</a>
-                                </li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 011/2025 - Bairro Pindorama (Domingo)</a>
-                                </li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 012/2025 - Bairro Sagrada Família</a></li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 013/2025 - Praça Duque de Caxias</a></li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 014/2025 - Praça Comendador Negrão de
-                                        Lima</a>
-                                </li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 015/2025 - Praça da Savassi</a></li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 016/2025 - Praça da Febem</a></li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 017/2025 - Praça do Cristo Redentor</a>
-                                </li>
-                                <li><a href="#">1ª Convocação Edital SMPU nº 018/2025 - Avenida Silva Lobo</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <!-- Tabs de navegação -->
+                <div class="news-tabs">
+                    <button class="news-tab active" data-tab="avisos">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                        Avisos
+                        <span class="tab-badge">Para Licenciados</span>
+                    </button>
+                    <button class="news-tab" data-tab="editais">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="12" y1="18" x2="12" y2="12" />
+                            <line x1="9" y1="15" x2="15" y2="15" />
+                        </svg>
+                        Editais
+                        <span class="tab-badge">Publicações DOM</span>
+                    </button>
+                </div>
 
-                    <!-- Edital 2 -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-silva-lobo">
-                            <div class="accordion-title">
-                                <span>5ª Convocação Cadastro Reserva - Edital SMPU Nº 023/2020 (Silva Lobo)</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-silva-lobo" class="accordion-content" role="region">
-                            <p>Convocação de 20 integrantes do Cadastro de Reserva do Lote 3 para 4 vagas remanescentes
-                                na
-                                Feira Regional Permanente da Avenida Silva Lobo.</p>
-                            <p><strong>Prazo:</strong> 19 de dezembro de 2025 a 19 de janeiro de 2026</p>
-                            <div class="content-actions">
-                                <a href="#" class="btn btn-small">Ver Convocação Completa</a>
-                                <a href="#" class="btn btn-small btn-outline">Anexo I</a>
+                <!-- ===== ABA AVISOS ===== -->
+                <div class="tab-content active" id="tab-avisos">
+                    <div class="accordion-container" id="avisos-accordion">
+
+                        <!-- Ambulantes Rodízio -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false"
+                                aria-controls="content-ambulante-rodizio">
+                                <div class="accordion-title">
+                                    <span>Ambulantes Tração Humana: Inscrição Presencial para Rodízios (Lote 1A)</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-ambulante-rodizio" class="accordion-content" role="region">
+                                <p>Inscrições presenciais para rodízios no Hipercentro e Feira Afonso Pena a partir de
+                                    abril/2025.</p>
+                                <p><strong>Frequência:</strong> 27 de março de 2025, das 9h às 16h na SMPU (Av. Álvares
+                                    Cabral, 217, 8º andar).</p>
+                                <p>Novos interessados podem agendar via WhatsApp: (31) 98305-0173.</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Edital 3 -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-ambulante">
-                            <div class="accordion-title">
-                                <span>Ambulante: 8ª Convocação do Cadastro de Reserva - Edital SMPU Nº 080/2019</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-ambulante" class="accordion-content" role="region">
-                            <p>Convocação para ocupar 5 vagas do lote 1B. Prazo até 28/12/2025 para abertura do
-                                protocolo.
-                            </p>
-                            <p><strong>Como solicitar:</strong></p>
-                            <ul>
-                                <li><strong>Digital:</strong> <a
-                                        href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-ambulante+5e6a4dc9ea9b0e547c43ceb9">Portal
-                                        de Serviços da PBH</a></li>
-                                <li><strong>Presencial:</strong> BH Resolve (agendar em <a
-                                        href="http://agendamentoeletronico.pbh.gov.br/">agendamentoeletronico.pbh.gov.br</a>)
-                                </li>
-                            </ul>
-                            <div class="content-actions">
-                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473608" class="btn btn-small">Ver
-                                    no
-                                    DOM</a>
-                                <a href="#" class="btn btn-small btn-outline">Anexo I - Convocados</a>
-                                <a href="#" class="btn btn-small btn-outline">Anexo II - Desclassificados</a>
+                        <!-- Portaria Mobiliários -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="content-portaria">
+                                <div class="accordion-title">
+                                    <span>Tração Humana e Food Truck: Portaria SMPU Nº 019/2025 - Restrições e
+                                        Padrões</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-portaria" class="accordion-content" role="region">
+                                <p>Define padrões de mobiliário e restrições de atuação em praças e entornos de arenas.
+                                </p>
+                                <p><strong>Praças com restrição:</strong> Praça da Liberdade, Savassi, Papa, Assembleia,
+                                    Estádio Mineirão, Arena Independência e Arena MRV.</p>
+                                <div class="content-actions">
+                                    <a href="https://dom-web.pbh.gov.br/visualizacao/ato/458961"
+                                        class="btn btn-small">Ver Portaria</a>
+                                    <a href="#" class="btn btn-small btn-outline">Baixar PDF</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Comunicados -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-falecidos">
-                            <div class="accordion-title">
-                                <span>Comunicado: Revogação de Licenças - Licenciados Falecidos</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-falecidos" class="accordion-content" role="region">
-                            <p>Publicada lista de licenciados falecidos. Recursos podem ser apresentados até 28/12/2025.
-                            </p>
-                            <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473609" class="btn btn-small">Ver
-                                Publicação Completa</a>
-                        </div>
-                    </div>
-
-                    <!-- PCD -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-pcd-revogacao">
-                            <div class="accordion-title">
-                                <span>PCD: Revogação de Licença - Edital SMPU Nº 004/2024</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-pcd-revogacao" class="accordion-content" role="region">
-                            <p>Lista de licenciados desistentes após prazo para início da atividade. Recursos até
-                                28/12/2025.</p>
-                            <div class="content-actions">
-                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473612" class="btn btn-small">Ver
-                                    no
-                                    DOM</a>
-                                <a href="#" class="btn btn-small btn-outline">Mais sobre PCD</a>
+                        <!-- Comunicado Falecidos -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="content-falecidos">
+                                <div class="accordion-title">
+                                    <span>Comunicado: Revogação de Licenças - Licenciados Falecidos</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-falecidos" class="accordion-content" role="region">
+                                <p>Publicada lista de licenciados falecidos. Recursos podem ser apresentados até
+                                    28/12/2025.</p>
+                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473609" class="btn btn-small">Ver
+                                    Publicação Completa</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Bancas -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-bancas">
-                            <div class="accordion-title">
-                                <span>Bancas: Prorrogação de Autorizações até 31/12/2026</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-bancas" class="accordion-content" role="region">
-                            <p>Autorizações de bancas de jornais e revistas com vencimento em 31/12/2025 foram
-                                prorrogadas
-                                até 31/12/2026.</p>
-                            <a href="https://dom-web.pbh.gov.br/visualizacao/ato/472389" class="btn btn-small">Ver
-                                Portaria</a>
-                        </div>
-                    </div>
-
-                    <!-- Lavadores -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-lavadores">
-                            <div class="accordion-title">
-                                <span class="badge badge-closed" aria-label="Encerrado">ENCERRADO</span>
-                                <span>Lavadores: Renovação de Licenças Vencidas (2018-2025)</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-lavadores" class="accordion-content" role="region">
-                            <p>O prazo para solicitações de renovação foi encerrado em 19/10/2025.</p>
-                            <p><strong>Documentos exigidos eram:</strong> RG, CPF, Comprovante de Endereço, Foto 3x4,
-                                Atestado de Bons Antecedentes, Certidões Criminais, CadÚnico.</p>
-                            <a href="https://dom-web.pbh.gov.br/visualizacao/ato/467339" class="btn btn-small">Ver
-                                Decreto</a>
-                        </div>
-                    </div>
-
-                    <!-- PCD Prazo Inicio -->
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <div class="accordion-title">
-                                <span>PCD: Prazo para Início do Exercício da Atividade (Edital 004/2024)</span>
-                            </div>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>O prazo para início das atividades é de 60 dias a partir de 13/08/2025 (até 14/10/2025).
-                            </p>
-                            <ul>
-                                <li>O exercício deve usar mobiliário padronizado (carrinho, cavalete ou bandeja).</li>
-                                <li>A não conformidade ou atraso sem justificativa resulta em perda da licença.</li>
-                            </ul>
-                            <a href="https://dom-web.pbh.gov.br/visualizacao/ato/467064" class="btn btn-small">Ver
-                                Publicação na Íntegra</a>
-                        </div>
-                    </div>
-
-                    <!-- PCD 2ª Convocação -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-pcd-2convocacao">
-                            <div class="accordion-title">
-                                <span>PCD: 2ª Convocação do Cadastro de Reserva e Escolha de Pontos</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-pcd-2convocacao" class="accordion-content" role="region">
-                            <p>Resultado da habilitação da 2ª convocação. Habilitados devem comparecer à SMPU (Av.
-                                Álvares
-                                Cabral, 217, 10º andar) no dia 26/08/2025 às 14:00.</p>
-                            <div class="content-actions">
-                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/467061" class="btn btn-small">Ver
-                                    no
-                                    DOM</a>
-                                <a href="#" class="btn btn-small btn-outline">Anexo I: Habilitados</a>
-                                <a href="#" class="btn btn-small btn-outline">Anexo II: Inabilitados</a>
+                        <!-- PCD Revogação -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false"
+                                aria-controls="content-pcd-revogacao">
+                                <div class="accordion-title">
+                                    <span>PCD: Revogação de Licença - Edital SMPU Nº 004/2024</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-pcd-revogacao" class="accordion-content" role="region">
+                                <p>Lista de licenciados desistentes após prazo para início da atividade. Recursos até
+                                    28/12/2025.</p>
+                                <div class="content-actions">
+                                    <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473612"
+                                        class="btn btn-small">Ver no DOM</a>
+                                    <a href="#" class="btn btn-small btn-outline">Mais sobre PCD</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Ambulantes Rodízio -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false"
-                            aria-controls="content-ambulante-rodizio">
-                            <div class="accordion-title">
-                                <span>Ambulantes Tração Humana: Inscrição Presencial para Rodízios (Lote 1A)</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-ambulante-rodizio" class="accordion-content" role="region">
-                            <p>Inscrições presenciais para rodízios no Hipercentro e Feira Afonso Pena a partir de
-                                abril/2025.</p>
-                            <p><strong>Frequência:</strong> 27 de março de 2025, das 9h às 16h na SMPU (Av. Álvares
-                                Cabral,
-                                217, 8º andar).</p>
-                            <p>Novos interessados podem agendar via WhatsApp: (31) 98305-0173.</p>
-                        </div>
-                    </div>
-
-                    <!-- Portaria Mobiliários -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-portaria">
-                            <div class="accordion-title">
-                                <span>Tração Humana e Food Truck: Portaria SMPU Nº 019/2025 - Restrições e
-                                    Padrões</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-portaria" class="accordion-content" role="region">
-                            <p>Define padrões de mobiliário e restrições de atuação em praças e entornos de arenas.</p>
-                            <p><strong>Praças com restrição:</strong> Praça da Liberdade, Savassi, Papa, Assembleia,
-                                Estádio
-                                Mineirão, Arena Independência e Arena MRV.</p>
-                            <div class="content-actions">
-                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/458961" class="btn btn-small">Ver
+                        <!-- Bancas -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="content-bancas">
+                                <div class="accordion-title">
+                                    <span>Bancas: Prorrogação de Autorizações até 31/12/2026</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-bancas" class="accordion-content" role="region">
+                                <p>Autorizações de bancas de jornais e revistas com vencimento em 31/12/2025 foram
+                                    prorrogadas até 31/12/2026.</p>
+                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/472389" class="btn btn-small">Ver
                                     Portaria</a>
-                                <a href="#" class="btn btn-small btn-outline">Baixar PDF</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Caixeiros Homologação -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-caixeiros">
-                            <div class="accordion-title">
-                                <span>Caixeiros: Homologação do Edital SMPU Nº 002/2024</span>
+                        <!-- PCD Prazo -->
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <div class="accordion-title">
+                                    <span>PCD: Prazo para Início do Exercício da Atividade (Edital 004/2024)</span>
+                                </div>
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>O prazo para início das atividades é de 60 dias a partir de 13/08/2025 (até
+                                    14/10/2025).</p>
+                                <ul>
+                                    <li>O exercício deve usar mobiliário padronizado (carrinho, cavalete ou bandeja).
+                                    </li>
+                                    <li>A não conformidade ou atraso sem justificativa resulta em perda da licença.</li>
+                                </ul>
+                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/467064" class="btn btn-small">Ver
+                                    Publicação na Íntegra</a>
                             </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-caixeiros" class="accordion-content" role="region">
-                            <p>Resultado da homologação do Edital SMPU Nº 002/2024 para a atividade de caixeiros em
-                                manifestações espontâneas.</p>
-                            <a href="#" class="btn btn-small">Ver Homologação</a>
                         </div>
-                    </div>
 
-                    <!-- Feirantes Listagem -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-feirantes">
-                            <div class="accordion-title">
-                                <span>Feirantes: Listagem de Inscrições Deferidas e Indeferidas</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-feirantes" class="accordion-content" role="region">
-                            <p>Publicada a listagem das inscrições deferidas e indeferidas referentes aos editais para a
-                                atividade comercial em Feiras de Inclusão Produtiva.</p>
-                            <a href="#" class="btn btn-small">Ver Listagem</a>
-                        </div>
                     </div>
+                </div>
 
-                    <!-- Fluxograma Editais -->
-                    <div class="accordion-item">
-                        <button class="accordion-header" aria-expanded="false" aria-controls="content-fluxograma">
-                            <div class="accordion-title">
-                                <span class="badge badge-info" aria-label="Informação">INFO</span>
-                                <span>Editais SMPU 009-018/2025: Fluxograma das Etapas</span>
-                            </div>
-                            <span class="accordion-icon" aria-hidden="true">+</span>
-                        </button>
-                        <div id="content-fluxograma" class="accordion-content" role="region">
-                            <p>Atualmente, os Editais mencionados finalizaram a etapa 8. A convocação dos candidatos
-                                classificados no Cadastro Reserva será realizada progressivamente, à medida que novas
-                                vagas
-                                forem disponibilizadas nas feiras.</p>
-                            <p>As convocações serão publicadas no Diário Oficial do Município (DOM) e neste site.</p>
-                            <div class="flowchart-image">
-                                <img src="imagens e emojis/fluxograma_editais.png"
-                                    alt="Fluxograma das Etapas dos Editais SMPU 009-018/2025" class="expandable-image"
-                                    style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 1rem;">
+                <!-- ===== ABA EDITAIS ===== -->
+                <div class="tab-content" id="tab-editais">
+                    <div class="accordion-container" id="editais-accordion">
+
+                        <!-- Edital 1 -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="content-009">
+                                <div class="accordion-title">
+                                    <span class="badge badge-new" aria-label="Novo item">NOVO</span>
+                                    <span>Feiras de Inclusão Produtiva – Editais SMPU Nº 009/2025 a 018/2025</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-009" class="accordion-content" role="region" aria-labelledby="header-009">
+                                <p>Publicação dos chamamentos dos cadastros reservas. A análise da documentação será
+                                    realizada conforme disposto no Anexo I de cada edital.</p>
+                                <ul class="link-list">
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 009/2025 - Bairro Independência</a>
+                                    </li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 010/2025 - Bairro Pindorama
+                                            (Quinta)</a></li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 011/2025 - Bairro Pindorama
+                                            (Domingo)</a></li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 012/2025 - Bairro Sagrada Família</a>
+                                    </li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 013/2025 - Praça Duque de Caxias</a>
+                                    </li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 014/2025 - Praça Comendador Negrão de
+                                            Lima</a></li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 015/2025 - Praça da Savassi</a></li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 016/2025 - Praça da Febem</a></li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 017/2025 - Praça do Cristo Redentor</a>
+                                    </li>
+                                    <li><a href="#">1ª Convocação Edital SMPU nº 018/2025 - Avenida Silva Lobo</a></li>
+                                </ul>
                             </div>
                         </div>
+
+                        <!-- Edital 2 -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="content-silva-lobo">
+                                <div class="accordion-title">
+                                    <span>5ª Convocação Cadastro Reserva - Edital SMPU Nº 023/2020 (Silva Lobo)</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-silva-lobo" class="accordion-content" role="region">
+                                <p>Convocação de 20 integrantes do Cadastro de Reserva do Lote 3 para 4 vagas
+                                    remanescentes
+                                    na
+                                    Feira Regional Permanente da Avenida Silva Lobo.</p>
+                                <p><strong>Prazo:</strong> 19 de dezembro de 2025 a 19 de janeiro de 2026</p>
+                                <div class="content-actions">
+                                    <a href="#" class="btn btn-small">Ver Convocação Completa</a>
+                                    <a href="#" class="btn btn-small btn-outline">Anexo I</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edital 3 -->
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="content-ambulante">
+                                <div class="accordion-title">
+                                    <span>Ambulante: 8ª Convocação do Cadastro de Reserva - Edital SMPU Nº
+                                        080/2019</span>
+                                </div>
+                                <span class="accordion-icon" aria-hidden="true">+</span>
+                            </button>
+                            <div id="content-ambulante" class="accordion-content" role="region">
+                                <p>Convocação para ocupar 5 vagas do lote 1B. Prazo até 28/12/2025 para abertura do
+                                    protocolo.
+                                </p>
+                                <p><strong>Como solicitar:</strong></p>
+                                <ul>
+                                    <li><strong>Digital:</strong> <a
+                                            href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-ambulante+5e6a4dc9ea9b0e547c43ceb9">Portal
+                                            de Serviços da PBH</a></li>
+                                    <li><strong>Presencial:</strong> BH Resolve (agendar em <a
+                                            href="http://agendamentoeletronico.pbh.gov.br/">agendamentoeletronico.pbh.gov.br</a>)
+                                    </li>
+                                </ul>
+                                <div class="content-actions">
+                                    <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473608"
+                                        class="btn btn-small">Ver
+                                        no
+                                        DOM</a>
+                                    <a href="#" class="btn btn-small btn-outline">Anexo I - Convocados</a>
+                                    <a href="#" class="btn btn-small btn-outline">Anexo II - Desclassificados</a>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -612,6 +618,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- Como Participar -->
         <section id="como-participar" class="how-to">
@@ -859,6 +866,20 @@
     </div>
 
     <script>
+        // --- Tab Switching (Avisos / Editais) ---
+        document.querySelectorAll('.news-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active de todas as tabs
+                document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                // Ativa a tab clicada e o conteúdo correspondente
+                tab.classList.add('active');
+                const target = tab.getAttribute('data-tab');
+                document.getElementById('tab-' + target).classList.add('active');
+            });
+        });
+
         // --- Accordion Functionality ---
         document.querySelectorAll('.accordion-header').forEach(button => {
             button.addEventListener('click', () => {
