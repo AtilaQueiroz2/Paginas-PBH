@@ -1067,14 +1067,22 @@
             });
         }
 
-        // --- FAQ Filter (Show More) ---
+        // --- FAQ Filter (Show More / Show Less) ---
         const btnShowAllFaq = document.getElementById('btn-show-all-faq');
         const faqContainer = document.getElementById('faq-accordion-container');
 
         if (btnShowAllFaq && faqContainer) {
             btnShowAllFaq.addEventListener('click', () => {
-                faqContainer.classList.remove('faq-collapsed');
-                btnShowAllFaq.parentElement.style.display = 'none';
+                const isCollapsed = faqContainer.classList.contains('faq-collapsed');
+                if (isCollapsed) {
+                    faqContainer.classList.remove('faq-collapsed');
+                    btnShowAllFaq.textContent = 'Ver menos';
+                } else {
+                    faqContainer.classList.add('faq-collapsed');
+                    btnShowAllFaq.textContent = 'Ver mais';
+                    // Roda a tela suavemente de volta para o topo do FAQ
+                    document.getElementById('faq').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         }
 
