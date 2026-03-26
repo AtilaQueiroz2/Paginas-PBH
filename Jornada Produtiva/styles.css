@@ -978,6 +978,16 @@ img {
     text-decoration: underline;
 }
 
+/* --- FAQ Collapsed State --- */
+.faq-collapsed .accordion-item:nth-child(n+5) {
+    display: none;
+}
+
+.faq-see-more {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
 .link-list {
     list-style: none;
     margin: var(--space-sm) 0;
