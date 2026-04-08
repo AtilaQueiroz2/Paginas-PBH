@@ -30,11 +30,13 @@
     <nav class="topnav" id="topnav" role="navigation" aria-label="Navegação principal">
         <div class="nav-inner">
             <div class="nav-brand">
-                <span class="brand-icon">🎨</span>
-                <span class="brand-text">Feira da Afonso Pena</span>
+                <a href="#identidade">
+                    <img src="Img&Componentes/LogoFeiraAfonsoPena.png" alt="Logo Feira da Afonso Pena" width="133"
+                        height="55" />
+                </a>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#identidade">Início</a></li>
+                <li><a href="#identidade" class="active">Início</a></li>
                 <li><a href="#licenciamento">Licenciamento</a></li>
                 <li><a href="#regras">Regras</a></li>
                 <li><a href="#categorias">Categorias</a></li>
@@ -47,47 +49,125 @@
         </div>
     </nav>
 
-    <!-- ===== HERO / IDENTIDADE ===== -->
-    <section class="hero" id="identidade">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
+    <!-- ===== BANNER / IDENTIDADE ===== -->
+    <section class="hero" id="identidade" aria-label="Banner da Feira da Afonso Pena"></section>
+
+    <!-- ===== HERO INFO: conteúdo abaixo do banner ===== -->
+    <section class="hero-info">
+        <div class="container">
             <div class="hero-badge">Patrimônio Cultural de BH desde 1969</div>
             <h1 class="hero-title">Feira de Artes, Artesanato<br />e Produtores de Variedades</h1>
-            <p class="hero-subtitle">Feira Hippie da Afonso Pena · Belo Horizonte</p>
             <p class="hero-desc">
-                Nascida na Praça da Liberdade em 1969, a feira consolidou-se como um dos maiores eventos
-                de rua da América Latina, reunindo artistas, artesãos e produtores todos os domingos na
-                Avenida Afonso Pena — um espaço de cultura, diversidade e empreendedorismo popular.
+                Nascida na Praça da Liberdade em 1969, a feira consolidou-se como um dos maiores<br />
+                eventos de rua da América Latina, reunindo artistas, artesãos e produtores todos os<br />
+                domingos na Avenida Afonso Pena — um espaço de cultura, diversidade e<br />
+                empreendedorismo popular.
             </p>
             <div class="hero-cards">
                 <div class="hcard">
-                    <div class="hcard-icon">🕗</div>
-                    <div class="hcard-label">Horário</div>
-                    <div class="hcard-value">Domingos<br />8h às 14h</div>
+                    <div class="hcard-icon">
+                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                            <circle cx="22.5" cy="22.5" r="9" stroke="#2A63AA" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M22.5 17V22.5L25.5 25.5" stroke="#2A63AA" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="hcard-content">
+                        <div class="hcard-label">Horário</div>
+                        <div class="hcard-value">Domingos<br />8h às 14h</div>
+                    </div>
                 </div>
                 <div class="hcard">
-                    <div class="hcard-icon">📍</div>
-                    <div class="hcard-label">Local</div>
-                    <div class="hcard-value">Av. Afonso Pena<br />(Praça Sete → Av. Carandaí)</div>
+                    <div class="hcard-icon">
+                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                            <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                stroke-linecap="round" />
+                            <g clip-path="url(#clip0_434_116)">
+                                <path
+                                    d="M16 25.2263C14.1486 26.043 13 27.1811 13 28.4399C13 30.9252 17.4772 32.9399 23 32.9399C28.5228 32.9399 33 30.9252 33 28.4399C33 27.1811 31.8514 26.043 30 25.2263M29 18.9399C29 23.0036 24.5 24.9399 23 27.9399C21.5 24.9399 17 23.0036 17 18.9399C17 15.6262 19.6863 12.9399 23 12.9399C26.3137 12.9399 29 15.6262 29 18.9399ZM24 18.9399C24 19.4922 23.5523 19.9399 23 19.9399C22.4477 19.9399 22 19.4922 22 18.9399C22 18.3877 22.4477 17.9399 23 17.9399C23.5523 17.9399 24 18.3877 24 18.9399Z"
+                                    stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_434_116">
+                                    <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="hcard-content">
+                        <div class="hcard-label">Local</div>
+                        <div class="hcard-value">Av. Afonso Pena<br />(Praça Sete → Carandaí)</div>
+                    </div>
                 </div>
                 <div class="hcard">
-                    <div class="hcard-icon">👥</div>
-                    <div class="hcard-label">Visitantes</div>
-                    <div class="hcard-value">~60 mil<br />por domingo</div>
+                    <div class="hcard-icon">
+                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                            <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                stroke-linecap="round" />
+                            <g clip-path="url(#clip0_434_195)">
+                                <path
+                                    d="M33 31.8799V29.8799C33 28.016 31.7252 26.4499 30 26.0059M26.5 14.1706C27.9659 14.764 29 16.2012 29 17.8799C29 19.5586 27.9659 20.9957 26.5 21.5891M28 31.8799C28 30.0161 28 29.0842 27.6955 28.3491C27.2895 27.369 26.5108 26.5903 25.5307 26.1844C24.7956 25.8799 23.8638 25.8799 22 25.8799H19C17.1362 25.8799 16.2044 25.8799 15.4693 26.1844C14.4892 26.5903 13.7105 27.369 13.3045 28.3491C13 29.0842 13 30.0161 13 31.8799M24.5 17.8799C24.5 20.089 22.7091 21.8799 20.5 21.8799C18.2909 21.8799 16.5 20.089 16.5 17.8799C16.5 15.6707 18.2909 13.8799 20.5 13.8799C22.7091 13.8799 24.5 15.6707 24.5 17.8799Z"
+                                    stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_434_195">
+                                    <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="hcard-content">
+                        <div class="hcard-label">Visitantes</div>
+                        <div class="hcard-value">~60 mil<br />por domingo</div>
+                    </div>
                 </div>
                 <div class="hcard">
-                    <div class="hcard-icon">🏪</div>
-                    <div class="hcard-label">Expositores</div>
-                    <div class="hcard-value">~1.800<br />barracas</div>
+                    <div class="hcard-icon">
+                        <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                            <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                stroke-linecap="round" />
+                            <g clip-path="url(#clip0_434_541)">
+                                <path
+                                    d="M26 31.8201V26.4201C26 25.86 26 25.58 25.891 25.3661C25.7951 25.1779 25.6422 25.0249 25.454 24.9291C25.2401 24.8201 24.9601 24.8201 24.4 24.8201H21.6C21.0399 24.8201 20.7599 24.8201 20.546 24.9291C20.3578 25.0249 20.2049 25.1779 20.109 25.3661C20 25.58 20 25.86 20 26.4201V31.8201M14 17.8201C14 19.4769 15.3431 20.8201 17 20.8201C18.6569 20.8201 20 19.4769 20 17.8201C20 19.4769 21.3431 20.8201 23 20.8201C24.6569 20.8201 26 19.4769 26 17.8201C26 19.4769 27.3431 20.8201 29 20.8201C30.6569 20.8201 32 19.4769 32 17.8201M17.2 31.8201H28.8C29.9201 31.8201 30.4802 31.8201 30.908 31.6021C31.2843 31.4103 31.5903 31.1044 31.782 30.7281C32 30.3002 32 29.7402 32 28.6201V17.0201C32 15.9 32 15.3399 31.782 14.9121C31.5903 14.5358 31.2843 14.2298 30.908 14.0381C30.4802 13.8201 29.9201 13.8201 28.8 13.8201H17.2C16.0799 13.8201 15.5198 13.8201 15.092 14.0381C14.7157 14.2298 14.4097 14.5358 14.218 14.9121C14 15.3399 14 15.9 14 17.0201V28.6201C14 29.7402 14 30.3002 14.218 30.7281C14.4097 31.1044 14.7157 31.4103 15.092 31.6021C15.5198 31.8201 16.0799 31.8201 17.2 31.8201Z"
+                                    stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_434_541">
+                                    <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="hcard-content">
+                        <div class="hcard-label">Expositores</div>
+                        <div class="hcard-value">~1.800<br />barracas</div>
+                    </div>
                 </div>
             </div>
             <a href="#licenciamento" class="hero-cta" id="cta-main">Jornada do Expositor ↓</a>
+            <div class="hero-carousel">
+                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO.jpg" alt="Feira Hippie Afonso Pena" class="carousel-img">
+                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1703.jpg" alt="Artes em quadros na Feira"
+                    class="carousel-img">
+                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO--11.jpg" alt="Gastronomia na Feira" class="carousel-img">
+                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1824.jpg" alt="Acessórios e Artesanato"
+                    class="carousel-img">
+            </div>
         </div>
     </section>
 
     <!-- ===== JORNADA DO EXPOSITOR ===== -->
     <section class="section jornada-section">
+        <div class="section-flower" aria-hidden="true"></div>
         <div class="container">
+            <div class="phase-decor phase-decor--left" aria-hidden="true"></div>
+            <div class="phase-decor phase-decor--right" aria-hidden="true"></div>
+            <div class="phase-decor phase-decor--bottom-left" aria-hidden="true"></div>
             <div class="section-header">
                 <div class="section-badge">Jornada do Expositor</div>
                 <h2 class="section-title">Seu caminho na Feira</h2>
@@ -166,7 +246,7 @@
                         </div>
                         <ul class="rules-list" id="lista-deveres">
                             <li class="rule-item">
-                                <span class="rule-icon">🏕️</span>
+                                <span class="rule-icon">🟢️</span>
                                 <div>
                                     <strong>Modelo padrão de barraca</strong>
                                     <p>Utilizar somente o modelo de barraca homologado pela PBH, respeitando as
@@ -174,7 +254,7 @@
                                 </div>
                             </li>
                             <li class="rule-item">
-                                <span class="rule-icon">📐</span>
+                                <span class="rule-icon">🟢️</span>
                                 <div>
                                     <strong>Layout e organização</strong>
                                     <p>Manter a barraca arrumada, com produtos expostos de forma organizada e dentro dos
@@ -182,7 +262,7 @@
                                 </div>
                             </li>
                             <li class="rule-item">
-                                <span class="rule-icon">⏰</span>
+                                <span class="rule-icon">🟢️</span>
                                 <div>
                                     <strong>Frequência e horário</strong>
                                     <p>Comparecer regularmente, dentro do horário estabelecido (8h às 14h), trazendo a
@@ -190,7 +270,7 @@
                                 </div>
                             </li>
                             <li class="rule-item">
-                                <span class="rule-icon">🧹</span>
+                                <span class="rule-icon">🟢️</span>
                                 <div>
                                     <strong>Higiene e limpeza</strong>
                                     <p>Manter o espaço limpo durante todo o evento e retirar todos os resíduos ao final
@@ -198,7 +278,7 @@
                                 </div>
                             </li>
                             <li class="rule-item">
-                                <span class="rule-icon">🤝</span>
+                                <span class="rule-icon">🟢️</span>
                                 <div>
                                     <strong>Preposto credenciado</strong>
                                     <p>Em caso de necessidade, indicar um preposto devidamente credenciado junto à
@@ -206,7 +286,7 @@
                                 </div>
                             </li>
                             <li class="rule-item">
-                                <span class="rule-icon">🔥</span>
+                                <span class="rule-icon">🟢️</span>
                                 <div>
                                     <strong>Segurança contra incêndio</strong>
                                     <p>Utilizar materiais adequados e manter extintor ou dispositivo de segurança quando
@@ -287,7 +367,25 @@
 
                 <div class="categories-grid">
                     <div class="cat-card" id="cat-artesanato">
-                        <div class="cat-icon">🎨</div>
+                        <div class="cat-icon">
+                            <svg width="45" height="45" viewBox="0 0 45 45" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                                <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <g clip-path="url(#clip0_434_688)">
+                                    <path
+                                        d="M13.6612 29.3391L18.2551 24.7452M29.2175 13.7827C32.9275 17.4927 32.9275 23.5078 29.2175 27.2177C25.5076 30.9277 19.4925 30.9277 15.7825 27.2177M28 33.0002H18M23 33.0002V30.0002M28.5 20.5002C28.5 23.8139 25.8137 26.5002 22.5 26.5002C19.1863 26.5002 16.5 23.8139 16.5 20.5002C16.5 17.1865 19.1863 14.5002 22.5 14.5002C25.8137 14.5002 28.5 17.1865 28.5 20.5002Z"
+                                        stroke="#2A63AA" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_434_688">
+                                        <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
                         <h4 class="cat-title">Artesanato e Artes Plásticas</h4>
                         <p class="cat-desc">
                             Produções manuais com identidade autoral do expositor: bijuterias, esculturas, pinturas,
@@ -296,7 +394,29 @@
                         <div class="cat-tag">Mais popular</div>
                     </div>
                     <div class="cat-card" id="cat-plantas">
-                        <div class="cat-icon">🌿</div>
+                        <div class="cat-icon">
+                            <svg width="45" height="45" viewBox="0 0 45 45" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                                <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <g clip-path="url(#clip0_434_643)">
+                                    <path
+                                        d="M20.395 30.3711L20.9795 31.6856C21.1532 32.0768 21.4368 32.4093 21.7957 32.6426C22.1547 32.8759 22.5736 33.0001 23.0017 33C23.4298 33.0001 23.8488 32.8759 24.2077 32.6426C24.5667 32.4093 24.8502 32.0768 25.0239 31.6856L25.6084 30.3711C25.8164 29.9047 26.1664 29.5159 26.6084 29.26C27.0532 29.0034 27.5677 28.8941 28.0784 28.9478L29.5084 29.1C29.934 29.145 30.3636 29.0656 30.7451 28.8713C31.1265 28.6771 31.4434 28.3763 31.6573 28.0056C31.8714 27.635 31.9735 27.2103 31.951 26.7829C31.9285 26.3555 31.7825 25.9438 31.5306 25.5978L30.6839 24.4344C30.3825 24.0171 30.2214 23.5148 30.2239 23C30.2238 22.4866 30.3864 21.9864 30.6884 21.5711L31.535 20.4078C31.7869 20.0618 31.933 19.6501 31.9554 19.2227C31.9779 18.7953 31.8759 18.3705 31.6617 18C31.4478 17.6292 31.1309 17.3285 30.7495 17.1342C30.3681 16.94 29.9385 16.8605 29.5128 16.9056L28.0828 17.0578C27.5722 17.1114 27.0576 17.0021 26.6128 16.7456C26.1699 16.4883 25.8199 16.0974 25.6128 15.6289L25.0239 14.3144C24.8502 13.9232 24.5667 13.5907 24.2077 13.3574C23.8488 13.1241 23.4298 12.9999 23.0017 13C22.5736 12.9999 22.1547 13.1241 21.7957 13.3574C21.4368 13.5907 21.1532 13.9232 20.9795 14.3144L20.395 15.6289C20.188 16.0974 19.8379 16.4883 19.395 16.7456C18.9503 17.0021 18.4357 17.1114 17.925 17.0578L16.4906 16.9056C16.0649 16.8605 15.6353 16.94 15.2539 17.1342C14.8725 17.3285 14.5556 17.6292 14.3417 18C14.1275 18.3705 14.0255 18.7953 14.048 19.2227C14.0705 19.6501 14.2165 20.0618 14.4684 20.4078L15.315 21.5711C15.617 21.9864 15.7796 22.4866 15.7795 23C15.7796 23.5134 15.617 24.0137 15.315 24.4289L14.4684 25.5922C14.2165 25.9382 14.0705 26.3499 14.048 26.7773C14.0255 27.2047 14.1275 27.6295 14.3417 28C14.5558 28.3706 14.8727 28.6712 15.2541 28.8654C15.6355 29.0596 16.065 29.1392 16.4906 29.0944L17.9206 28.9422C18.4313 28.8886 18.9458 28.9979 19.3906 29.2544C19.8351 29.511 20.1868 29.902 20.395 30.3711Z"
+                                        stroke="#2A63AA" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M22.9999 26C24.6568 26 25.9999 24.6569 25.9999 23C25.9999 21.3431 24.6568 20 22.9999 20C21.3431 20 19.9999 21.3431 19.9999 23C19.9999 24.6569 21.3431 26 22.9999 26Z"
+                                        stroke="#2A63AA" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_434_643">
+                                        <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
                         <h4 class="cat-title">Plantas e Flores</h4>
                         <p class="cat-desc">
                             Comercialização de plantas ornamentais, flores naturais, mudas, vasos e insumos
@@ -304,7 +424,25 @@
                         </p>
                     </div>
                     <div class="cat-card" id="cat-livros">
-                        <div class="cat-icon">📚</div>
+                        <div class="cat-icon">
+                            <svg width="45" height="45" viewBox="0 0 45 45" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                                <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <g clip-path="url(#clip0_434_659)">
+                                    <path
+                                        d="M23 32L22.8999 31.8499C22.2053 30.808 21.858 30.287 21.3991 29.9098C20.9929 29.5759 20.5248 29.3254 20.0216 29.1726C19.4533 29 18.8271 29 17.5748 29H16.2C15.0799 29 14.5198 29 14.092 28.782C13.7157 28.5903 13.4097 28.2843 13.218 27.908C13 27.4802 13 26.9201 13 25.8V17.2C13 16.0799 13 15.5198 13.218 15.092C13.4097 14.7157 13.7157 14.4097 14.092 14.218C14.5198 14 15.0799 14 16.2 14H16.6C18.8402 14 19.9603 14 20.816 14.436C21.5686 14.8195 22.1805 15.4314 22.564 16.184C23 17.0397 23 18.1598 23 20.4M23 32V20.4M23 32L23.1001 31.8499C23.7947 30.808 24.142 30.287 24.6009 29.9098C25.0071 29.5759 25.4752 29.3254 25.9784 29.1726C26.5467 29 27.1729 29 28.4252 29H29.8C30.9201 29 31.4802 29 31.908 28.782C32.2843 28.5903 32.5903 28.2843 32.782 27.908C33 27.4802 33 26.9201 33 25.8V17.2C33 16.0799 33 15.5198 32.782 15.092C32.5903 14.7157 32.2843 14.4097 31.908 14.218C31.4802 14 30.9201 14 29.8 14H29.4C27.1598 14 26.0397 14 25.184 14.436C24.4314 14.8195 23.8195 15.4314 23.436 16.184C23 17.0397 23 18.1598 23 20.4"
+                                        stroke="#2A63AA" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_434_659">
+                                        <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
                         <h4 class="cat-title">Livros e Periódicos</h4>
                         <p class="cat-desc">
                             Venda de obras literárias, revistas, jornais, gibis e outros materiais impressos, incluindo
@@ -312,7 +450,25 @@
                         </p>
                     </div>
                     <div class="cat-card" id="cat-antiguidades">
-                        <div class="cat-icon">🏺</div>
+                        <div class="cat-icon">
+                            <svg width="45" height="45" viewBox="0 0 45 45" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                                <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <g clip-path="url(#clip0_434_676)">
+                                    <path
+                                        d="M20 17V21.5012C20 22.0521 20 22.3276 19.9313 22.5829C19.8705 22.809 19.7704 23.0228 19.6356 23.2143C19.4834 23.4305 19.2718 23.6068 18.8486 23.9595L15.1514 27.0405C14.7282 27.3932 14.5166 27.5695 14.3644 27.7857C14.2296 27.9772 14.1295 28.191 14.0687 28.4171C14 28.6724 14 28.9479 14 29.4988V29.8C14 30.9201 14 31.4802 14.218 31.908C14.4097 32.2843 14.7157 32.5903 15.092 32.782C15.5198 33 16.0799 33 17.2 33H28.8C29.9201 33 30.4802 33 30.908 32.782C31.2843 32.5903 31.5903 32.2843 31.782 31.908C32 31.4802 32 30.9201 32 29.8V29.4988C32 28.9479 32 28.6724 31.9313 28.4171C31.8705 28.191 31.7704 27.9772 31.6356 27.7857C31.4834 27.5695 31.2718 27.3932 30.8486 27.0405L27.1514 23.9595C26.7282 23.6068 26.5166 23.4305 26.3644 23.2143C26.2296 23.0228 26.1295 22.809 26.0687 22.5829C26 22.3276 26 22.0521 26 21.5012V17M19.3 17H26.7C26.98 17 27.12 17 27.227 16.9455C27.3211 16.8976 27.3976 16.8211 27.4455 16.727C27.5 16.62 27.5 16.48 27.5 16.2V13.8C27.5 13.52 27.5 13.38 27.4455 13.273C27.3976 13.1789 27.3211 13.1024 27.227 13.0545C27.12 13 26.98 13 26.7 13H19.3C19.02 13 18.88 13 18.773 13.0545C18.6789 13.1024 18.6024 13.1789 18.5545 13.273C18.5 13.38 18.5 13.52 18.5 13.8V16.2C18.5 16.48 18.5 16.62 18.5545 16.727C18.6024 16.8211 18.6789 16.8976 18.773 16.9455C18.88 17 19.02 17 19.3 17ZM16.5 28H29.5C29.9647 28 30.197 28 30.3902 28.0384C31.1836 28.1962 31.8038 28.8164 31.9616 29.6098C32 29.803 32 30.0353 32 30.5C32 30.9647 32 31.197 31.9616 31.3902C31.8038 32.1836 31.1836 32.8038 30.3902 32.9616C30.197 33 29.9647 33 29.5 33H16.5C16.0353 33 15.803 33 15.6098 32.9616C14.8164 32.8038 14.1962 32.1836 14.0384 31.3902C14 31.197 14 30.9647 14 30.5C14 30.0353 14 29.803 14.0384 29.6098C14.1962 28.8164 14.8164 28.1962 15.6098 28.0384C15.803 28 16.0353 28 16.5 28Z"
+                                        stroke="#2A63AA" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_434_676">
+                                        <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
                         <h4 class="cat-title">Antiguidades</h4>
                         <p class="cat-desc">
                             Objetos de coleção, peças vintage, itens de decoração retrô e artigos com valor histórico
@@ -320,7 +476,33 @@
                         </p>
                     </div>
                     <div class="cat-card cat-card--wide" id="cat-comidas">
-                        <div class="cat-icon">🍲</div>
+                        <div class="cat-icon">
+                            <svg width="45" height="45" viewBox="0 0 45 45" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="45" height="45" rx="12" fill="#E3F0FF" />
+                                <path d="M30 15L15 30M30 30L15 15" stroke="#E3F0FF" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <g clip-path="url(#clip0_434_714)">
+                                    <path
+                                        d="M23 20C18.6791 20 14.9899 22.9368 13.5335 27.0723C13.0063 28.5695 12.7427 29.318 13.3485 30.159C13.9544 31 14.9433 31 16.9212 31H29.0788C31.0567 31 32.0456 31 32.6515 30.159C33.2573 29.318 32.9937 28.5695 32.4665 27.0723C31.0101 22.9368 27.3209 20 23 20Z"
+                                        stroke="#2A63AA" stroke-width="1.7" />
+                                    <path
+                                        d="M32.3292 26C33.2972 24.7279 33.2176 22.9699 32.0901 21.7778C31.5725 21.2305 31.2571 20.5346 31.1924 19.8033C31.0438 18.1257 29.626 16.7867 27.8478 16.6588L27.6438 16.6442C26.8567 16.5876 26.1028 16.3023 25.4905 15.832C24.0458 14.7227 21.9542 14.7227 20.5095 15.832C19.8972 16.3023 19.1433 16.5876 18.3562 16.6442L18.1522 16.6588C16.374 16.7867 14.9562 18.1257 14.8077 19.8033C14.7429 20.5346 14.4275 21.2305 13.9099 21.7778C12.7824 22.9699 12.7028 24.7279 13.6708 26"
+                                        stroke="#2A63AA" stroke-width="1.7" stroke-linecap="round" />
+                                    <path d="M27.0078 25L26.9988 25" stroke="#2A63AA" stroke-width="2.3"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M24.0078 27L23.9988 27" stroke="#2A63AA" stroke-width="2.3"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M29.0078 28L28.9988 28" stroke="#2A63AA" stroke-width="2.3"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_434_714">
+                                        <rect width="23" height="23" fill="white" transform="translate(11 11)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
                         <h4 class="cat-title">Comidas e Bebidas Típicas</h4>
                         <p class="cat-desc">
                             Produção e venda de alimentos e bebidas típicos, tanto nacionais (mineiridade, comidas
