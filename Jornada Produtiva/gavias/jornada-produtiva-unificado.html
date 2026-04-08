@@ -1,0 +1,2760 @@
+<style>
+/* =============================================
+   JORNADA PRODUTIVA - CSS para Gavias Builder
+   Cole este conteúdo no bloco "Custom Text" > CSS
+   ============================================= */
+
+h1.page-header,
+h1.page-title,
+h1.title,
+#page-title,
+.page-title {
+    display: none !important;
+}
+
+:root {
+    --color-primary: #2D7A3A;
+    --color-primary-dark: #1E5A28;
+    --color-primary-light: #4A9957;
+    --color-accent: #8BC34A;
+    --color-accent-light: #C5E1A5;
+    --color-blue: #2A63AA;
+    --color-link: #0088FF;
+    --color-white: #FFFFFF;
+    --color-bg: #F8FAF8;
+    --color-bg-alt: #FFFFFF;
+    --color-text: #1A1A1A;
+    --color-text-muted: #555555;
+    --color-border: #E0E0E0;
+    --color-new: #FF6B35;
+    --color-closed: #888888;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, .06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, .08);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, .12);
+    --shadow-hover: 0 12px 32px rgba(45, 122, 58, .15);
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Point', 'Inter', sans-serif;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+    --font-size-3xl: 40px;
+    --font-size-4xl: 56px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --transition-fast: .15s ease;
+    --transition-base: .25s ease;
+    --transition-slow: .4s ease;
+}
+
+:where(.hero, #main-content),
+:where(.hero, #main-content) *,
+:where(.hero, #main-content) *::before,
+:where(.hero, #main-content) *::after {
+    box-sizing: border-box;
+}
+
+:where(.hero, #main-content) {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+:where(.hero, #main-content) a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+:where(.hero, #main-content) a:hover {
+    color: var(--color-primary-dark);
+}
+
+:where(.hero, #main-content) img {
+    max-width: 100%;
+    height: auto;
+}
+
+:where(.hero, #main-content) :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+.skip-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 307.44px;
+    height: 58px;
+    margin: 0 auto 30px;
+    position: relative;
+    background-color: var(--color-accent);
+    color: var(--color-primary-dark);
+    padding: 16px 32px;
+    box-sizing: border-box;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    font-size: 14px;
+    z-index: 1001;
+    transition: opacity var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.accessibility-bar {
+    background-color: var(--color-blue);
+    height: 43px;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.accessibility-bar-inner {
+    max-width: 1600px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.accessibility-links,
+.accessibility-actions {
+    display: flex;
+    align-items: center;
+}
+
+.accessibility-bar a,
+.acc-action {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 44px;
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: background var(--transition-fast);
+}
+
+.accessibility-bar a:hover,
+.acc-action:hover {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.acc-sep {
+    color: var(--color-white);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 44px;
+    padding: 0 5px;
+}
+
+.font-btn {
+    border: 1px solid rgba(255, 255, 255, .3) !important;
+    border-radius: 4px;
+    padding: 0 10px !important;
+    font-weight: 600;
+    margin-left: 4px;
+    height: 32px;
+    line-height: 30px;
+}
+
+.jp-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 100%;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28.8px;
+    color: var(--color-text-muted);
+}
+
+/* === HERO / BANNER PRINCIPAL === */
+
+.hero {
+    background-image: url('https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/bannerjornada.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    margin: 0;
+    min-height: 720px;
+    padding: 120px 24px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-strips {
+    position: relative;
+    width: 100%;
+    margin: 0 0 14px;
+    height: 14px;
+    display: flex;
+    z-index: 10;
+}
+
+.strip {
+    height: 14px;
+    flex: 1;
+}
+
+.strip-red {
+    background-color: #DD3737;
+}
+
+.strip-blue {
+    background-color: #1A46A1;
+}
+
+.strip-green {
+    background-color: #019C4E;
+}
+
+.strip-orange {
+    background-color: #F29B21;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    gap: 27px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent-light);
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22.4px;
+    color: var(--color-primary-dark);
+    white-space: nowrap;
+}
+
+.hero h1 {
+    width: 100%;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 58px;
+    line-height: 100%;
+    color: var(--color-green-24, #1E5A28);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.hero-subtitle {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28.8px;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 9px;
+    gap: 48px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 53px;
+    line-height: 100%;
+    color: var(--color-green-24, #1E5A28);
+}
+
+.stat-label {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22.4px;
+    color: #55775C;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 9px;
+}
+
+/* === BOTÕES === */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: none;
+    text-decoration: none;
+}
+
+.btn-primary {
+    padding: 17px 32px;
+    border-radius: var(--radius-md);
+    background-color: #337A47;
+    color: var(--color-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+}
+
+.btn-primary:hover {
+    background-color: #256135;
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+}
+
+.btn-secondary {
+    padding: 15px 32px;
+    border-radius: var(--radius-md);
+    background-color: transparent;
+    color: #337A47;
+    border: 2px solid #337A47;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(51, 122, 71, .05);
+    color: #256135;
+    border-color: #256135;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-small {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--font-size-sm);
+}
+
+/* === ACESSO RÁPIDO === */
+
+.quick-access {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-lg);
+    position: relative;
+    z-index: 10;
+}
+
+.quick-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    gap: 24px;
+}
+
+.quick-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px 32px;
+    background-color: var(--color-white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms ease-out;
+    box-sizing: border-box;
+}
+
+.quick-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .15);
+    border-color: var(--color-primary);
+}
+
+.quick-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.quick-icon img,
+.quick-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.quick-card h3 {
+    width: 100%;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-primary);
+    margin: 0 0 8px;
+}
+
+.quick-card p {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: var(--color-text-muted);
+}
+
+/* === SOBRE O PROGRAMA === */
+
+.about {
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 48px var(--space-md);
+    position: relative;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    gap: var(--space-lg);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.about-watermark {
+    position: absolute;
+    width: 584px;
+    height: 589px;
+    opacity: 0.99;
+    left: -550px;
+    top: 100px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.about-content h2 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 100%;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.about-content strong {
+    font-weight: 700;
+}
+
+.about-p1,
+.about-p2,
+.about-p3 {
+    width: 100%;
+    max-width: 900px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32.4px;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.about-link {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32.4px;
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.about-link:hover {
+    color: var(--color-primary-dark);
+}
+
+/* === CARROSSEL === */
+
+.carousel-container {
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    margin-top: var(--space-lg);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: scroll-carousel 180s linear infinite;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    width: 280px;
+    height: 200px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+    cursor: zoom-in;
+}
+
+.carousel-item img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes scroll-carousel {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 8px));
+    }
+}
+
+/* === ATIVIDADES === */
+
+.activities {
+    padding: var(--space-2xl) 0;
+    padding-bottom: 200px;
+    background-color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.activities-logo {
+    position: absolute;
+    width: 162px;
+    height: 211px;
+    right: 100px;
+    bottom: 300px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.activities-bottom-banner {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    height: 400px;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.activities-header {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.activities-header h2 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 100%;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.activities-header p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28.8px;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: var(--space-md);
+    position: relative;
+    z-index: 2;
+}
+
+.activity-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    min-height: 360px;
+}
+
+.activity-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-md);
+}
+
+.activity-card:hover::before {
+    transform: scaleY(1);
+}
+
+.activity-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: var(--space-sm);
+    min-height: 57px;
+}
+
+.activity-icon img,
+.activity-icon svg {
+    width: 57px;
+    height: 57px;
+    display: block;
+    object-fit: contain;
+}
+
+.activity-card h3 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+    line-height: 1.2;
+    min-height: calc(1.2em * 2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.activity-card p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+    flex-grow: 1;
+    line-height: 1.5;
+    min-height: calc(1.5em * 5);
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-link {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color var(--transition-fast), gap var(--transition-fast);
+    margin-top: auto;
+}
+
+.activity-card:hover .card-link {
+    color: var(--color-link);
+    gap: 8px;
+}
+
+/* === DETALHES DAS ATIVIDADES === */
+
+.activity-details {
+    padding: var(--space-2xl) 0;
+    background-color: var(--color-bg);
+}
+
+.details-grid {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.detail-item,
+.detail-category {
+    background-color: var(--color-white);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.detail-item h3,
+.detail-category>h3 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.detail-item p,
+.detail-subitem p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.detail-category {
+    border-left-color: var(--color-accent);
+}
+
+.detail-subitem {
+    margin-top: var(--space-md);
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--color-accent-light);
+}
+
+.detail-subitem h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+}
+
+/* === AVISOS E EDITAIS === */
+
+.news {
+    padding: var(--space-2xl) 0;
+    background-image: linear-gradient(180deg, var(--color-bg) 0%, var(--color-white) 100%);
+}
+
+.news-tabs {
+    display: flex;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto var(--space-lg);
+    justify-content: center;
+}
+
+.news-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.news-tab:hover {
+    background-color: var(--color-accent-light);
+}
+
+.news-tab.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+
+.news-tab svg {
+    flex-shrink: 0;
+}
+
+.tab-badge {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, .08);
+    white-space: nowrap;
+}
+
+.news-tab.active .tab-badge {
+    background-color: rgba(255, 255, 255, .2);
+    color: var(--color-white);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* === ACCORDION === */
+
+.accordion-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: var(--space-md);
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: background var(--transition-fast);
+}
+
+.accordion-header:hover {
+    background-color: var(--color-bg);
+}
+
+.accordion-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    flex-wrap: wrap;
+}
+
+.accordion-icon {
+    font-size: var(--font-size-xl);
+    font-weight: 300;
+    color: var(--color-primary);
+    transition: transform var(--transition-base);
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow);
+    padding: 0 var(--space-md);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 800px;
+    padding: 0 var(--space-md) var(--space-md);
+}
+
+.accordion-content p {
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-muted);
+}
+
+.accordion-content ul,
+.accordion-content ol {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-lg);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.accordion-content li {
+    margin-bottom: var(--space-xs);
+}
+
+.accordion-content ul li a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+.faq-collapsed .accordion-item:nth-child(n+5) {
+    display: none;
+}
+
+.faq-see-more {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+.link-list {
+    list-style: none;
+    margin: var(--space-sm) 0;
+}
+
+.link-list li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.link-list li:last-child {
+    border-bottom: none;
+}
+
+.link-list a {
+    font-size: var(--font-size-sm);
+}
+
+.content-actions {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    margin-top: var(--space-sm);
+}
+
+/* === BADGES === */
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.badge-new {
+    background-color: var(--color-new);
+    color: var(--color-white);
+}
+
+.badge-closed {
+    background-color: var(--color-closed);
+    color: var(--color-white);
+}
+
+.badge-info {
+    background-color: #2196F3;
+    color: var(--color-white);
+}
+
+.news-collapsed .accordion-item:nth-child(n+6) {
+    display: none;
+}
+
+.see-more {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+.see-more.hidden {
+    display: none;
+}
+
+/* === FLUXOGRAMA === */
+
+.flowchart-placeholder {
+    background-color: var(--color-bg);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    text-align: center;
+    margin-top: var(--space-sm);
+}
+
+.flowchart-placeholder p {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* === COMO PARTICIPAR (TIMELINE) === */
+
+.how-to {
+    padding: var(--space-2xl) 0;
+    background-color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline {
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+    position: relative;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    height: var(--line-max-height, 100%);
+    width: 3px;
+    background-color: var(--color-border);
+    border-radius: 2px;
+    z-index: 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    height: var(--line-height, 0px);
+    width: 3px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    z-index: 1;
+    transition: height 0.1s ease-out;
+}
+
+.timeline-item {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-number {
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow-md);
+}
+
+.timeline-content {
+    background-color: var(--color-bg);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    flex: 1;
+    border: 1px solid var(--color-border);
+}
+
+.timeline-content h3 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 100%;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.timeline-content p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+}
+
+.timeline-content p a {
+    color: var(--color-link);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.timeline-content p a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* === LINKS RÁPIDOS === */
+
+.quick-links-box {
+    background-color: #2A63AA;
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.quick-links-box h3 {
+    color: var(--color-white);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-sm);
+}
+
+.quick-link-item {
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+    font-weight: 500;
+    text-align: center;
+    transition: all var(--transition-base);
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+
+.quick-link-item:hover {
+    background-color: rgba(255, 255, 255, .25);
+    transform: translateY(-2px);
+    color: var(--color-white);
+}
+
+.how-to-logo {
+    position: absolute;
+    right: 20px;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 570px;
+    height: 574px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.quick-link-item.small {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 14px;
+}
+
+.step-links {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, .2);
+}
+
+.step-links p {
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: .9;
+}
+
+/* === FAQ === */
+
+.faq {
+    padding: var(--space-xl) 0;
+    background-color: #F0F2F0;
+    position: relative;
+    overflow: hidden;
+}
+
+.faq::before {
+    content: '';
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(15deg);
+    width: 200px;
+    height: 200px;
+    background-image: radial-gradient(ellipse at center, rgba(197, 225, 165, .4) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.faq::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 40%;
+    width: 140px;
+    height: 140px;
+    background-image: radial-gradient(ellipse at center, rgba(139, 195, 74, .15) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: rotate(-30deg);
+    pointer-events: none;
+}
+
+/* === SÍMBOLO E CONTATO === */
+
+.symbol-section {
+    padding: var(--space-xl) 0;
+    background-color: var(--color-bg);
+}
+
+.isolated-symbol {
+    position: absolute;
+    top: 4755.28px;
+    left: 28px;
+    width: 386px;
+    height: 386px;
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.contact {
+    padding: var(--space-2xl) 0;
+    background-color: var(--color-bg);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background-color: var(--color-white);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.contact-card h3 {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-xs);
+}
+
+.contact-card>p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.contact-btn {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.contact-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: var(--font-size-sm);
+    opacity: .9;
+}
+
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.contact-btn strong {
+    font-size: var(--font-size-base);
+    margin-top: 2px;
+}
+
+.contact-btn.whatsapp {
+    background-color: #25D366;
+    color: var(--color-white);
+}
+
+.contact-btn.whatsapp:hover {
+    background-color: #20BD5A;
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.contact-btn.email {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.contact-btn.email:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* === LIGHTBOX === */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease;
+    cursor: zoom-out;
+    padding: var(--space-md);
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 50px rgba(0, 0, 0, .5);
+    transform: scale(.95);
+    transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+.lightbox.active img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: calc(var(--space-md) + env(safe-area-inset-top, 0px));
+    right: calc(var(--space-md) + env(safe-area-inset-right, 0px));
+    color: var(--color-white);
+    font-size: 2.5rem;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, .1);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all .2s ease;
+    border: 1px solid rgba(255, 255, 255, .2);
+    z-index: 2001;
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    background-color: rgba(255, 255, 255, .15);
+    transform: rotate(90deg);
+}
+
+.lightbox-actions {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 2001;
+}
+
+.lightbox-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-base);
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: .2px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+.lightbox-btn-download {
+    background-color: #337A47;
+    color: var(--color-white);
+}
+
+.lightbox-btn-download:hover {
+    background-color: #256135;
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+}
+
+.lightbox-btn-print {
+    background-color: rgba(255, 255, 255, .08);
+    color: var(--color-white);
+    border: 1.5px solid rgba(255, 255, 255, .4);
+    backdrop-filter: blur(8px);
+}
+
+.lightbox-btn-print:hover {
+    background-color: rgba(255, 255, 255, .18);
+    border-color: rgba(255, 255, 255, .7);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+}
+
+.expandable-image {
+    cursor: zoom-in;
+    transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+}
+
+.expandable-image:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    filter: brightness(1.02);
+}
+
+.flowchart-image {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.flowchart-image::after {
+    content: 'Clique para expandir';
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, .6);
+    color: var(--color-white);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.flowchart-image:hover::after {
+    opacity: 1;
+}
+
+/* === RESPONSIVO === */
+
+@media (max-width: 1280px) {
+    .quick-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .how-to-logo,
+    .about-watermark,
+    .activities-logo,
+    .isolated-symbol {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .accessibility-bar-inner {
+        justify-content: center;
+    }
+
+    .accessibility-links {
+        display: none;
+    }
+
+    .hero {
+        padding: 60px var(--space-md);
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .hero-stats {
+        gap: var(--space-lg);
+    }
+
+    .stat-number {
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quick-access {
+        margin-top: -40px;
+    }
+
+    .quick-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+    }
+
+    .about {
+        padding: var(--space-xl) var(--space-md);
+    }
+
+    .about-content h2 {
+        font-size: 28px;
+    }
+
+    .about-p1,
+    .about-p2,
+    .about-p3 {
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .about-watermark {
+        display: none;
+    }
+
+    .activities {
+        padding-bottom: 120px;
+    }
+
+    .activities-header h2 {
+        font-size: 28px;
+    }
+
+    .activities-logo {
+        display: none;
+    }
+
+    .timeline::before,
+    .timeline::after {
+        left: 20px;
+    }
+
+    .timeline-number {
+        width: 40px;
+        height: 40px;
+        font-size: var(--font-size-base);
+    }
+
+    .timeline-content h3 {
+        font-size: 20px;
+    }
+
+    .how-to-logo {
+        display: none;
+    }
+
+    .accordion-title {
+        font-size: var(--font-size-sm);
+    }
+
+    .isolated-symbol {
+        width: 250px;
+        margin-left: 16px;
+    }
+
+    .news-tabs {
+        flex-direction: column;
+        padding: 0 var(--space-md);
+        gap: 8px;
+    }
+
+    .news-tab {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .quick-cards,
+    .activities-grid,
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero-badge {
+        font-size: 14px;
+        padding: 6px 16px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .section-header h2 {
+        font-size: 24px;
+    }
+
+    .about-content h2,
+    .activities-header h2 {
+        font-size: 24px;
+    }
+
+    .about-p1,
+    .about-p2,
+    .about-p3 {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    .timeline-content h3 {
+        font-size: 18px;
+    }
+
+    .contact-btn {
+        padding: 12px;
+    }
+
+    .btn-fale-pbh {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .isolated-symbol {
+        width: 180px;
+        margin-left: 12px;
+    }
+}
+</style>
+<div class="hero" role="banner" aria-label="Jornada Produtiva">
+    <div class="hero-content">
+        <div class="hero-badge" role="doc-subtitle">Programa de Incentivo ao Comércio Popular</div>
+        <h1 id="page-title">JORNADA PRODUTIVA</h1>
+        <p class="hero-subtitle">Gerando oportunidades de renda e inserção produtiva para trabalhadores do comércio
+            em logradouro público.</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number animate-counter" data-target="3400" data-format="3.400+">0</span>
+                <span class="stat-label">Vagas Disponíveis</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number animate-counter" data-target="9" data-format="09">0</span>
+                <span class="stat-label">Tipos de Atividades</span>
+            </div>
+        </div>
+        <div class="hero-cta">
+            <a href="#servicos" class="btn btn-primary">Conheça as Atividades</a>
+            <a href="#como-participar" class="btn btn-secondary">Como Participar</a>
+        </div>
+    </div>
+</div>
+<main id="main-content">
+    <section class="quick-access">
+        <div class="jp-container">
+            <div class="quick-cards">
+                <a href="#noticias" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.3441 9.39272L2.23993 18.4969M12.3201 2.24208C13.4874 3.01661 14.6093 3.92973 15.6577 4.97814C16.7152 6.03559 17.635 7.16785 18.4138 8.34598M7.7551 6.41818L5.00002 5.49982C4.68273 5.39406 4.33326 5.46136 4.07794 5.6774L1.33983 7.99426C0.779275 8.46858 0.93853 9.37123 1.62756 9.62508L4.22195 10.5809M10.0801 16.4389L11.0359 19.0333C11.2898 19.7223 12.1924 19.8816 12.6668 19.321L14.9836 16.5829C15.1997 16.3276 15.267 15.9781 15.1612 15.6608L14.2428 12.9057M17.4282 1.02716L12.7261 1.81083C12.2184 1.89545 11.7527 2.14501 11.4011 2.5209L5.06353 9.2955C3.42079 11.0515 3.46649 13.7939 5.16681 15.4942C6.86713 17.1945 9.60948 17.2402 11.3655 15.5975L18.1401 9.25995C18.516 8.90831 18.7655 8.44261 18.8502 7.93488L19.6338 3.23285C19.85 1.93561 18.7254 0.810953 17.4282 1.02716Z"
+                                stroke="#2D7A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Oportunidades</h3>
+                    <p>Confira novas vagas e editais</p>
+                </a>
+                <a href="#como-participar" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.5 19H3C1.89543 19 1 18.1046 1 17V3C1 1.89543 1.89543 1 3 1H17C18.1046 1 19 1.89543 19 3V17C19 18.1046 18.1046 19 17 19H15.5M10 18C11.6569 18 13 16.6569 13 15C13 13.3431 11.6569 12 10 12C8.34315 12 7 13.3431 7 15C7 16.6569 8.34315 18 10 18ZM10 18L10.0214 17.9998L6.82867 21.1926L4.00024 18.3641L7.01965 15.3447M10 18L13.1928 21.1926L16.0212 18.3641L13.0018 15.3447M7 5H13M5 8.5H15"
+                                stroke="#2D7A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Quero me Licenciar</h3>
+                    <p>Veja como participar do programa</p>
+                </a>
+                <a href="#servicos" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7 13C7 13 8.5 15 11 15C13.5 15 15 13 15 13M14 8H14.01M7 8H9M21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 5.47715 5.47715 1 11 1C16.5228 1 21 5.47715 21 11ZM14.5 8C14.5 8.27614 14.2761 8.5 14 8.5C13.7239 8.5 13.5 8.27614 13.5 8C13.5 7.72386 13.7239 7.5 14 7.5C14.2761 7.5 14.5 7.72386 14.5 8Z"
+                                stroke="#2D7A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Já sou Licenciado</h3>
+                    <p>Acesse serviços e informações</p>
+                </a>
+                <a href="#noticias" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.7348 16.9891C15.1636 18.5895 14.2139 20.2346 12.6135 20.6634C11.0131 21.0922 9.36805 20.1425 8.93923 18.5421M1.1457 10.5877C0.756206 9.18949 1.16125 7.67785 2.19765 6.66174M11.2352 4.71521C11.5394 4.16791 11.6396 3.50641 11.4647 2.85382C11.1074 1.52015 9.73653 0.728696 8.40287 1.08605C7.0692 1.4434 6.27775 2.81425 6.6351 4.14791C6.80997 4.80051 7.2275 5.32328 7.7646 5.64515M19.4079 5.69436C19.0461 4.28876 17.9395 3.18216 16.5339 2.82038M16.5795 8.41965C16.2226 7.08751 15.2696 5.97355 13.9304 5.32282C12.5911 4.67209 10.9752 4.53789 9.43808 4.94975C7.90101 5.36161 6.56868 6.28578 5.7342 7.51897C4.89972 8.75216 4.63144 10.1933 4.98839 11.5255C5.57896 13.7295 5.46429 15.4879 5.09133 16.8241C4.66627 18.3469 4.45373 19.1083 4.51115 19.2612C4.57684 19.4362 4.62436 19.4842 4.79859 19.5517C4.95089 19.6107 5.59066 19.4393 6.8702 19.0964L18.7353 15.9172C20.0148 15.5743 20.6546 15.4029 20.757 15.2756C20.8741 15.1301 20.8912 15.0647 20.8607 14.8804C20.834 14.7193 20.2692 14.1661 19.1396 13.0598C18.1486 12.0892 17.1701 10.6237 16.5795 8.41965Z"
+                                stroke="#2D7A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Editais e Convocações</h3>
+                    <p>Confira as últimas publicações</p>
+                </a>
+                <a href="#faq" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8 6.50224C8.1762 6.00136 8.52397 5.579 8.98173 5.30998C9.43949 5.04095 9.9777 4.9426 10.501 5.03237C11.0243 5.12213 11.499 5.39421 11.8409 5.80041C12.1829 6.20661 12.37 6.72072 12.3692 7.25168C12.3692 8.75056 10.1209 9.5 10.1209 9.5M10.1499 12.5H10.1599M7.9 17.2L9.36 19.1467C9.57712 19.4362 9.68568 19.5809 9.81876 19.6327C9.93534 19.678 10.0647 19.678 10.1812 19.6327C10.3143 19.5809 10.4229 19.4362 10.64 19.1467L12.1 17.2C12.3931 16.8091 12.5397 16.6137 12.7185 16.4645C12.9569 16.2656 13.2383 16.1248 13.5405 16.0535C13.7671 16 14.0114 16 14.5 16C15.8978 16 16.5967 16 17.1481 15.7716C17.8831 15.4672 18.4672 14.8831 18.7716 14.1481C19 13.5967 19 12.8978 19 11.5V5.8C19 4.11984 19 3.27976 18.673 2.63803C18.3854 2.07354 17.9265 1.6146 17.362 1.32698C16.7202 1 15.8802 1 14.2 1H5.8C4.11984 1 3.27976 1 2.63803 1.32698C2.07354 1.6146 1.6146 2.07354 1.32698 2.63803C1 3.27976 1 4.11984 1 5.8V11.5C1 12.8978 1 13.5967 1.22836 14.1481C1.53284 14.8831 2.11687 15.4672 2.85195 15.7716C3.40326 16 4.10218 16 5.5 16C5.98858 16 6.23287 16 6.45951 16.0535C6.76169 16.1248 7.04312 16.2656 7.2815 16.4645C7.46028 16.6137 7.60685 16.8091 7.9 17.2Z"
+                                stroke="#2D7A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Perguntas Frequentes</h3>
+                    <p>Tire suas dúvidas agora</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="sobre" class="about">
+        <div class="about-content">
+            <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/barraca-feira-hippie-1.png"
+                class="about-watermark" alt="" aria-hidden="true" />
+            <h2>Sobre o Programa</h2>
+            <p class="about-p1">O Programa Jornada Produtiva, promovido pela Prefeitura de Belo Horizonte, gera
+                oportunidades à população, fornecendo licenças para atuação em várias atividades como food trucks,
+                feiras diversas, comércio ambulante, engraxates, bancas de jornais e revistas, comércio por pessoas
+                com deficiência (PCD) e lavadores de carros.
+                A participação nessas atividades econômicas é fundamental para o fortalecimento da economia popular
+                e da independência financeira.</p>
+            <div class="carousel-container">
+                <div class="carousel-track" id="about-carousel-track">
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section id="atividades" class="activities">
+        <div class="activities-header">
+            <h2>Atividades do Programa</h2>
+            <p>Conheça cada uma das modalidades licenciadas pelo Jornada Produtiva</p>
+        </div>
+        <div class="jp-container">
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/feira-de-inclusao-produtiva.png"
+                            alt="Icone Feiras de Inclusão Produtiva" width="57" height="57" />
+                    </div>
+                    <h3>Feiras de Inclusão Produtiva</h3>
+                    <p>Participação em feiras permanentes com venda de artesanato, artes plásticas, plantas e
+                        flores,
+                        livros e periódicos, antiguidades e comidas e bebidas típicas nacionais e estrangeiras.</p>
+                    <a href="https://servicos.pbh.gov.br/servicos+licenca-em-feira-de-inclusao-produtiva-promovida-pelo-executivo+5e74d6d7ea9b0e547c66c8eb"
+                        class="card-link">Portal de Serviços →</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/tracao-humana.png"
+                            alt="Icone Tração Humana" width="57" height="57" />
+                    </div>
+                    <h3>Tração Humana</h3>
+                    <p>Inclui as modalidades <strong>Ambulante, Food Bike e Fruteiro</strong>. Comércio de
+                        alimentos, bebidas artesanais e frutas em veículos de propulsão humana em locais
+                        determinados.</p>
+                    <div class="card-links" style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-ambulante+5e6a4dc9ea9b0e547c43ceb9"
+                            class="card-link" style="margin-top: 0; font-size: 13px;">Portal de Serviços: Ambulante
+                            e Food Bike →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-fruteiro+606b31b31cd7ca6d848a3703"
+                            class="card-link" style="margin-top: 0; font-size: 13px;">Portal de Serviços: Fruteiro
+                            →</a>
+                        <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-com-atividade-compulsoria-ambulante-da-pampulha+606b6c9d1cd7ca6d849274ce"
+                            class="card-link" style="margin-top: 0; font-size: 13px;">Portal de Serviços: Ambulante
+                            Pampulha →</a>
+                    </div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <svg width="46" height="38" viewBox="0 0 46 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M27.25 8.125H32.2167C32.7364 8.125 32.9963 8.125 33.2409 8.18371C33.4577 8.23577 33.665 8.32163 33.8551 8.43814C34.0696 8.56955 34.2533 8.75331 34.6208 9.12084L43.2542 17.7542C43.6217 18.1217 43.8054 18.3054 43.9369 18.5199C44.0534 18.71 44.1392 18.9173 44.1913 19.1341C44.25 19.3787 44.25 19.6386 44.25 20.1583V26.1875C44.25 27.1776 44.25 27.6727 44.0882 28.0632C43.8726 28.5839 43.4589 28.9976 42.9382 29.2132C42.5477 29.375 42.0526 29.375 41.0625 29.375M30.4375 29.375H27.25M27.25 29.375V8.55C27.25 6.16978 27.25 4.97967 26.7868 4.07054C26.3793 3.27085 25.7291 2.62068 24.9295 2.21322C24.0203 1.75 22.8302 1.75 20.45 1.75H8.55C6.16978 1.75 4.97967 1.75 4.07054 2.21322C3.27085 2.62068 2.62068 3.27085 2.21322 4.07054C1.75 4.97967 1.75 6.16978 1.75 8.55V25.125C1.75 27.4722 3.65279 29.375 6 29.375M27.25 29.375H18.75M18.75 29.375C18.75 32.8958 15.8958 35.75 12.375 35.75C8.85418 35.75 6 32.8958 6 29.375M18.75 29.375C18.75 25.8542 15.8958 23 12.375 23C8.85418 23 6 25.8542 6 29.375M41.0625 30.4375C41.0625 33.3715 38.684 35.75 35.75 35.75C32.816 35.75 30.4375 33.3715 30.4375 30.4375C30.4375 27.5035 32.816 25.125 35.75 25.125C38.684 25.125 41.0625 27.5035 41.0625 30.4375Z"
+                                stroke="#095427" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Food Truck e Trailer</h3>
+                    <p>Veículos automotores ou rebocados equipados para vender refeições, lanches, sucos,
+                        refrigerantes, bebidas alcoólicas, café, água de coco e caldo de cana.</p>
+                    <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-automotor-food-truck-e-trailer+5e6a4b16ea9b0e547c4381f7"
+                        class="card-link">Portal de Serviços →</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/comercio-pcd.png"
+                            alt="Icone Comércio por PCD" width="57" height="57" />
+                    </div>
+                    <h3>Comércio por PCD</h3>
+                    <p>Pessoas com deficiência licenciadas para comercializar produtos lícitos carregáveis e doces
+                        embalados em locais determinados no Hipercentro.</p>
+                    <a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-em-logradouro-publico-por-pessoa-com-deficiencia-ambulante+5eb40800cf23934c43682881"
+                        class="card-link">Portal de Serviços →</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/caixeiros.png"
+                            alt="Icone Caixeiros" width="57" height="57" />
+                    </div>
+                    <h3>Caixeiros</h3>
+                    <p>Venda exclusiva de água e bebidas industrializadas em recipientes de alumínio ou plástico
+                        durante manifestações espontâneas.</p>
+                    <a href="https://servicos.pbh.gov.br/servicos+credenciamento-em-atividade-de-comercializacao-de-bebidas-em-veiculo-de-tracao-humana-em-manifestacoes-espontaneas-caixeiro+65cf4e42c78beb1cf656d195"
+                        class="card-link">Portal de Serviços →</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/prancheta-1_7.png"
+                            alt="Icone Lavadores de Veículos" width="57" height="57" />
+                    </div>
+                    <h3>Lavadores de Veículos</h3>
+                    <p>Licenciados em trechos fixos para lavagem de carros. Diferente de guardadores (flanelinhas),
+                        a reserva de vagas não é permitida.</p>
+                    <a href="https://servicos.pbh.gov.br/servicos+licenca-de-lavador-de-carro+5e6a828eea9b0e547c49d6f9"
+                        class="card-link">Portal de Serviços →</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/bancas.png"
+                            alt="Icone Bancas de Jornais" width="57" height="57" />
+                    </div>
+                    <h3>Bancas de Jornais e Revistas</h3>
+                    <p>Venda de jornais, periódicos e produtos lícitos como bombonière, papelaria, acessórios de
+                        celular, brinquedos e artesanatos.</p>
+                    <a href="https://servicos.pbh.gov.br/servicos+licenca-de-atividade-em-banca-de-jornais-e-revistas+5e68fe8cea9b0e547c1fb39b"
+                        class="card-link">Portal de Serviços →</a>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/engraxates.png"
+                            alt="Icone Engraxates" width="57" height="57" />
+                    </div>
+                    <h3>Engraxates</h3>
+                    <p>Profissionais licenciados para prestação de serviços de engraxe de calçados em logradouro
+                        público.</p>
+                    <a href="https://servicos.pbh.gov.br/servicos+licenca-de-engraxate+5e6a7b3fea9b0e547c48ed06"
+                        class="card-link">Portal de Serviços →</a>
+                </div>
+            </div>
+        </div>
+        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/logoinferior.png"
+            class="activities-logo" alt="" aria-hidden="true" />
+        <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/baner-jornada-produtiva-2inferior.png"
+            class="activities-bottom-banner" alt="" aria-hidden="true" />
+    </section>
+    <section id="noticias" class="news">
+        <div class="jp-container">
+            <div class="section-header">
+                <h2>Avisos e Editais</h2>
+                <p>Fique por dentro das últimas convocações e publicações</p>
+            </div>
+            <div class="news-tabs">
+                <button class="news-tab active" data-tab="avisos">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                    Avisos
+                    <span class="tab-badge">Para Licenciados</span>
+                </button>
+                <button class="news-tab" data-tab="editais">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="12" y1="18" x2="12" y2="12" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
+                    Editais
+                    <span class="tab-badge">Publicações DOM</span>
+                </button>
+            </div>
+            <div class="tab-content active" id="tab-avisos">
+                <div class="accordion-container" id="avisos-accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false"
+                            aria-controls="content-ambulante-rodizio">
+                            <div class="accordion-title">
+                                <span>Ambulantes Tração Humana: Inscrição Presencial para Rodízios (Lote 1A)</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-ambulante-rodizio" class="accordion-content" role="region">
+                            <p>Inscrições presenciais para rodízios no Hipercentro e Feira Afonso Pena a partir de
+                                abril/2025.</p>
+                            <p><strong>Frequência:</strong> 27 de março de 2025, das 9h às 16h na SMPU (Av. Álvares
+                                Cabral, 217, 8º andar).</p>
+                            <p>Novos interessados podem agendar via WhatsApp: (31) 98305-0173.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="content-portaria">
+                            <div class="accordion-title">
+                                <span>Tração Humana e Food Truck: Portaria SMPU Nº 019/2025 - Restrições e
+                                    Padrões</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-portaria" class="accordion-content" role="region">
+                            <p>Define padrões de mobiliário e restrições de atuação em praças e entornos de arenas.
+                            </p>
+                            <p><strong>Praças com restrição:</strong> Praça da Liberdade, Savassi, Papa, Assembleia,
+                                Estádio Mineirão, Arena Independência e Arena MRV.</p>
+                            <div class="content-actions">
+                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/458961" class="btn btn-small">Ver
+                                    Portaria</a>
+                                <a href="#" class="btn btn-small btn-outline">Baixar PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="content-falecidos">
+                            <div class="accordion-title">
+                                <span>Comunicado: Revogação de Licenças - Licenciados Falecidos</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-falecidos" class="accordion-content" role="region">
+                            <p>Publicada lista de licenciados falecidos. Recursos podem ser apresentados até
+                                28/12/2025.</p>
+                            <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473609" class="btn btn-small">Ver
+                                Publicação Completa</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="content-pcd-revogacao">
+                            <div class="accordion-title">
+                                <span>PCD: Revogação de Licença - Edital SMPU Nº 004/2024</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-pcd-revogacao" class="accordion-content" role="region">
+                            <p>Lista de licenciados desistentes após prazo para início da atividade. Recursos até
+                                28/12/2025.</p>
+                            <div class="content-actions">
+                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473612" class="btn btn-small">Ver
+                                    no DOM</a>
+                                <a href="#" class="btn btn-small btn-outline">Mais sobre PCD</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="content-bancas">
+                            <div class="accordion-title">
+                                <span>Bancas: Prorrogação de Autorizações até 31/12/2026</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-bancas" class="accordion-content" role="region">
+                            <p>Autorizações de bancas de jornais e revistas com vencimento em 31/12/2025 foram
+                                prorrogadas até 31/12/2026.</p>
+                            <a href="https://dom-web.pbh.gov.br/visualizacao/ato/472389" class="btn btn-small">Ver
+                                Portaria</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <div class="accordion-title">
+                                <span>PCD: Prazo para Início do Exercício da Atividade (Edital 004/2024)</span>
+                            </div>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>O prazo para início das atividades é de 60 dias a partir de 13/08/2025 (até
+                                14/10/2025).</p>
+                            <ul>
+                                <li>O exercício deve usar mobiliário padronizado (carrinho, cavalete ou bandeja).
+                                </li>
+                                <li>A não conformidade ou atraso sem justificativa resulta em perda da licença.</li>
+                            </ul>
+                            <a href="https://dom-web.pbh.gov.br/visualizacao/ato/467064" class="btn btn-small">Ver
+                                Publicação na Íntegra</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-editais">
+                <div class="accordion-container" id="editais-accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="content-009">
+                            <div class="accordion-title">
+                                <span class="badge badge-new" aria-label="Novo item">NOVO</span>
+                                <span>Feiras de Inclusão Produtiva – Editais SMPU Nº 009/2025 a 018/2025</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-009" class="accordion-content" role="region" aria-labelledby="header-009">
+                            <p>Publicação dos chamamentos dos cadastros reservas. A análise da documentação será
+                                realizada conforme disposto no Anexo I de cada edital.</p>
+                            <ul class="link-list">
+                                <li><a href="#">1ª Convocação Edital SMPU nº 009/2025 - Bairro Independência</a>
+                                </li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 010/2025 - Bairro Pindorama
+                                        (Quinta)</a></li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 011/2025 - Bairro Pindorama
+                                        (Domingo)</a></li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 012/2025 - Bairro Sagrada Família</a>
+                                </li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 013/2025 - Praça Duque de Caxias</a>
+                                </li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 014/2025 - Praça Comendador Negrão de
+                                        Lima</a></li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 015/2025 - Praça da Savassi</a></li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 016/2025 - Praça da Febem</a></li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 017/2025 - Praça do Cristo Redentor</a>
+                                </li>
+                                <li><a href="#">1ª Convocação Edital SMPU nº 018/2025 - Avenida Silva Lobo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="content-silva-lobo">
+                            <div class="accordion-title">
+                                <span>5ª Convocação Cadastro Reserva - Edital SMPU Nº 023/2020 (Silva Lobo)</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-silva-lobo" class="accordion-content" role="region">
+                            <p>Convocação de 20 integrantes do Cadastro de Reserva do Lote 3 para 4 vagas
+                                remanescentes
+                                na
+                                Feira Regional Permanente da Avenida Silva Lobo.</p>
+                            <p><strong>Prazo:</strong> 19 de dezembro de 2025 a 19 de janeiro de 2026</p>
+                            <div class="content-actions">
+                                <a href="#" class="btn btn-small">Ver Convocação Completa</a>
+                                <a href="#" class="btn btn-small btn-outline">Anexo I</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" aria-controls="content-ambulante">
+                            <div class="accordion-title">
+                                <span>Ambulante: 8ª Convocação do Cadastro de Reserva - Edital SMPU Nº
+                                    080/2019</span>
+                            </div>
+                            <span class="accordion-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div id="content-ambulante" class="accordion-content" role="region">
+                            <p>Convocação para ocupar 5 vagas do lote 1B. Prazo até 28/12/2025 para abertura do
+                                protocolo.
+                            </p>
+                            <p><strong>Como solicitar:</strong></p>
+                            <ul>
+                                <li><strong>Digital:</strong> <a
+                                        href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-ambulante+5e6a4dc9ea9b0e547c43ceb9">Portal
+                                        de Serviços da PBH</a></li>
+                                <li><strong>Presencial:</strong> BH Resolve (agendar em <a
+                                        href="http://agendamentoeletronico.pbh.gov.br/">agendamentoeletronico.pbh.gov.br</a>)
+                                </li>
+                            </ul>
+                            <div class="content-actions">
+                                <a href="https://dom-web.pbh.gov.br/visualizacao/ato/473608" class="btn btn-small">Ver
+                                    no
+                                    DOM</a>
+                                <a href="#" class="btn btn-small btn-outline">Anexo I - Convocados</a>
+                                <a href="#" class="btn btn-small btn-outline">Anexo II - Desclassificados</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="see-more">
+                <a href="javascript:void(0)" class="btn btn-outline" id="btn-show-all-news">Ver todos</a>
+            </div>
+        </div>
+    </section>
+    <section id="como-participar" class="how-to">
+        <div class="jp-container">
+            <div class="section-header">
+                <h2>Como Participar</h2>
+                <p>Passo a passo para se tornar um licenciado do Jornada Produtiva</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3>Consulte os Editais</h3>
+                        <p>Verifique quais editais estão abertos para a atividade desejada na seção de Notícias.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3>Prepare a Documentação</h3>
+                        <p>Reúna os documentos exigidos no edital (RG, CPF, comprovante de residência, etc.).</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3>Faça a Inscrição</h3>
+                        <p>Inscreva-se pelo <a href="#">Portal de Serviços da PBH</a> ou presencialmente no BH
+                            Resolve.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3>Acompanhe o Resultado</h3>
+                        <p>Aguarde a publicação no Diário Oficial do Município (DOM) e neste site.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3>Obtenha sua Licença</h3>
+                        <p>Se convocado, compareça para retirar o Documento Municipal de Licença (DML).</p>
+                    </div>
+                </div>
+            </div>
+            <div id="servicos" class="quick-links-box">
+                <h3>🔗 Links rápidos e instruções</h3>
+                <div class="quick-links-grid">
+                    <a href="#faq" class="quick-link-item">📋 Perguntas Frequentes</a>
+                    <a href="http://agendamentoeletronico.pbh.gov.br/" class="quick-link-item">📅 Agendar no BH
+                        Resolve</a>
+                    <a href="https://servicos.pbh.gov.br" class="quick-link-item">🌐 Portal de Serviços PBH</a>
+                </div>
+                <div class="step-links">
+                    <p><strong>Passo a Passo GOV.BR:</strong></p>
+                    <div class="quick-links-grid">
+                        <a href="https://www.gov.br/pt-br/servicos/criar-sua-conta-gov.br"
+                            class="quick-link-item small">Como criar conta</a>
+                        <a href="https://sso.acesso.gov.br/login?client_id=www.gov.br&authorization_id=19c4278bca7"
+                            class="quick-link-item small">Como logar</a>
+                        <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/atendimento-gov.br/duvidas-nos-dados-cadastrais/nao-alterei-meus-dados-cadastrais/nao-lembro-de-ter-criado-uma-conta-gov.br"
+                            class="quick-link-item small">Como saber se já tem conta</a>
+                        <div></div>
+                        <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/atendimento-gov.br/duvidas-na-conta-gov.br/recuperar-conta-gov.br"
+                            class="quick-link-item small">Recuperar senha</a>
+                    </div>
+                </div>
+            </div>
+            <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/pipoqueiro.png"
+                class="how-to-logo" alt="" aria-hidden="true" />
+    </section>
+    <section id="faq" class="faq">
+        <div class="jp-container">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre o Programa Jornada Produtiva</p>
+            </div>
+            <div class="accordion-container faq-collapsed" id="faq-accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-participar">
+                        <div class="accordion-title">Como fazer parte do Programa?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-participar" class="accordion-content" role="region">
+                        <p>Para conseguir licença você deve passar por um Edital de Chamamento Público e também:</p>
+                        <ul>
+                            <li>Ser maior de 18 anos;</li>
+                            <li>Ser residente de Belo Horizonte.</li>
+                        </ul>
+                        <p>Acompanhe a abertura de novos editais no site oficial e no Diário Oficial do Município
+                            (DOM).</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-agendar">
+                        <div class="accordion-title">Como agendar o atendimento presencial no BH Resolve?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-agendar" class="accordion-content" role="region">
+                        <p>O atendimento é feito mediante agendamento prévio:</p>
+                        <ol>
+                            <li>Acesse <a href="http://bit.ly/agdsmpu">bit.ly/agdsmpu</a>;</li>
+                            <li>Selecione a categoria "POLÍTICA URBANA (REGULAÇÃO URBANA)";</li>
+                            <li>Selecione o serviço "EDITAIS SMPU - ATIVIDADES EM LOGRADOURO";</li>
+                            <li>Escolha data, horário e confirme.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-portal">
+                        <div class="accordion-title">Como acessar o portal de serviços da PBH?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-portal" class="accordion-content" role="region">
+                        <p>Para acessar, clique sobre a atividade desejada abaixo ou utilize o <a
+                                href="https://servicos.pbh.gov.br/" target="_blank">portal geral</a> e faça login
+                            via conta Gov.br:</p>
+                        <ul>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-em-feira-de-inclusao-produtiva-promovida-pelo-executivo+5e74d6d7ea9b0e547c66c8eb"
+                                    target="_blank">Licença em Feira de Inclusão Produtiva</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-ambulante+5e6a4dc9ea9b0e547c43ceb9"
+                                    target="_blank">Licença de Ambulante e Food Bike - Tração Humana</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-fruteiro+606b31b31cd7ca6d848a3703"
+                                    target="_blank">Licença de Fruteiro - Tração Humana</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-de-tracao-humana-com-atividade-compulsoria-ambulante-da-pampulha+606b6c9d1cd7ca6d849274ce"
+                                    target="_blank">Licença de Ambulante Pampulha - Tração Humana</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-de-alimento-em-veiculo-automotor-food-truck-e-trailer+5e6a4b16ea9b0e547c4381f7"
+                                    target="_blank">Licença de Food Truck e Trailer - Automotor</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-para-comercio-em-logradouro-publico-por-pessoa-com-deficiencia-ambulante+5eb40800cf23934c43682881"
+                                    target="_blank">Licença de Comércio por Pessoa com Deficiência - PCD</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-de-lavador-de-carro+5e6a828eea9b0e547c49d6f9"
+                                    target="_blank">Licença de Lavador de Carro</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-de-atividade-em-banca-de-jornais-e-revistas+5e68fe8cea9b0e547c1fb39b"
+                                    target="_blank">Licença de Banca de Jornal e Revista</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+licenca-de-engraxate+5e6a7b3fea9b0e547c48ed06"
+                                    target="_blank">Licença de Engraxate</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+credenciamento-em-atividade-de-comercializacao-de-bebidas-em-veiculo-de-tracao-humana-em-manifestacoes-espontaneas-caixeiro+65cf4e42c78beb1cf656d195"
+                                    target="_blank">Credencial de Caixeiro</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-atividades">
+                        <div class="accordion-title">Quais atividades ou tipos de produto posso vender na rua?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-atividades" class="accordion-content" role="region">
+                        <p>Os produtos variam de acordo com a atividade, e as atividades permitidas estão na lei do
+                            município (Código de Posturas) e são:</p>
+                        <ul>
+                            <li>Feiras</li>
+                            <li>Comércio feito por pessoa com deficiência</li>
+                            <li>Ambulantes, fruteiros e food bike (com carrinho ou bicicleta)</li>
+                            <li>Venda de bebidas (caixeiros)</li>
+                            <li>Food truck e trailer</li>
+                            <li>Bancas de jornal e revista</li>
+                            <li>Lavagem de carros</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-onde">
+                        <div class="accordion-title">Onde posso vender?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-onde" class="accordion-content" role="region">
+                        <p>Isso varia de acordo com a sua atividade e sua licença, algumas atividades têm ponto fixo
+                            e outras devem seguir as regras do Edital.</p>
+                        <p>Existem restrições específicas para Ambulantes, Food Trucks e Trailers na <a
+                                href="https://dom-web.pbh.gov.br/visualizacao/ato/458961" target="_blank">Portaria
+                                SMPU n° 019/2025</a>.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-padrao">
+                        <div class="accordion-title">Meu carrinho, barraca ou mobiliário pode ser como eu quiser?
+                        </div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-padrao" class="accordion-content" role="region">
+                        <p>Não, existe um padrão que deve ser seguido e depende da atividade que você participa.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-protocolo">
+                        <div class="accordion-title">Como acompanhar meu protocolo?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-protocolo" class="accordion-content" role="region">
+                        <p>Para consultar seu protocolo, acesse o link: <a
+                                href="https://servicos.pbh.gov.br/servicos/my-requests"
+                                target="_blank">servicos.pbh.gov.br/servicos/my-requests</a>.</p>
+                        <p>Digite o número completo do protocolo no campo indicado e, depois de selecionar o pedido,
+                            informe o código de acesso (os dois são enviados por e-mail).</p>
+                        <p>Se você não tiver o número do protocolo ou o código, clique em “Acessar área de
+                            relacionamento” no canto inferior direito da tela e entre com sua conta Gov.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-edital">
+                        <div class="accordion-title">Posso me inscrever em mais de um edital?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-edital" class="accordion-content" role="region">
+                        <p>Sim, pode. Mas, se você for aprovado em mais de uma vaga, terá que escolher apenas uma.
+                            Isso porque a lei não permite que a mesma pessoa tenha mais de uma licença para
+                            trabalhar de forma fixa na rua.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-download">
+                        <div class="accordion-title">Como fazer o download da licença?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-download" class="accordion-content" role="region">
+                        <p>Sua licença está disponível para download neste link:<br><a
+                                href="https://lic-siatu.pbh.gov.br/siatu-urbano-licenciamento-publico/f/t/consultarequisicaosel"
+                                target="_blank"
+                                style="word-break: break-all;">lic-siatu.pbh.gov.br/siatu-urbano-licenciamento-publico/f/t/consultarequisicaosel</a>.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-renovar">
+                        <div class="accordion-title">Quando devo renovar minha licença?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-renovar" class="accordion-content" role="region">
+                        <p>A licença vale até o dia 31 de dezembro do quinto ano, contando o ano em que foi emitida
+                            e mais quatro anos.</p>
+                        <p>Para renovar, você deve fazer o pedido até o último dia útil desse quinto ano.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-denuncias">
+                        <div class="accordion-title">Como fazer denúncias?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-denuncias" class="accordion-content" role="region">
+                        <p>As denúncias devem ser feitas a fiscalização nos serviços ou pelo PBH App, através destes
+                            serviços:</p>
+                        <ul>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+camelos-ambulantes-e-comercio-em-vias-publicas-fiscalizacao+5eb58d5a4c5edb135a7267dd"
+                                    target="_blank">Camelôs, Ambulantes e Comércio em Vias Públicas -
+                                    Fiscalização</a></li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+feiras-eventos-circos-e-parques-de-diversao-fiscalizacao+5e70d6eeea9b0e547cf58733"
+                                    target="_blank">Feiras, Eventos, Circos e Parques de Diversão - Fiscalização</a>
+                            </li>
+                            <li><a href="https://servicos.pbh.gov.br/servicos+mobiliario-urbano-banca-de-jornal-e-revista-cabine-de-onibus-e-parklet-fiscalizacao+5e722ab5ea9b0e547c1ada5f"
+                                    target="_blank">Mobiliário Urbano (Banca de Jornal e Revista, Cabine de Ônibus e
+                                    Parklet) - Fiscalização</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-duvidas">
+                        <div class="accordion-title">Como esclarecer dúvidas?</div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="faq-duvidas" class="accordion-content" role="region">
+                        <p>Em caso de dúvidas, encaminhar e-mail para <a
+                                href="mailto:jornadaprodutiva@pbh.gov.br">jornadaprodutiva@pbh.gov.br</a> ou
+                            WhatsApp para o número <a href="https://wa.me/5531983950173" target="_blank">(31)
+                                98395-0173</a>.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-see-more">
+                <button class="btn btn-outline" id="btn-show-all-faq">Ver mais</button>
+            </div>
+        </div>
+    </section>
+    <section class="symbol-section">
+        <div class="jp-container">
+            <img src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/simbolo.png"
+                alt="Símbolo PBH" class="isolated-symbol" />
+        </div>
+    </section>
+    <section id="contato" class="contact">
+        <div class="jp-container">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Jornada Produtiva</h3>
+                    <p>Para informações gerais sobre o programa:</p>
+                    <div class="contact-info">
+                        <a href="https://wa.me/5531983950173" class="contact-btn whatsapp">
+                            <span class="contact-label"><img
+                                    src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/whatsapp-icon.png"
+                                    alt="" class="contact-icon"> WhatsApp</span>
+                            <strong>(31) 98395-0173</strong>
+                        </a>
+                        <a href="mailto:jornadaprodutiva@pbh.gov.br" class="contact-btn email">
+                            <span class="contact-label"><img
+                                    src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/email-icon.png"
+                                    alt="" class="contact-icon"> E-mail</span>
+                            <strong>jornadaprodutiva@pbh.gov.br</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <h3>Feira Afonso Pena</h3>
+                    <p>Para informações sobre a Feira da Afonso Pena:</p>
+                    <div class="contact-info">
+                        <a href="https://wa.me/5531984406516" class="contact-btn whatsapp">
+                            <span class="contact-label"><img
+                                    src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/whatsapp-icon.png"
+                                    alt="" class="contact-icon"> WhatsApp</span>
+                            <strong>(31) 98440-6516</strong>
+                        </a>
+                        <a href="mailto:gefap@pbh.gov.br" class="contact-btn email">
+                            <span class="contact-label"><img
+                                    src="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/email-icon.png"
+                                    alt="" class="contact-icon"> E-mail</span>
+                            <strong>gefap@pbh.gov.br</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem expandida">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">&times;</button>
+    <img src="" alt="" id="lightbox-img">
+    <div class="lightbox-actions">
+        <a class="lightbox-btn lightbox-btn-download" id="lightbox-download"
+            href="https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Emojis%20e%20Componentes/fluxograma_editais.png"
+            download="fluxograma_editais.png" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Baixar
+        </a>
+        <button class="lightbox-btn lightbox-btn-print" id="lightbox-print">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9" />
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                <rect x="6" y="14" width="12" height="8" />
+            </svg>
+            Imprimir
+        </button>
+    </div>
+</div>
+  
+<script>  
+/* =============================================
+   JORNADA PRODUTIVA - JavaScript para Gavias Builder
+   Cole este conteúdo no bloco "Custom Text" > SCRIPT
+   ============================================= */
+
+// --- Carrossel de Imagens (Sobre o Programa) ---
+(function() {
+    const carrosselImagens = [
+        "carrinho-de-pipoca.jpg",
+        "img_7360.JPG", "img_7376.JPG", "img_7385.JPG", "img_7395.JPG",
+        "img_7401.JPG", "img_7410.JPG", "img_7421.JPG", "img_7431.JPG",
+        "img_7443.JPG", "img_7445.JPG", "img_7450.JPG", "img_7456-1.JPG",
+        "img_7462-1.JPG", "img_7464.JPG", "img_7466.JPG", "img_7471.JPG",
+        "img_7488.JPG", "img_7495.JPG", "img_7498.JPG", "img_7506.JPG",
+        "img_7508.JPG", "img_7515.JPG"
+    ];
+    const track = document.getElementById("about-carousel-track");
+    const appendImages = () => {
+        carrosselImagens.forEach(img => {
+            const div = document.createElement("div");
+            div.className = "carousel-item";
+            const imgEl = document.createElement("img");
+            imgEl.src = "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/politica-urbana/Jornada%20Produtiva/Carrocel/" + img;
+            imgEl.alt = "Jornada Produtiva - Imagem da Feira";
+            imgEl.loading = "lazy";
+            imgEl.classList.add("expandable-image");
+            div.appendChild(imgEl);
+            track.appendChild(div);
+        });
+    };
+    if (track) {
+        appendImages();
+        appendImages();
+    }
+})();
+
+// --- Tab Switching (Avisos / Editais) ---
+document.querySelectorAll('.news-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        const target = tab.getAttribute('data-tab');
+        document.getElementById('tab-' + target).classList.add('active');
+    });
+});
+
+// --- Accordion Functionality ---
+document.querySelectorAll('.accordion-header').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isOpen = item.classList.contains('active');
+        document.querySelectorAll('.accordion-item').forEach(i => {
+            i.classList.remove('active');
+            const otherBtn = i.querySelector('.accordion-header');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+            item.classList.add('active');
+            button.setAttribute('aria-expanded', 'true');
+        }
+    });
+});
+
+// --- News Filter (Show More) ---
+const btnShowAllNews = document.getElementById('btn-show-all-news');
+const newsContainer = document.getElementById('news-accordion-container');
+if (btnShowAllNews && newsContainer) {
+    btnShowAllNews.addEventListener('click', () => {
+        newsContainer.classList.remove('news-collapsed');
+        btnShowAllNews.parentElement.classList.add('hidden');
+    });
+}
+
+// --- FAQ Filter (Show More / Show Less) ---
+const btnShowAllFaq = document.getElementById('btn-show-all-faq');
+const faqContainer = document.getElementById('faq-accordion-container');
+if (btnShowAllFaq && faqContainer) {
+    btnShowAllFaq.addEventListener('click', () => {
+        const isCollapsed = faqContainer.classList.contains('faq-collapsed');
+        if (isCollapsed) {
+            faqContainer.classList.remove('faq-collapsed');
+            btnShowAllFaq.textContent = 'Ver menos';
+        } else {
+            faqContainer.classList.add('faq-collapsed');
+            btnShowAllFaq.textContent = 'Ver mais';
+            document.getElementById('faq').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+}
+
+// --- Smooth Scroll ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (this.classList.contains('skip-link')) {
+                target.setAttribute('tabindex', '-1');
+                target.focus();
+            }
+        }
+    });
+});
+
+// --- Timeline Scroll Animation ---
+const timeline = document.querySelector('.timeline');
+if (timeline) {
+    const updateTimeline = () => {
+        const rect = timeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const startPoint = windowHeight * 0.6;
+        const lastItem = timeline.querySelector('.timeline-item:last-child');
+        const lineMaxHeight = lastItem ? lastItem.offsetTop + 56 : rect.height;
+        timeline.style.setProperty('--line-max-height', `${lineMaxHeight}px`);
+        if (rect.top <= startPoint) {
+            const scrolledHeight = startPoint - rect.top;
+            const currentLineHeight = Math.max(0, Math.min(lineMaxHeight, scrolledHeight));
+            timeline.style.setProperty('--line-height', `${currentLineHeight}px`);
+        } else {
+            timeline.style.setProperty('--line-height', `0px`);
+        }
+    };
+    window.addEventListener('scroll', updateTimeline);
+    window.addEventListener('resize', updateTimeline);
+    setTimeout(updateTimeline, 100);
+}
+
+// --- Lightbox Functionality ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+const expandableImages = document.querySelectorAll('.expandable-image');
+expandableImages.forEach(img => {
+    img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+        if (!lightbox.classList.contains('active')) {
+            lightboxImg.src = '';
+        }
+    }, 300);
+};
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === lightboxClose) {
+        closeLightbox();
+    }
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+    }
+});
+
+// --- Print Button ---
+const lightboxPrint = document.getElementById('lightbox-print');
+if (lightboxPrint) {
+    lightboxPrint.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const src = lightboxImg.src;
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(`<!DOCTYPE html><html><head><title>Fluxograma dos Editais</title><style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#fff}img{max-width:100%;height:auto}</style></head><body><img src="${src}" onload="window.print();window.close();"></body></html>`);
+        printWindow.document.close();
+    });
+}
+
+// --- Counter Animation ---
+const animateCounters = () => {
+    const counters = document.querySelectorAll('.animate-counter');
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const format = counter.getAttribute('data-format');
+        const duration = 2000;
+        const startTime = performance.now();
+        const updateCount = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const currentCount = Math.floor(progress * target);
+            if (format === "3.400+") {
+                counter.innerText = currentCount.toLocaleString('pt-BR') + "+";
+            } else if (format === "09") {
+                counter.innerText = currentCount.toString().padStart(2, '0');
+            } else {
+                counter.innerText = currentCount;
+            }
+            if (progress < 1) {
+                requestAnimationFrame(updateCount);
+            } else {
+                counter.innerText = format;
+            }
+        };
+        requestAnimationFrame(updateCount);
+    });
+};
+window.addEventListener('load', animateCounters);
+  
+</script> 
+
