@@ -1,0 +1,428 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet"><script src="/sites/default/files/private-images/novo-anel/parallax/simpleparallax.min.js"></script><script src="/sites/default/files/private-images/novo-anel/parallax/parallax.min.js"></script><style>.content-main-inner {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+#page-main-content {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.modal-header {
+    border-bottom: none !important;
+}
+
+.modal-footer {
+    border-top: none !important;
+}
+
+.close {
+    font-size: 33px !important;
+}
+
+.modal-title {
+    color: #404661 !important;
+}
+
+.modal-content {
+    border-radius: 25px;
+}
+
+.button-eixo:hover {
+    background-color: #6a7191 !important;
+}
+
+.modal-body p {
+    color: #6b7083;
+    font-size: 15px;
+}
+
+.parallax-mirror {
+    z-index: 0 !important;
+}
+
+#anelrodoviario {
+    font-family: "League Spartan", sans-serif !important;
+}
+
+.parallax-section {
+    height: 70vh;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    object-fit: cover;
+}
+
+.parallax-section.img1 {
+    /* height: 70vh;*/
+    z-index: 0;
+}
+
+.parallax-section.img2 {
+    /*height: 65vh;*/
+    z-index: 0;
+}
+
+.parallax-section.img3 {
+    /*height: 60vh;*/
+    z-index: 0;
+}
+
+.fixed-section {
+    background-color: #d6d9e9;
+    position: relative;
+    z-index: 1;
+    font-size: 2rem;
+    padding: 60px;
+    flex-direction: column;
+    background-image: linear-gradient(0deg, rgb(87 96 135) 0%, rgb(11 14 24) 100%);
+    background-blend-mode: hard-light;
+    background-repeat: repeat-y;
+    background-size: cover;
+}
+
+.fixed-section h2 {
+    color: #e2e3e9;
+    line-height: 60px;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    font-family: "League Spartan", sans-serif;
+}
+
+.fixed-section p {
+    color: #e6e7ec;
+    text-shadow: 0px 3px #212745;
+    line-height: 35px;
+    margin: 1em 0px;
+    font-size: 30px;
+    font-family: "League Spartan", sans-serif;
+}
+
+.destaque {
+    /*text-decoration: none;*/
+    text-underline-offset: 10px;
+    color: #fdd301;
+    transition: text-decoration 1s ease;
+}
+
+.simpleParallax {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 72%, rgba(0, 0, 0, 0.7) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: top;
+}
+
+/* bridge */
+.bridge-content {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -250px;
+    margin-bottom: -250px;
+    z-index: 2;
+    position: relative;
+    padding: 0;
+    mask-image: url("/sites/default/files/private-images/novo-anel/mask-desktop.svg");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    -webkit-mask-image: url("/sites/default/files/private-images/novo-anel/mask-desktop.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    background-image: url("/sites/default/files/private-images/novo-anel/lines.jpg");
+    background-blend-mode: exclusion;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #ffffff;
+}
+
+.bridge-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+    z-index: 3;
+    background: linear-gradient(90deg, #e2e3e9 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 75%, #e2e3e9 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+.bridge-block {
+    width: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.bridge-block.left {
+    padding-left: 30px;
+    text-align: left;
+    place-content: flex-start;
+    margin-top: 65px;
+    width: 300px;
+}
+
+.bridge-block.right {
+    padding-right: 30px;
+    text-align: right;
+    place-content: flex-end;
+    margin-bottom: 65px;
+    width: 300px;
+}
+
+.bridge-block h3 {
+    margin: 0 0 5px 0;
+    color: #404661;
+    font-family: "League Spartan", sans-serif;
+    font-size: 22px;
+}
+
+.bridge-block p {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    color: #44485e;
+    font-family: "League Spartan", sans-serif;
+}
+
+.mask-bridge {
+    background-image: url(/sites/default/files/private-images/novo-anel/viaduto.png);
+    background-blend-mode: hard-light;
+    background-repeat: repeat-y;
+    background-size: cover;
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-position: center;
+    opacity: 0.7;
+    background-color: #dcdee7;
+}
+
+.button-eixo {
+    background-color: #404661;
+    border: 4px solid white;
+    color: white;
+    padding: 10px 32px 5px 32px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0px 3px #6b6969;
+}
+
+.button-eixo:hover {
+    background-color: #6a7191 !important;
+}
+
+.logo-container {
+    position: absolute;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    width: 400px;
+    z-index: 3;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 10rem;
+    opacity: 0.9;
+}
+
+.logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.rodape-slogan {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.rodape-slogan img {
+    height: 200px;
+}
+
+.content-text {
+    margin-top: 200px;
+}
+
+.t1 {
+    display: block;
+}
+
+.t2 {
+    display: none;
+}
+
+.bridge-block.left {
+    animation: bridge-left 1ms ease-in-out;
+    animation-timeline: view();
+    animation-range: cover 0% cover 50%;
+}
+
+@keyframes bridge-left {
+    from {
+        opacity: 0;
+        translate: -100vw 0;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.content-text .block-text {
+    animation: bridge-top 1ms ease-in-out;
+    animation-timeline: view();
+    animation-range: cover 0% cover 40%;
+}
+
+.content-text h2 {
+    animation: bridge-left 1ms ease-in-out;
+    animation-timeline: view();
+    animation-range: cover 0% cover 50%;
+}
+
+@keyframes bridge-top {
+    0% {
+        opacity: 0;
+        translate: 0 -100vw;
+
+    }
+
+    75% {
+        opacity: 0;
+        translate: 0 -50vw;
+    }
+
+    100% {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+.bridge-block.right {
+    animation: bridge-right 1ms ease-in-out;
+    animation-timeline: view();
+    animation-range: cover 0% cover 50%;
+}
+
+@keyframes bridge-right {
+    from {
+        opacity: 0;
+        translate: 200vw 0;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .bridge-content {
+        height: 600px;
+        margin-top: -125px;
+        margin-bottom: -125px;
+        mask-image: url("/sites/default/files/private-images/novo-anel/mask-mobile.svg");
+        mask-repeat: no-repeat;
+        mask-size: 100% 100%;
+        -webkit-mask-image: url("/sites/default/files/private-images/novo-anel/mask-mobile.svg");
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: 100% 100%;
+    }
+
+    .bridge-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        padding: 50px 30px;
+    }
+
+    .bridge-block {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .bridge-block.left,
+    .bridge-block.right {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        width: 100%;
+        margin: 0px;
+    }
+
+    .bridge-block p {
+        line-height: 1 !important;
+    }
+
+    .content-text {
+        margin-top: 130px !important;
+    }
+
+    .rodape-slogan img {
+        height: 150px !important;
+    }
+
+    .fixed-section {
+        padding: 20px;
+    }
+
+    .fixed-section h2 {
+        line-height: 32px;
+        font-size: 28px;
+    }
+
+    .fixed-section p {
+        font-size: 21px;
+        line-height: 25px;
+    }
+
+    .logo-container {
+        left: 50%;
+        transform: translateX(-50%);
+        border: 5px solid #ffffff;
+        border-radius: 10px;
+        width: 270px;
+    }
+
+    .t1,
+    .parallax-mirror {
+        display: none !important;
+    }
+
+    .t2 {
+        display: block !important;
+    }
+}
+
+.links-diretos {
+    background-color: #ffffff94;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #59659b;
+}
+
+.links-diretos h3 {
+    color: #2f3759;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+</style>

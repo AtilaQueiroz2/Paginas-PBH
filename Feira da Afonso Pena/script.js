@@ -136,6 +136,79 @@
   // ── PRINT: remove nav ────────────────────────────────────────
   window.addEventListener('beforeprint', () => topnav.style.display = 'none');
   window.addEventListener('afterprint', () => topnav.style.display = '');
+  // ── DRAGGABLE & AUTO-SCROLL CAROUSEL ─────────────────────────
+  const carousel = document.querySelector('.hero-carousel');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let isDragging = false;
+  let autoScrollInterval;
+
+  if (carousel) {
+    let accumulatedScroll = 0;
+    const scrollSpeed = 0.5; // Ajuste este valor para controlar a velocidade (ex: 1 para mais rápido, 0.3 para mais lento)
+
+    const step = () => {
+      accumulatedScroll += scrollSpeed;
+      if (accumulatedScroll >= 1) {
+        const jump = Math.floor(accumulatedScroll);
+        carousel.scrollLeft += jump;
+        accumulatedScroll -= jump;
+        
+        // Se rolou da metade, reseta para 0 suavemente (loop infinito graças aos clones)
+        if (carousel.scrollLeft >= (carousel.scrollWidth / 2)) {
+           carousel.scrollLeft = 0;
+        }
+      }
+      autoScrollInterval = requestAnimationFrame(step);
+    };
+
+    const startAutoScroll = () => {
+      cancelAnimationFrame(autoScrollInterval); // Evita duplicar
+      accumulatedScroll = 0; // zera o acumulador
+      autoScrollInterval = requestAnimationFrame(step);
+    };
+
+    const stopAutoScroll = () => {
+      cancelAnimationFrame(autoScrollInterval);
+    };
+
+    startAutoScroll();
+
+    carousel.addEventListener('mouseenter', stopAutoScroll);
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      isDragging = false;
+      carousel.classList.add('active');
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+      stopAutoScroll();
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+      carousel.classList.remove('active');
+      startAutoScroll();
+    });
+
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+      carousel.classList.remove('active');
+      // Continua parado enquanto o mouse estiver em cima (pois mouseenter pausou)
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 2; // velocidade do arraste
+      if (Math.abs(walk) > 5) {
+          isDragging = true;
+      }
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+  }
   // ── LIGHTBOX (IMAGE EXPAND) ──────────────────────────────────
   const lightboxOverlay = document.getElementById('lightboxOverlay');
   const lightboxImg = document.getElementById('lightboxImg');
@@ -144,7 +217,12 @@
 
   if (lightboxOverlay && lightboxImg && lightboxDownload && lightboxClose) {
     document.querySelectorAll('.carousel-img').forEach((img, index) => {
-      img.addEventListener('click', () => {
+      img.addEventListener('click', (e) => {
+        if (isDragging) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
         const src = img.getAttribute('src');
         lightboxImg.src = src;
         lightboxDownload.href = src;

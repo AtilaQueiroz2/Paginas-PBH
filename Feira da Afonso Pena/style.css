@@ -365,7 +365,6 @@ ul {
     margin: 4.5rem auto 0;
     overflow: hidden;
     position: relative;
-    /* Optional: add a mask image to fade the edges */
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
@@ -373,17 +372,21 @@ ul {
 .hero-carousel {
     display: flex;
     gap: 16px;
-    width: max-content;
-    animation: scrollCarousel 30s linear infinite;
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: auto; /* Required for smooth drag */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    cursor: grab;
+    padding-bottom: 20px; /* give some room for interaction */
 }
 
-.hero-carousel:hover {
-    animation-play-state: paused;
+.hero-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
 }
 
-@keyframes scrollCarousel {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 8px)); }
+.hero-carousel.active {
+    cursor: grabbing;
 }
 
 .carousel-item {
@@ -1457,6 +1460,7 @@ ul {
 
     .hero-cards {
         grid-template-columns: repeat(2, 1fr);
+        padding: 0 1.5rem;
     }
 
     .rules-grid {
@@ -1478,7 +1482,16 @@ ul {
 
 @media (max-width: 600px) {
     .hero-cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero-info {
+        padding-top: 6rem;
+    }
+
+    .hcard {
+        justify-content: center;
     }
 
     .editais-grid {
