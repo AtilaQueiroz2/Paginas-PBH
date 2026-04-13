@@ -5,58 +5,44 @@
 (function () {
   'use strict';
 
-  // ── NAV: sticky scroll behaviour ────────────────────────────
-  const topnav = document.getElementById('topnav');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  const backBtn = document.getElementById('backToTop');
-  const allNavLinks = document.querySelectorAll('.nav-links a');
+  // ── CUSTOM SMOOTH SCROLL para quick cards ────────────────────────────
+  function smoothScrollTo(targetElement, duration) {
+    const targetRect = targetElement.getBoundingClientRect();
+    const targetPosition = targetRect.top + window.pageYOffset - 20;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
 
-  window.addEventListener('scroll', () => {
-    // Sticky shadow
-    topnav.classList.toggle('scrolled', window.scrollY > 20);
-    // Back-to-top
-    backBtn.classList.toggle('visible', window.scrollY > 400);
-    // Active nav link by section
-    highlightNav();
-  }, { passive: true });
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
 
-  // ── HAMBURGER ────────────────────────────────────────────────
-  hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', String(isOpen));
-  });
+    // easeInOutCubic - mais suave que quad
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t * t + b;
+      t -= 2;
+      return c / 2 * (t * t * t + 2) + b;
+    }
 
-  // Close menu on link click (mobile)
-  allNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // ── ACTIVE NAV ON SCROLL ─────────────────────────────────────
-  const anchors = ['identidade', 'licenciamento', 'regras', 'categorias', 'localizacao', 'faq'];
-
-  function highlightNav() {
-    let current = '';
-    anchors.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 90) current = id;
-      }
-    });
-    allNavLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
+    requestAnimationFrame(animation);
   }
 
-  // ── BACK TO TOP ──────────────────────────────────────────────
-  backBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelectorAll('.quick-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      const href = card.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.getElementById(href.slice(1));
+        if (target) {
+          smoothScrollTo(target, 900);
+        }
+      }
+    });
   });
 
   // ── ACCORDIONS ───────────────────────────────────────────────
@@ -150,6 +136,38 @@
   // ── PRINT: remove nav ────────────────────────────────────────
   window.addEventListener('beforeprint', () => topnav.style.display = 'none');
   window.addEventListener('afterprint', () => topnav.style.display = '');
+  // ── LIGHTBOX (IMAGE EXPAND) ──────────────────────────────────
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxDownload = document.getElementById('lightboxDownload');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  if (lightboxOverlay && lightboxImg && lightboxDownload && lightboxClose) {
+    document.querySelectorAll('.carousel-img').forEach((img, index) => {
+      img.addEventListener('click', () => {
+        const src = img.getAttribute('src');
+        lightboxImg.src = src;
+        lightboxDownload.href = src;
+        lightboxDownload.download = 'Feira-Afonso-Pena-' + (index + 1) + '.jpg';
+        lightboxOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // prevent scrolling
+      });
+    });
+
+    const closeLightbox = () => {
+      lightboxOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lightboxImg.src = ''; }, 300);
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxOverlay.addEventListener('click', (e) => {
+      if (e.target === lightboxOverlay) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) closeLightbox();
+    });
+  }
 
 })();
 
@@ -178,7 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
     center: [-19.9234, -43.9355],
     zoom: 16,
     minZoom: 15,
-    maxZoom: 19
+    maxZoom: 19,
+    attributionControl: false
   });
 
   // Camada Base Clara (CartoDB Positron)
@@ -188,9 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
     maxZoom: 20
   }).addTo(miniMap);
 
-  const sectorsLayer = L.layerGroup().addTo(miniMap);
-  const stallsLayer = L.layerGroup().addTo(miniMap);
-  const markersLayer = L.layerGroup().addTo(miniMap);
+  const sectorsLayer = L.featureGroup().addTo(miniMap);
+  const stallsLayer = L.featureGroup().addTo(miniMap);
+  const markersLayer = L.featureGroup().addTo(miniMap);
+  const bathLayer = L.featureGroup().addTo(miniMap);
+  const brigadaLayer = L.featureGroup().addTo(miniMap);
 
   // Marcadores de Pontos de Interesse (Entradas)
   const pinIcon = L.divIcon({
@@ -223,8 +244,95 @@ document.addEventListener('DOMContentLoaded', () => {
     return [pt[1], pt[0]];
   }
 
+  // Conversor para MultiPolygon UTM → LatLng
+  function convertMultiPolygon(multiCoords) {
+    return multiCoords.map(polygon => {
+      return polygon.map(ring => {
+        return ring.map(c => {
+          const pt = proj4('EPSG:31983', 'EPSG:4326', [c[0], c[1]]);
+          return [pt[1], pt[0]];
+        });
+      });
+    });
+  }
+
   let initialBounds = null;
   const allStalls = [];
+  const allBathrooms = [];
+  const allBrigada = [];
+
+  // Carregar Ponto de Apoio Brigada Profissional
+  function loadBrigada() {
+    console.log("Carregando ponto de apoio da brigada...");
+
+    const brigadaIcon = L.divIcon({
+      html: '<div style="background-color: #999999; width: 28px; height: 28px; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; font-size:14px;">🛡️</div>',
+      className: 'custom-brigada-icon',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
+    });
+
+    const marker = L.marker([-19.922331, -43.936566], { icon: brigadaIcon });
+
+    const popupContent = `
+      <div style="font-family:'Inter',sans-serif; padding:5px 0;">
+        <h4 style="margin:0 0 8px; color:#555; font-size:14px; font-weight:700;">🛡️ Ponto de Apoio — Brigada Profissional</h4>
+        <p style="margin:0 0 3px; font-size:12px;"><b>📍 Localização:</b> Av. Afonso Pena</p>
+        <p style="margin:0; font-size:12px;"><b>⏰ Disponível:</b> Domingos, durante a Feira</p>
+      </div>
+    `;
+
+    marker.bindPopup(popupContent);
+    marker.bindTooltip('🛡️ Brigada Profissional', { direction: 'top', offset: [0, -10] });
+
+    brigadaLayer.addLayer(marker);
+    allBrigada.push(marker);
+
+    console.log('Ponto de apoio da brigada carregado.');
+  }
+
+  // Carregar Banheiros (sanitários portáteis ao longo da Feira)
+  function loadBanheiros() {
+    console.log("Carregando banheiros da Feira...");
+
+    // Ícone personalizado para banheiros (estilo do mapa original)
+    const wcIcon = L.divIcon({
+      html: '<div style="background-color: #26c6da; width: 28px; height: 28px; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; font-size:14px;">🚻</div>',
+      className: 'custom-wc-icon',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14]
+    });
+
+    // Posições dos sanitários ao longo da Av. Afonso Pena (trajeto da Feira)
+    // Coordenadas baseadas no mapa original do BHMap
+    const banheiros = [
+      { nome: "Sanitário — Carijós/Espírito Santo", lat: -19.919366, lng: -43.937444, ref: "Esquina Carijós com Espírito Santo" },
+      { nome: "Sanitário — Afonso Pena", lat: -19.922946, lng: -43.936461, ref: "Av. Afonso Pena" },
+      { nome: "Sanitário — Praça Afonso Arinos", lat: -19.924692, lng: -43.936394, ref: "Praça Afonso Arinos" },
+      { nome: "Sanitário — Correios", lat: -19.9240051, lng: -43.935699, ref: "Em frente aos Correios" },
+      { nome: "Sanitário — Afonso Pena (Sul)", lat: -19.925482, lng: -43.934837, ref: "Av. Afonso Pena (próx. Carandaí)" }
+    ];
+
+    banheiros.forEach(b => {
+      const marker = L.marker([b.lat, b.lng], { icon: wcIcon });
+
+      const popupContent = `
+        <div style="font-family:'Inter',sans-serif; padding:5px 0;">
+          <h4 style="margin:0 0 8px; color:#00838f; font-size:14px; font-weight:700;">🚻 ${b.nome}</h4>
+          <p style="margin:0 0 3px; font-size:12px;"><b>📍 Localização:</b> ${b.ref}</p>
+          <p style="margin:0; font-size:12px;"><b>⏰ Disponível:</b> Domingos, 8h às 14h</p>
+        </div>
+      `;
+
+      marker.bindPopup(popupContent);
+      marker.bindTooltip(`🚻 ${b.nome}`, { direction: 'top', offset: [0, -10] });
+
+      bathLayer.addLayer(marker);
+      allBathrooms.push(marker);
+    });
+
+    console.log(`${allBathrooms.length} banheiros carregados no mapa.`);
+  }
 
   // Carregar Feirantes (Polígonos das barracas) a partir da variável injetada
   function loadFeirantes() {
@@ -249,6 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (s.includes("ARRANJOS E COMPLEMENTOS")) return "#c18c1b"; // Ouro/Laranja escuro
       if (s.includes("CINTOS, BOLSAS E ACESSÓRIOS")) return "#00774a"; // Verde Escuro
       if (s.includes("CALÇADOS")) return "#dc4e15"; // Laranja/Vermelho
+      if (s.includes("BANHEIRO")) return "#42b9f5"; // Azul claro para Banheiros
+      if (s.includes("OUTROS")) return "#999999"; // Cinza para Outros
       return "#888888";
     }
 
@@ -290,7 +400,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (stallsLayer.getLayers().length > 0) {
       initialBounds = stallsLayer.getBounds();
-      miniMap.fitBounds(initialBounds, { padding: [20, 20] });
+      if (initialBounds && initialBounds.isValid()) {
+        miniMap.fitBounds(initialBounds, { padding: [20, 20] });
+      }
     }
   }
 
@@ -300,8 +412,18 @@ document.addEventListener('DOMContentLoaded', () => {
   function resetFilters() {
     console.log("Resetando filtros e zoom...");
     sectorItems.forEach(i => i.classList.remove('active'));
+
+    // Restaurar feirantes
     stallsLayer.clearLayers();
     allStalls.forEach(stall => stallsLayer.addLayer(stall));
+
+    // Restaurar banheiros
+    bathLayer.clearLayers();
+    allBathrooms.forEach(b => bathLayer.addLayer(b));
+
+    // Restaurar brigada
+    brigadaLayer.clearLayers();
+    allBrigada.forEach(b => brigadaLayer.addLayer(b));
 
     if (initialBounds) {
       miniMap.flyToBounds(initialBounds, {
@@ -310,7 +432,6 @@ document.addEventListener('DOMContentLoaded', () => {
         easeLinearity: 0.25
       });
     } else {
-      // Fallback caso initialBounds não tenha sido capturado
       const group = L.featureGroup(allStalls);
       if (group.getBounds().isValid()) {
         miniMap.flyToBounds(group.getBounds(), { padding: [20, 20] });
@@ -331,10 +452,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Lógica para Entradas (Mostram tudo + Zoom)
-      if (item.id === 'setor-1' || item.id === 'setor-16') {
+      if (item.id === 'setor-1' || item.id === 'setor-15') {
         sectorItems.forEach(i => i.classList.remove('active'));
         stallsLayer.clearLayers();
         allStalls.forEach(stall => stallsLayer.addLayer(stall));
+        bathLayer.clearLayers();
+        allBathrooms.forEach(b => bathLayer.addLayer(b));
+        brigadaLayer.clearLayers();
+        allBrigada.forEach(b => brigadaLayer.addLayer(b));
 
         const coords = item.id === 'setor-1'
           ? [-19.919351, -43.938571]
@@ -348,13 +473,50 @@ document.addEventListener('DOMContentLoaded', () => {
       sectorItems.forEach(i => i.classList.remove('active'));
       item.classList.add('active');
 
-      // Filtrar no mapa
+      // Filtro especial para Banheiros
+      if (filter.toUpperCase() === 'BANHEIROS') {
+        stallsLayer.clearLayers();
+        brigadaLayer.clearLayers();
+        bathLayer.clearLayers();
+        allBathrooms.forEach(b => bathLayer.addLayer(b));
+
+        if (allBathrooms.length > 0) {
+          const group = L.featureGroup(allBathrooms);
+          miniMap.flyToBounds(group.getBounds(), {
+            padding: [40, 40],
+            duration: 1.5
+          });
+        }
+        return;
+      }
+
+      // Filtro especial para Brigada Profissional
+      if (filter.toUpperCase() === 'BRIGADA') {
+        stallsLayer.clearLayers();
+        bathLayer.clearLayers();
+        brigadaLayer.clearLayers();
+        allBrigada.forEach(b => brigadaLayer.addLayer(b));
+
+        if (allBrigada.length > 0) {
+          miniMap.flyTo([-19.922331, -43.936566], 18, { duration: 1.5 });
+        }
+        return;
+      }
+
+      // Filtrar feirantes no mapa (esconde marcadores especiais)
+      bathLayer.clearLayers();
+      brigadaLayer.clearLayers();
       stallsLayer.clearLayers();
       const filtered = [];
 
+      const filterUpper = filter.toUpperCase();
       allStalls.forEach(stall => {
         const sectorName = stall.options.sectorName;
-        if (filter === 'all' || (sectorName && sectorName.includes(filter.toUpperCase()))) {
+        // Match exato para VESTUÁRIO (não pegar VESTUÁRIO INFANTIL)
+        if (filter === 'all' || (sectorName && (
+          filterUpper === 'VESTUÁRIO' ? sectorName === 'VESTUÁRIO' :
+            sectorName.includes(filterUpper)
+        ))) {
           stallsLayer.addLayer(stall);
           filtered.push(stall);
         }
@@ -384,5 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  loadBanheiros();
+  loadBrigada();
   loadFeirantes();
 });

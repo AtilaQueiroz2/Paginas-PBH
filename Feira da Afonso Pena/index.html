@@ -26,31 +26,70 @@
 
 <body>
 
-    <!-- ===== STICKY TOP NAV ===== -->
-    <nav class="topnav" id="topnav" role="navigation" aria-label="Navegação principal">
-        <div class="nav-inner">
-            <div class="nav-brand">
-                <a href="#identidade">
-                    <img src="Img&Componentes/LogoFeiraAfonsoPena.png" alt="Logo Feira da Afonso Pena" width="133"
-                        height="55" />
-                </a>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#identidade" class="active">Início</a></li>
-                <li><a href="#licenciamento">Licenciamento</a></li>
-                <li><a href="#regras">Regras</a></li>
-                <li><a href="#categorias">Categorias</a></li>
-                <li><a href="#localizacao">Localização</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-            <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
     <!-- ===== BANNER / IDENTIDADE ===== -->
     <section class="hero" id="identidade" aria-label="Banner da Feira da Afonso Pena"></section>
+
+    <!-- ===== QUICK ACCESS CARDS ===== -->
+    <section class="quick-access">
+        <div class="container">
+            <div class="quick-cards">
+                <a href="#licenciamento" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Licenciamento</h3>
+                    <p>Editais e convocações</p>
+                </a>
+                <a href="#regras" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Regras</h3>
+                    <p>Deveres e proibições</p>
+                </a>
+                <a href="#categorias" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <h3>Categorias</h3>
+                    <p>Tipos de comercialização</p>
+                </a>
+                <a href="#localizacao" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Localização</h3>
+                    <p>Mapa interativo e setores</p>
+                </a>
+                <a href="#faq" class="quick-card">
+                    <div class="quick-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A63AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>FAQ</h3>
+                    <p>Tire suas dúvidas</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== HERO INFO: conteúdo abaixo do banner ===== -->
     <section class="hero-info">
@@ -150,13 +189,35 @@
                 </div>
             </div>
             <a href="#licenciamento" class="hero-cta" id="cta-main">Jornada do Expositor ↓</a>
-            <div class="hero-carousel">
-                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO.jpg" alt="Feira Hippie Afonso Pena" class="carousel-img">
-                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1703.jpg" alt="Artes em quadros na Feira"
-                    class="carousel-img">
-                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO--11.jpg" alt="Gastronomia na Feira" class="carousel-img">
-                <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1824.jpg" alt="Acessórios e Artesanato"
-                    class="carousel-img">
+            <div class="hero-carousel-wrap">
+                <div class="hero-carousel">
+                    <!-- Conjunto 1 -->
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO.jpg" alt="Feira Hippie Afonso Pena" class="carousel-img">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1703.jpg" alt="Artes em quadros na Feira" class="carousel-img">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO--11.jpg" alt="Gastronomia na Feira" class="carousel-img">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1824.jpg" alt="Acessórios e Artesanato" class="carousel-img">
+                    </div>
+                    <!-- Conjunto 2 duplicado para o loop infinito -->
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO.jpg" alt="Feira Hippie Afonso Pena" class="carousel-img">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1703.jpg" alt="Artes em quadros na Feira" class="carousel-img">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO--11.jpg" alt="Gastronomia na Feira" class="carousel-img">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Carrocel/FEIRA-HIPPIE_QU4RTO-STUDIO-1824.jpg" alt="Acessórios e Artesanato" class="carousel-img">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -526,7 +587,7 @@
             <div class="section-header">
                 <div class="section-badge">Logística e Localização</div>
                 <h2 class="section-title">Encontre sua barraca e seu setor</h2>
-                <p class="section-desc">A Feira está dividida em <strong>16 setores</strong> ao longo da Avenida Afonso
+                <p class="section-desc">A Feira está dividida em <strong>15 setores</strong> ao longo da Avenida Afonso
                     Pena, facilitando a orientação de feirantes e visitantes.</p>
             </div>
 
@@ -549,10 +610,10 @@
                             <span class="sector-num" style="background:#004890">4</span><span>Vestuário Infantil</span>
                         </div>
                         <div class="sector-item" data-filter="VESTUÁRIO">
-                            <span class="sector-num" style="background:#eec110">5</span><span>Vestuário</span>
+                            <span class="sector-num" style="background:#eec110">5</span><span>Vestuário Adulto</span>
                         </div>
                         <div class="sector-item" data-filter="CRIANÇA">
-                            <span class="sector-num" style="background:#008fd3">6</span><span>Criança</span>
+                            <span class="sector-num" style="background:#008fd3">6</span><span>Brinquedos Infantis</span>
                         </div>
                         <div class="sector-item" data-filter="ARTES E PINTURA">
                             <span class="sector-num" style="background:#6a22b7">7</span><span>Artes e Pintura</span>
@@ -574,8 +635,14 @@
                         <div class="sector-item" data-filter="CALÇADOS">
                             <span class="sector-num" style="background:#dc4e15">12</span><span>Calçados</span>
                         </div>
-                        <div class="sector-item" id="setor-16" data-filter="all">
-                            <span class="sector-num">13</span><span>Entrada Carandaí</span>
+                        <div class="sector-item" data-filter="BANHEIROS">
+                            <span class="sector-num" style="background:#42b9f5">13</span><span>Banheiros</span>
+                        </div>
+                        <div class="sector-item" data-filter="BRIGADA">
+                            <span class="sector-num" style="background:#999999">14</span><span>Ponto de Apoio</span>
+                        </div>
+                        <div class="sector-item" id="setor-15" data-filter="all">
+                            <span class="sector-num">15</span><span>Entrada Carandaí</span>
                         </div>
                     </div>
                 </div>
@@ -607,7 +674,11 @@
     </section>
 
     <!-- ===== FAQ E SERVIÇOS ===== -->
+    <!-- Linha decorativa PBH -->
+    <div class="pbh-stripe"></div>
+
     <section class="section faq-section" id="faq">
+        <img src="Img&Componentes/Brilho.png" alt="" class="faq-decor-brilho" aria-hidden="true">
         <div class="container">
             <div class="section-header">
                 <div class="section-badge">FAQ e Serviços</div>
@@ -623,10 +694,9 @@
                     <button class="accordion-btn" aria-expanded="false" aria-controls="acc-licenca-body"
                         id="btn-acc-licenca">
                         <div class="acc-btn-inner">
-                            <span class="acc-icon">📄</span>
                             <span>Licença do Expositor</span>
                         </div>
-                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                        <span class="acc-chevron" aria-hidden="true">+</span>
                     </button>
                     <div class="accordion-body" id="acc-licenca-body" role="region" aria-labelledby="btn-acc-licenca">
                         <div class="acc-content">
@@ -649,10 +719,9 @@
                     <button class="accordion-btn" aria-expanded="false" aria-controls="acc-infra-body"
                         id="btn-acc-infra">
                         <div class="acc-btn-inner">
-                            <span class="acc-icon">🏗️</span>
                             <span>Infraestrutura e Logística</span>
                         </div>
-                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                        <span class="acc-chevron" aria-hidden="true">+</span>
                     </button>
                     <div class="accordion-body" id="acc-infra-body" role="region" aria-labelledby="btn-acc-infra">
                         <div class="acc-content">
@@ -676,10 +745,9 @@
                     <button class="accordion-btn" aria-expanded="false" aria-controls="acc-transito-body"
                         id="btn-acc-transito">
                         <div class="acc-btn-inner">
-                            <span class="acc-icon">🚦</span>
                             <span>Alteração de Trânsito</span>
                         </div>
-                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                        <span class="acc-chevron" aria-hidden="true">+</span>
                     </button>
                     <div class="accordion-body" id="acc-transito-body" role="region" aria-labelledby="btn-acc-transito">
                         <div class="acc-content">
@@ -700,10 +768,9 @@
                     <button class="accordion-btn" aria-expanded="false" aria-controls="acc-residuos-body"
                         id="btn-acc-residuos">
                         <div class="acc-btn-inner">
-                            <span class="acc-icon">♻️</span>
                             <span>Descarte de Resíduos</span>
                         </div>
-                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                        <span class="acc-chevron" aria-hidden="true">+</span>
                     </button>
                     <div class="accordion-body" id="acc-residuos-body" role="region" aria-labelledby="btn-acc-residuos">
                         <div class="acc-content">
@@ -728,10 +795,9 @@
                     <button class="accordion-btn" aria-expanded="false" aria-controls="acc-preposto-body"
                         id="btn-acc-preposto">
                         <div class="acc-btn-inner">
-                            <span class="acc-icon">🤝</span>
                             <span>Preposto e Substituição</span>
                         </div>
-                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                        <span class="acc-chevron" aria-hidden="true">+</span>
                     </button>
                     <div class="accordion-body" id="acc-preposto-body" role="region" aria-labelledby="btn-acc-preposto">
                         <div class="acc-content">
@@ -754,10 +820,9 @@
                     <button class="accordion-btn" aria-expanded="false" aria-controls="acc-contato-body"
                         id="btn-acc-contato">
                         <div class="acc-btn-inner">
-                            <span class="acc-icon">📞</span>
                             <span>Contato e Canais Oficiais</span>
                         </div>
-                        <span class="acc-chevron" aria-hidden="true">▾</span>
+                        <span class="acc-chevron" aria-hidden="true">+</span>
                     </button>
                     <div class="accordion-body" id="acc-contato-body" role="region" aria-labelledby="btn-acc-contato">
                         <div class="acc-content">
@@ -779,41 +844,16 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer" id="footer">
-        <div class="container footer-inner">
-            <div class="footer-left">
-                <div class="footer-logo">🎨 Feira Hippie BH</div>
-                <p class="footer-tagline">Patrimônio Cultural de Belo Horizonte desde 1969</p>
-                <p class="footer-disclaimer">Página informativa baseada nos dados e regulamentos oficiais da Prefeitura
-                    de Belo Horizonte. Para informações oficiais, acesse <a href="https://prefeitura.pbh.gov.br"
-                        target="_blank" rel="noopener">prefeitura.pbh.gov.br</a>.</p>
-            </div>
-            <div class="footer-links">
-                <h5>Navegação</h5>
-                <ul>
-                    <li><a href="#identidade">Início</a></li>
-                    <li><a href="#licenciamento">Licenciamento</a></li>
-                    <li><a href="#regras">Regras</a></li>
-                    <li><a href="#categorias">Categorias</a></li>
-                    <li><a href="#localizacao">Localização</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-info">
-                <h5>Informações Rápidas</h5>
-                <ul>
-                    <li>📅 Todo domingo</li>
-                    <li>🕗 8h às 14h</li>
-                    <li>📍 Av. Afonso Pena, BH</li>
-                    <li>☎️ 156 — BH Resolve</li>
-                </ul>
-            </div>
+
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fechar galeria">×</button>
+        <div class="lightbox-content">
+            <img src="" alt="Imagem expandida" id="lightboxImg">
+            <a href="#" download class="edital-btn" id="lightboxDownload">Baixar Imagem ↓</a>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Página informativa da Feira da Afonso Pena · Belo Horizonte · MG</p>
-        </div>
-    </footer>
+    </div>
 
     <!-- Back to top -->
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
