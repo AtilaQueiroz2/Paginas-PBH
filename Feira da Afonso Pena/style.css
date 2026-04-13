@@ -196,18 +196,45 @@ ul {
 }
 
 @media (max-width: 768px) {
+    .quick-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        top: -30px;
+        margin-bottom: -30px;
+        padding: 0 1rem;
+    }
     .quick-card {
-        flex: 1 1 calc(50% - 16px);
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 0.75rem;
     }
     .quick-card h3 {
-        font-size: 1rem;
+        font-size: 0.85rem;
+    }
+    .quick-card p {
+        font-size: 0.7rem;
+    }
+    .quick-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        margin-bottom: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
+    .quick-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .quick-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        justify-self: center;
+    }
     .quick-card {
-        flex: 1 1 100%;
+        padding: 1rem 0.5rem;
+    }
+    .quick-card h3 {
+        font-size: 0.8rem;
     }
 }
 
@@ -233,7 +260,7 @@ ul {
    ============================================================= */
 .hero-info {
     background-color: var(--white);
-    padding: 10rem 0 3.5rem;
+    padding: 10rem 1.5rem 3.5rem;
     border-bottom: 1px solid var(--border);
     text-align: center;
 }
@@ -289,13 +316,15 @@ ul {
     max-width: 812px;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
 }
 
 .hcard {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: left;
-    gap: 12px;
+    text-align: center;
+    gap: 10px;
     background-color: transparent;
     border: none;
     padding: 0;
@@ -1460,7 +1489,7 @@ ul {
 
     .hero-cards {
         grid-template-columns: repeat(2, 1fr);
-        padding: 0 1.5rem;
+        gap: 1.5rem 16px;
     }
 
     .rules-grid {
@@ -1481,17 +1510,46 @@ ul {
 }
 
 @media (max-width: 600px) {
-    .hero-cards {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .hero-info {
+        padding: 6rem 1.25rem 2.5rem;
     }
 
-    .hero-info {
-        padding-top: 6rem;
+    .hero-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .hcard {
-        justify-content: center;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .hcard-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .hcard-label {
+        font-size: 0.65rem;
+    }
+
+    .hcard-value {
+        font-size: 0.82rem;
+        word-break: break-word;
+    }
+
+    .hero-title {
+        font-size: 1.75rem !important;
+    }
+
+    .hero-desc {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+    }
+
+    .hero-cta {
+        width: 100%;
+        max-width: 280px;
     }
 
     .editais-grid {
