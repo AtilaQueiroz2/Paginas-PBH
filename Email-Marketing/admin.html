@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Painel de Agendamentos</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    /* Admin */
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .admin-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .admin-topbar .brand { margin-bottom: 0; }
+
+    .admin-topbar-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .admin-topbar .back-link,
+    .admin-topbar .logout-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      transition: 0.2s;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .admin-topbar .back-link {
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      background: white;
+    }
+    .admin-topbar .back-link:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .admin-topbar .logout-btn {
+      color: var(--danger);
+      border: 1px solid var(--danger);
+      background: white;
+    }
+    .admin-topbar .logout-btn:hover {
+      background: var(--danger);
+      color: white;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .stat-icon.green { background: #d1fae5; color: #065f46; }
+    .stat-icon.red { background: #fee2e2; color: #991b1b; }
+    .stat-icon.blue { background: #e0e7ff; color: #3730a3; }
+
+    .stat-info h3 { font-size: 1.75rem; font-weight: 700; }
+    .stat-info span { color: var(--text-muted); font-size: 0.875rem; }
+
+    .admin-table-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .admin-table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .admin-table-header h2 { font-size: 1.1rem; }
+
+    .filter-group { display: flex; gap: 8px; }
+
+    .filter-btn {
+      padding: 6px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 99px;
+      background: white;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: 0.2s;
+      font-family: inherit;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .admin-table { width: 100%; border-collapse: collapse; }
+
+    .admin-table th, .admin-table td {
+      padding: 0.85rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .admin-table th {
+      background: #f8fafc;
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .admin-table tr:last-child td { border-bottom: none; }
+    .admin-table tr:hover td { background: #f8fafc; }
+
+    .solicitante-info {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .solicitante-info strong { display: block; font-size: 0.85rem; }
+    .solicitante-info .meta { color: var(--text-muted); }
+
+    .status-select {
+      padding: 6px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .status-select.occupied { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+    .status-select.dispatched { background: #e0e7ff; color: #3730a3; border-color: #a5b4fc; }
+
+    .detail-toggle {
+      color: var(--primary-color);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: underline;
+      font-family: inherit;
+    }
+
+    .detail-row td { padding: 0 1.25rem; background: #f8fafc; }
+    .detail-row.hidden { display: none; }
+    .detail-content { padding: 1rem 0; }
+
+    .detail-content h4 {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-html {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .detail-html a { color: var(--primary-color); }
+
+    .attachments-list { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .attachment-thumb {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      border: 1px solid var(--border-color);
+    }
+
+    .attachment-file {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      background: white;
+    }
+
+    .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+    .empty-state i { font-size: 3rem; margin-bottom: 1rem; display: block; color: var(--border-color); }
+
+    .btn-delete {
+      color: var(--danger);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 1.1rem;
+      padding: 4px;
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+    .btn-delete:hover { background: #fee2e2; }
+
+    .admin-actions-cell { display: flex; align-items: center; gap: 8px; }
+  </style>
+</head>
+
+<!-- Painel Admin (autenticação controlada pelo Drupal) -->
+  <div class="admin-container" id="admin-panel">
+    <div class="admin-topbar">
+      <div class="brand">
+        <div class="logo-icon"><i class="ri-mail-send-fill"></i></div>
+        <h2>MailFlow <span style="font-weight:300; color:var(--text-muted);">/ Admin</span></h2>
+      </div>
+      <a href="index.html" class="back-link"><i class="ri-arrow-left-line"></i> Voltar ao Calendário</a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon red"><i class="ri-calendar-check-line"></i></div>
+        <div class="stat-info">
+          <h3 id="stat-occupied">0</h3>
+          <span>Ocupados</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="ri-mail-check-line"></i></div>
+        <div class="stat-info">
+          <h3 id="stat-dispatched">0</h3>
+          <span>Disparados</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="ri-database-2-line"></i></div>
+        <div class="stat-info">
+          <h3 id="stat-total">0</h3>
+          <span>Total de Registros</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-table-card">
+      <div class="admin-table-header">
+        <h2><i class="ri-list-check-2"></i> Todas as Solicitações</h2>
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="occupied">Ocupados</button>
+          <button class="filter-btn" data-filter="dispatched">Disparados</button>
+        </div>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Período</th>
+            <th>Solicitante</th>
+            <th>Assunto</th>
+            <th>Criado em</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="admin-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'mailflow_agendamentos';
+    let currentFilter = 'all';
+
+    function getAgendamentos() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : [];
+    }
+
+    function saveAgendamentos(list) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    }
+
+    function formatDate(dateStr) {
+      const [y, m, d] = dateStr.split('-');
+      return `${d}/${m}/${y}`;
+    }
+
+    function formatDateTime(isoStr) {
+      const d = new Date(isoStr);
+      return d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function getPeriodoLabel(p) {
+      return p === 'manha' ? 'Manhã' : 'Tarde';
+    }
+
+    function updateStats() {
+      const list = getAgendamentos();
+      document.getElementById('stat-total').textContent = list.length;
+      document.getElementById('stat-occupied').textContent = list.filter(a => a.status === 'occupied').length;
+      document.getElementById('stat-dispatched').textContent = list.filter(a => a.status === 'dispatched').length;
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('admin-table-body');
+      let list = getAgendamentos();
+
+      if (currentFilter !== 'all') {
+        list = list.filter(a => a.status === currentFilter);
+      }
+
+      list.sort((a, b) => b.data.localeCompare(a.data));
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="ri-inbox-line"></i><p>Nenhuma solicitação encontrada.</p></div></td></tr>`;
+        updateStats();
+        return;
+      }
+
+      tbody.innerHTML = list.map(a => `
+        <tr data-id="${a.id}">
+          <td><strong>${formatDate(a.data)}</strong></td>
+          <td>${getPeriodoLabel(a.periodo)}</td>
+          <td>
+            <div class="solicitante-info">
+              <strong>${a.nomeSolicitante || '—'}</strong>
+              <span class="meta">${a.matricula || ''} · ${a.orgao || ''}</span>
+            </div>
+          </td>
+          <td>${a.assunto || '<em>Sem assunto</em>'}</td>
+          <td style="color:var(--text-muted); font-size:0.85rem;">${formatDateTime(a.criadoEm)}</td>
+          <td>
+            <select class="status-select ${a.status}" data-id="${a.id}">
+              <option value="occupied" ${a.status === 'occupied' ? 'selected' : ''}>🔴 Ocupado</option>
+              <option value="dispatched" ${a.status === 'dispatched' ? 'selected' : ''}>🔵 Disparado</option>
+            </select>
+          </td>
+          <td>
+            <div class="admin-actions-cell">
+              <button class="detail-toggle" data-id="${a.id}">Ver detalhes</button>
+              <button class="btn-delete" data-id="${a.id}" title="Excluir"><i class="ri-delete-bin-line"></i></button>
+            </div>
+          </td>
+        </tr>
+        <tr class="detail-row hidden" id="detail-${a.id}">
+          <td colspan="7">
+            <div class="detail-content">
+              <h4>Conteúdo do E-mail</h4>
+              <div class="detail-html">${a.conteudo || '<em>Sem conteúdo</em>'}</div>
+              ${a.anexos && a.anexos.length > 0 ? `
+                <h4>Anexos (${a.anexos.length})</h4>
+                <div class="attachments-list">
+                  ${a.anexos.map(f => {
+                    if (f.type && f.type.startsWith('image/')) {
+                      return `<img class="attachment-thumb" src="${f.base64}" alt="${f.name}" title="${f.name}">`;
+                    }
+                    return `<div class="attachment-file"><i class="ri-file-line"></i> ${f.name}</div>`;
+                  }).join('')}
+                </div>
+              ` : ''}
+            </div>
+          </td>
+        </tr>
+      `).join('');
+
+      // Bind events
+      tbody.querySelectorAll('.status-select').forEach(sel => {
+        sel.addEventListener('change', (e) => {
+          const id = e.target.dataset.id;
+          const newStatus = e.target.value;
+          const all = getAgendamentos();
+          const idx = all.findIndex(a => a.id === id);
+          if (idx !== -1) {
+            all[idx].status = newStatus;
+            saveAgendamentos(all);
+            renderTable();
+          }
+        });
+      });
+
+      tbody.querySelectorAll('.detail-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const row = document.getElementById(`detail-${btn.dataset.id}`);
+          row.classList.toggle('hidden');
+          btn.textContent = row.classList.contains('hidden') ? 'Ver detalhes' : 'Ocultar';
+        });
+      });
+
+      tbody.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (confirm('Tem certeza que deseja excluir este agendamento?')) {
+            const all = getAgendamentos();
+            const filtered = all.filter(a => a.id !== btn.dataset.id);
+            saveAgendamentos(filtered);
+            renderTable();
+          }
+        });
+      });
+
+      updateStats();
+    }
+
+    // Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderTable();
+      });
+    });
+
+    // Init
+    renderTable();
+  </script>
+</body>
+
+</html>

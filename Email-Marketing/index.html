@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal E-mail Marketing | Agendamentos</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="app-container">
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Gestão de Agendamentos</h1>
+        <div class="actions">
+          <a href="admin.html" class="btn-primary" style="text-decoration:none;"><i class="ri-settings-3-line"></i> Administração</a>
+        </div>
+      </header>
+
+      <div class="tab-content-container">
+
+        <!-- Tab: Calendário -->
+        <section id="tab-calendar" class="tab-pane active fade-in">
+          <div class="section-header">
+            <div class="month-controls">
+              <button class="btn-icon" id="prev-month"><i class="ri-arrow-left-s-line"></i></button>
+              <h2 id="calendar-month-title">Maio 2026</h2>
+              <button class="btn-icon" id="next-month"><i class="ri-arrow-right-s-line"></i></button>
+            </div>
+            <div class="calendar-filters">
+              <span class="legend"><span class="dot green"></span> Livre</span>
+              <span class="legend"><span class="dot red"></span> Ocupado</span>
+              <span class="legend"><span class="dot blue"></span> Disparado</span>
+            </div>
+          </div>
+
+          <div class="calendar-grid" id="calendar-grid">
+            <!-- Gerado via JS para o mock -->
+          </div>
+        </section>
+
+        <!-- Tab: Nova Solicitação -->
+        <section id="tab-nova-solicitacao" class="tab-pane fade-in">
+          <div class="card form-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <h2>Solicitar Novo Disparo</h2>
+                <p class="subtitle">Preencha os detalhes da campanha abaixo.</p>
+              </div>
+              <button type="button" class="btn-icon" id="btn-close-form" title="Voltar para a Agenda" style="border:none; box-shadow:none;"><i class="ri-close-line" style="font-size:1.5rem;"></i></button>
+            </div>
+
+            <form id="agendamento-form" class="custom-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="data-disparo">Data do Disparo</label>
+                  <input type="date" id="data-disparo" required>
+                </div>
+                <div class="form-group">
+                  <label for="periodo-disparo">Período</label>
+                  <select id="periodo-disparo" required>
+                    <option value="" disabled selected>Selecione o período</option>
+                    <option value="manha">Manhã (08:00 - 12:00)</option>
+                    <option value="tarde">Tarde (13:00 - 18:00)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="form-group">
+                  <label for="nome-solicitante">Nome Completo</label>
+                  <input type="text" id="nome-solicitante" placeholder="Ex: João da Silva" required>
+                </div>
+                <div class="form-group">
+                  <label for="matricula">PR / Matrícula</label>
+                  <input type="text" id="matricula" placeholder="Ex: PR-12345" required>
+                </div>
+                <div class="form-group">
+                  <label for="orgao">Órgão Solicitante</label>
+                  <input type="text" id="orgao" placeholder="Ex: SMCOM / GABIN" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="assunto">Assunto da Campanha</label>
+                <input type="text" id="assunto" placeholder="Ex: Newsletter Maio - Novidades" required>
+              </div>
+
+              <div class="form-group">
+                <label for="conteudo">Conteúdo (Rich Text)</label>
+                <div class="faux-wysiwyg">
+                  <div class="wysiwyg-toolbar">
+                    <button type="button" data-command="bold" title="Negrito"><i class="ri-bold"></i></button>
+                    <button type="button" data-command="italic" title="Itálico"><i class="ri-italic"></i></button>
+                    <button type="button" data-command="underline" title="Sublinhado"><i class="ri-underline"></i></button>
+                    <button type="button" data-command="insertUnorderedList" title="Lista"><i class="ri-list-unordered"></i></button>
+                    <button type="button" data-command="createLink" title="Inserir Link"><i class="ri-link"></i></button>
+                  </div>
+                  <div id="conteudo" class="wysiwyg-editor" contenteditable="true" data-placeholder="Escreva o conteúdo do e-mail aqui..."></div>
+                </div>
+              </div>
+
+              <div class="form-group file-upload">
+                <label>Anexos / Imagens</label>
+                <div class="upload-zone">
+                  <i class="ri-upload-cloud-2-line"></i>
+                  <p>Arraste arquivos ou <strong>clique para fazer upload</strong></p>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-primary btn-large">Agendar Disparo</button>
+              </div>
+              <div id="form-msg" class="alert hidden"></div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <!-- Modal de Link (estilo Gmail) -->
+  <div class="link-modal-overlay" id="link-modal-overlay">
+    <div class="link-modal">
+      <div class="link-modal-header">
+        <h3>Inserir Link</h3>
+        <button type="button" class="btn-icon" id="link-modal-close" style="border:none;"><i class="ri-close-line"></i></button>
+      </div>
+      <div class="link-modal-body">
+        <div class="form-group">
+          <label for="link-text">Texto a exibir</label>
+          <input type="text" id="link-text" placeholder="Ex: Clique aqui">
+        </div>
+        <div class="form-group">
+          <label for="link-url">URL do link</label>
+          <input type="url" id="link-url" placeholder="https://exemplo.com">
+        </div>
+      </div>
+      <div class="link-modal-footer">
+        <button type="button" class="btn-secondary" id="link-modal-cancel">Cancelar</button>
+        <button type="button" class="btn-primary" id="link-modal-apply">Aplicar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
