@@ -1,9 +1,0 @@
-name: 'Agendamento de Disparo'
-type: module
-description: 'Fornece funcionalidades avançadas e regras de negócio para o painel de E-mail Marketing, como validação de conflitos de horário.'
-core_version_requirement: ^9 || ^10
-package: Custom
-dependencies:
-  - drupal:views
-  - drupal:node
-  - drupal:datetime

@@ -583,6 +583,18 @@ body {
   color: var(--text-muted);
   cursor: not-allowed;
 }
+
+.calendar-day.past-date {
+  background: #f8fafc;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.calendar-day.past-date:hover {
+  border-color: var(--border-color);
+  box-shadow: none;
+}
 .calendar-day.weekend:hover {
   border-color: var(--border-color);
   box-shadow: none;

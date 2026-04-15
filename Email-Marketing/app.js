@@ -138,6 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
         slotManha.innerHTML = `<i class="ri-check-line"></i> Manhã: Livre`;
       }
 
+      const thisDate = new Date(year, month, i);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const isPast = thisDate < today;
+
+      if (isPast) {
+        dayEl.classList.add('past-date');
+      }
+
       // Tarde
       const slotTarde = document.createElement('div');
       if (dbDay && dbDay.tarde) {
@@ -156,11 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
       dayEl.appendChild(slotManha);
       dayEl.appendChild(slotTarde);
 
-      dayEl.style.cursor = 'pointer';
-      dayEl.addEventListener('click', () => {
-        switchTab('tab-nova-solicitacao');
-        document.getElementById('data-disparo').value = dateKey;
-      });
+      if (!isPast) {
+        dayEl.style.cursor = 'pointer';
+        dayEl.addEventListener('click', () => {
+          switchTab('tab-nova-solicitacao');
+          document.getElementById('data-disparo').value = dateKey;
+        });
+      }
 
       calendarGrid.appendChild(dayEl);
     }
