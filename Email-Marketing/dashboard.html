@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | MailFlow Analytics</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    .dashboard-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .dashboard-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .dashboard-topbar .brand { margin-bottom: 0; }
+
+    .topbar-nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .topbar-nav a, .topbar-nav select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      transition: 0.2s;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      background: white;
+    }
+
+    .topbar-nav a:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .topbar-nav select {
+      color: var(--text-main);
+      border-color: var(--border-color);
+    }
+
+    /* Summary Cards */
+    .summary-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .summary-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .summary-card.purple::after { background: var(--primary-color); }
+    .summary-card.red::after { background: var(--danger); }
+    .summary-card.blue::after { background: #3b82f6; }
+    .summary-card.green::after { background: var(--success); }
+
+    .summary-card .label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .summary-card .value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .summary-card .trend {
+      font-size: 0.8rem;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .summary-card .trend.up { color: var(--success); }
+    .summary-card .trend.neutral { color: var(--text-muted); }
+
+    /* Charts Grid */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .chart-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .chart-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chart-card h3 i {
+      color: var(--primary-color);
+    }
+
+    .chart-canvas-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .chart-canvas-wrapper.bar-chart { height: 320px; }
+    .chart-canvas-wrapper.doughnut-chart { height: 320px; }
+
+    /* Ranking Table */
+    .ranking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .ranking-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .ranking-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ranking-card h3 i { color: var(--primary-color); }
+
+    .ranking-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .ranking-table th, .ranking-table td {
+      padding: 0.75rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .ranking-table th {
+      background: #f8fafc;
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ranking-table tr:last-child td { border-bottom: none; }
+
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .rank-badge.gold { background: #fef3c7; color: #92400e; }
+    .rank-badge.silver { background: #f1f5f9; color: #475569; }
+    .rank-badge.bronze { background: #fed7aa; color: #9a3412; }
+    .rank-badge.default { background: #f1f5f9; color: var(--text-muted); }
+
+    .bar-mini {
+      height: 8px;
+      border-radius: 99px;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .bar-mini-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary-color), #818cf8);
+      transition: width 0.6s ease;
+    }
+
+    .empty-dashboard {
+      text-align: center;
+      padding: 6rem 2rem;
+      color: var(--text-muted);
+    }
+
+    .empty-dashboard i {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: block;
+      color: var(--border-color);
+    }
+
+    .empty-dashboard p { font-size: 1.1rem; }
+
+    .periodo-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .periodo-badge.manha { background: #fef3c7; color: #92400e; }
+    .periodo-badge.tarde { background: #e0e7ff; color: #3730a3; }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <div class="dashboard-topbar">
+      <div class="brand">
+        <div class="logo-icon"><i class="ri-bar-chart-box-fill"></i></div>
+        <h2>MailFlow <span style="font-weight:300; color:var(--text-muted);">/ Dashboard</span></h2>
+      </div>
+      <div class="topbar-nav">
+        <select id="year-filter">
+          <!-- Gerado via JS -->
+        </select>
+        <a href="admin.html"><i class="ri-list-check-2"></i> Solicitações</a>
+        <a href="index.html"><i class="ri-calendar-line"></i> Calendário</a>
+      </div>
+    </div>
+
+    <div id="dashboard-content">
+      <!-- Gerado via JS -->
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'mailflow_agendamentos';
+    const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    const monthNamesFull = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+    function getAgendamentos() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : [];
+    }
+
+    let selectedYear = new Date().getFullYear();
+
+    // Populate year filter
+    function populateYearFilter() {
+      const select = document.getElementById('year-filter');
+      const list = getAgendamentos();
+      const years = new Set();
+      years.add(new Date().getFullYear());
+      list.forEach(a => {
+        const y = parseInt(a.data.split('-')[0]);
+        years.add(y);
+      });
+
+      const sortedYears = [...years].sort((a, b) => b - a);
+      select.innerHTML = sortedYears.map(y =>
+        `<option value="${y}" ${y === selectedYear ? 'selected' : ''}>${y}</option>`
+      ).join('');
+
+      select.addEventListener('change', () => {
+        selectedYear = parseInt(select.value);
+        renderDashboard();
+      });
+    }
+
+    function renderDashboard() {
+      const container = document.getElementById('dashboard-content');
+      const allData = getAgendamentos();
+      const yearData = allData.filter(a => a.data.startsWith(String(selectedYear)));
+
+      if (allData.length === 0) {
+        container.innerHTML = `
+          <div class="empty-dashboard">
+            <i class="ri-pie-chart-line"></i>
+            <p>Nenhum dado disponível ainda.</p>
+            <p style="font-size:0.9rem; margin-top:8px;">Registre solicitações no <a href="index.html" style="color:var(--primary-color)">Calendário</a> para ver os relatórios.</p>
+          </div>`;
+        return;
+      }
+
+      // === Cálculos ===
+      const totalYear = yearData.length;
+      const dispatched = yearData.filter(a => a.status === 'dispatched').length;
+      const occupied = yearData.filter(a => a.status === 'occupied').length;
+      const currentMonth = new Date().getMonth();
+      const thisMonthData = yearData.filter(a => parseInt(a.data.split('-')[1]) - 1 === currentMonth);
+
+      // Por mês
+      const byMonth = Array(12).fill(0);
+      const dispatchedByMonth = Array(12).fill(0);
+      const occupiedByMonth = Array(12).fill(0);
+      yearData.forEach(a => {
+        const m = parseInt(a.data.split('-')[1]) - 1;
+        byMonth[m]++;
+        if (a.status === 'dispatched') dispatchedByMonth[m]++;
+        else occupiedByMonth[m]++;
+      });
+
+      // Por órgão
+      const byOrgao = {};
+      yearData.forEach(a => {
+        const org = a.orgao || 'Não informado';
+        byOrgao[org] = (byOrgao[org] || 0) + 1;
+      });
+      const orgaoRanking = Object.entries(byOrgao).sort((a, b) => b[1] - a[1]);
+
+      // Por período
+      const byPeriodo = { manha: 0, tarde: 0 };
+      yearData.forEach(a => {
+        if (a.periodo === 'manha') byPeriodo.manha++;
+        else byPeriodo.tarde++;
+      });
+
+      // Mês com mais disparos
+      const peakMonth = byMonth.indexOf(Math.max(...byMonth));
+      const peakMonthName = byMonth[peakMonth] > 0 ? monthNamesFull[peakMonth] : '—';
+
+      container.innerHTML = `
+        <!-- Summary Cards -->
+        <div class="summary-row">
+          <div class="summary-card purple">
+            <div class="label">Total no Ano</div>
+            <div class="value">${totalYear}</div>
+            <div class="trend neutral"><i class="ri-calendar-line"></i> ${selectedYear}</div>
+          </div>
+          <div class="summary-card red">
+            <div class="label">Ocupados (Pendentes)</div>
+            <div class="value">${occupied}</div>
+            <div class="trend neutral"><i class="ri-time-line"></i> Aguardando disparo</div>
+          </div>
+          <div class="summary-card blue">
+            <div class="label">Disparados</div>
+            <div class="value">${dispatched}</div>
+            <div class="trend up"><i class="ri-mail-check-line"></i> Enviados com sucesso</div>
+          </div>
+          <div class="summary-card green">
+            <div class="label">Este Mês (${monthNamesFull[currentMonth]})</div>
+            <div class="value">${thisMonthData.length}</div>
+            <div class="trend neutral"><i class="ri-bar-chart-line"></i> Pico: ${peakMonthName}</div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3><i class="ri-bar-chart-grouped-line"></i> Agendamentos por Mês</h3>
+            <div class="chart-canvas-wrapper bar-chart">
+              <canvas id="chart-monthly"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3><i class="ri-pie-chart-2-line"></i> Distribuição por Órgão</h3>
+            <div class="chart-canvas-wrapper doughnut-chart">
+              <canvas id="chart-orgao"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Charts Row -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3><i class="ri-line-chart-line"></i> Status por Mês (Ocupado vs Disparado)</h3>
+            <div class="chart-canvas-wrapper bar-chart">
+              <canvas id="chart-status"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h3><i class="ri-time-line"></i> Distribuição por Período</h3>
+            <div class="chart-canvas-wrapper doughnut-chart">
+              <canvas id="chart-periodo"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rankings -->
+        <div class="ranking-grid">
+          <div class="ranking-card">
+            <h3><i class="ri-trophy-line"></i> Ranking de Órgãos</h3>
+            <table class="ranking-table">
+              <thead><tr><th>#</th><th>Órgão</th><th>Solicitações</th><th>Participação</th></tr></thead>
+              <tbody id="ranking-orgao-body"></tbody>
+            </table>
+          </div>
+          <div class="ranking-card">
+            <h3><i class="ri-calendar-check-line"></i> Meses Mais Ativos</h3>
+            <table class="ranking-table">
+              <thead><tr><th>#</th><th>Mês</th><th>Total</th><th>Volume</th></tr></thead>
+              <tbody id="ranking-month-body"></tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      // === Render Charts ===
+      const chartColors = {
+        primary: '#6366f1',
+        primaryLight: '#818cf8',
+        danger: '#ef4444',
+        dangerLight: '#fca5a5',
+        blue: '#3b82f6',
+        blueLight: '#93c5fd',
+        success: '#10b981',
+        successLight: '#6ee7b7',
+        purple: '#8b5cf6',
+        amber: '#f59e0b',
+        rose: '#f43f5e',
+        cyan: '#06b6d4',
+        emerald: '#10b981',
+        indigo: '#6366f1'
+      };
+
+      const doughnutColors = ['#6366f1', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#f43f5e', '#14b8a6', '#a855f7'];
+
+      // Monthly Bar Chart
+      new Chart(document.getElementById('chart-monthly'), {
+        type: 'bar',
+        data: {
+          labels: monthNames,
+          datasets: [{
+            label: 'Agendamentos',
+            data: byMonth,
+            backgroundColor: byMonth.map((_, i) => i === currentMonth ? chartColors.primary : chartColors.primaryLight),
+            borderRadius: 6,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: { beginAtZero: true, ticks: { stepSize: 1 } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // Orgão Doughnut
+      new Chart(document.getElementById('chart-orgao'), {
+        type: 'doughnut',
+        data: {
+          labels: orgaoRanking.map(o => o[0]),
+          datasets: [{
+            data: orgaoRanking.map(o => o[1]),
+            backgroundColor: doughnutColors.slice(0, orgaoRanking.length),
+            borderWidth: 2,
+            borderColor: '#fff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { padding: 16, font: { size: 12 } } }
+          }
+        }
+      });
+
+      // Status Stacked Bar
+      new Chart(document.getElementById('chart-status'), {
+        type: 'bar',
+        data: {
+          labels: monthNames,
+          datasets: [
+            {
+              label: 'Ocupado',
+              data: occupiedByMonth,
+              backgroundColor: chartColors.dangerLight,
+              borderRadius: 4,
+              borderSkipped: false
+            },
+            {
+              label: 'Disparado',
+              data: dispatchedByMonth,
+              backgroundColor: chartColors.blue,
+              borderRadius: 4,
+              borderSkipped: false
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top', labels: { padding: 16, font: { size: 12 } } }
+          },
+          scales: {
+            y: { beginAtZero: true, stacked: true, ticks: { stepSize: 1 } },
+            x: { stacked: true, grid: { display: false } }
+          }
+        }
+      });
+
+      // Período Doughnut
+      new Chart(document.getElementById('chart-periodo'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Manhã', 'Tarde'],
+          datasets: [{
+            data: [byPeriodo.manha, byPeriodo.tarde],
+            backgroundColor: [chartColors.amber, chartColors.indigo],
+            borderWidth: 2,
+            borderColor: '#fff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { padding: 16, font: { size: 12 } } }
+          }
+        }
+      });
+
+      // === Render Rankings ===
+      const maxOrgao = orgaoRanking.length > 0 ? orgaoRanking[0][1] : 1;
+      document.getElementById('ranking-orgao-body').innerHTML = orgaoRanking.map((o, i) => {
+        const pct = Math.round((o[1] / totalYear) * 100);
+        const badgeClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : 'default';
+        return `
+          <tr>
+            <td><span class="rank-badge ${badgeClass}">${i + 1}</span></td>
+            <td><strong>${o[0]}</strong></td>
+            <td>${o[1]}</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="bar-mini" style="flex:1;">
+                  <div class="bar-mini-fill" style="width:${pct}%"></div>
+                </div>
+                <span style="font-size:0.8rem;color:var(--text-muted);width:36px;">${pct}%</span>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('') || '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:2rem;">Sem dados</td></tr>';
+
+      const monthRanking = byMonth.map((count, i) => ({ month: monthNamesFull[i], count, idx: i }))
+        .filter(m => m.count > 0)
+        .sort((a, b) => b.count - a.count);
+
+      const maxMonth = monthRanking.length > 0 ? monthRanking[0].count : 1;
+      document.getElementById('ranking-month-body').innerHTML = monthRanking.map((m, i) => {
+        const pct = Math.round((m.count / maxMonth) * 100);
+        const badgeClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : 'default';
+        return `
+          <tr>
+            <td><span class="rank-badge ${badgeClass}">${i + 1}</span></td>
+            <td><strong>${m.month}</strong></td>
+            <td>${m.count}</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="bar-mini" style="flex:1;">
+                  <div class="bar-mini-fill" style="width:${pct}%"></div>
+                </div>
+                <span style="font-size:0.8rem;color:var(--text-muted);width:36px;">${m.count}</span>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('') || '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:2rem;">Sem dados</td></tr>';
+    }
+
+    populateYearFilter();
+    renderDashboard();
+  </script>
+</body>
+
+</html>

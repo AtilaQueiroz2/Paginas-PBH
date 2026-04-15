@@ -255,6 +255,7 @@
   </style>
 </head>
 
+<body>
 <!-- Painel Admin (autenticação controlada pelo Drupal) -->
   <div class="admin-container" id="admin-panel">
     <div class="admin-topbar">
@@ -262,7 +263,10 @@
         <div class="logo-icon"><i class="ri-mail-send-fill"></i></div>
         <h2>MailFlow <span style="font-weight:300; color:var(--text-muted);">/ Admin</span></h2>
       </div>
-      <a href="index.html" class="back-link"><i class="ri-arrow-left-line"></i> Voltar ao Calendário</a>
+      <div class="admin-topbar-actions" style="display: flex; gap: 10px;">
+        <a href="dashboard.html" class="back-link" style="color: var(--primary-color); border-color: var(--primary-color);"><i class="ri-bar-chart-box-line"></i> Dashboard</a>
+        <a href="index.html" class="back-link"><i class="ri-arrow-left-line"></i> Voltar ao Calendário</a>
+      </div>
     </div>
 
     <div class="stats-row">
